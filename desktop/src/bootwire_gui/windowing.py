@@ -73,7 +73,7 @@ class _WindowsFrame(QAbstractNativeEventFilter):
         if bytes(event_type) not in (b"windows_generic_MSG", b"windows_dispatcher_MSG"):
             return False, 0
         msg = self._types.MSG.from_address(int(message))
-        if msg.hwnd != self._hwnd or msg.message != 0x0083:  # WM_NCCALCSIZE
+        if msg.hWnd != self._hwnd or msg.message != 0x0083:  # WM_NCCALCSIZE
             return False, 0
         if msg.wParam and self._user32.IsZoomed(self._hwnd):
             # A maximized custom client area must exclude the taskbar on this
