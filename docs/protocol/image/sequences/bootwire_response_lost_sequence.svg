@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="616px" preserveAspectRatio="none" style="width:966px;height:616px;" version="1.1" viewBox="0 0 966 616" width="966px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="966" height="616" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="525" x="218" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="216" x="372.5" y="36.6978">Fault: Response Lost</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="509" x="226" y="53.3418">the target answers the resend from its reply cache and does not run the command again</text><rect fill="#F4F7FB" height="526.4263" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="338.5" x="4" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="65" x="140.75" y="85.2285">Host (PC)</text><rect fill="#EEF6F4" height="526.4263" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="360.5" x="530" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="204" x="608.25" y="85.2285">Target (Cortex-M bootloader)</text><rect fill="#DCEBFB" height="143.7437" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="605.5" y="194.6904"/><rect fill="#DCEBFB" height="85.8462" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="605.5" y="410.3315"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="63" x2="63" y1="134.793" y2="346.4341"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="63" x2="63" y1="346.4341" y2="389.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="63" x2="63" y1="389.3828" y2="604.5229"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="275.5" x2="275.5" y1="134.793" y2="346.4341"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="275.5" x2="275.5" y1="346.4341" y2="389.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="275.5" x2="275.5" y1="389.3828" y2="604.5229"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="610" x2="610" y1="134.793" y2="346.4341"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="610" x2="610" y1="346.4341" y2="389.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="610" x2="610" y1="389.3828" y2="604.5229"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="820.5" x2="820.5" y1="134.793" y2="346.4341"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="820.5" x2="820.5" y1="346.4341" y2="389.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="820.5" x2="820.5" y1="389.3828" y2="604.5229"/><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="95" x="16" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="23" y="111.3892">bootwire CLI</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="75" x="26" y="124.4619">host application</text><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="110" x="220.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="96" x="227.5" y="111.3892">BootWireClient</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="239" y="124.4619">command layer</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="137" x="542" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="97" x="562" y="111.3892">Target protocol</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="549" y="124.4619">frame check, reply cache</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="116" x="762.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="769.5" y="111.3892">Bootloader core</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="793" y="124.4619">flash driver</text><rect fill="#DCEBFB" height="143.7437" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="605.5" y="194.6904"/><rect fill="#DCEBFB" height="85.8462" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="605.5" y="410.3315"/><polygon fill="#3D5166" points="263.5,161.7417,273.5,165.7417,263.5,169.7417,267.5,165.7417" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="63.5" x2="269.5" y1="165.7417" y2="165.7417"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="70.5" y="160.9868">01</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="170" x="88.5" y="160.9868">write(0x08008200, 256 bytes)</text><polygon fill="#3D5166" points="593.5,190.6904,603.5,194.6904,593.5,198.6904,597.5,194.6904" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="275.5" x2="599.5" y1="194.6904" y2="194.6904"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="282.5" y="189.9355">02</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="228" x="300.5" y="189.9355">WRITE [SEQ=0x40, 0x08008200, data]</text><polygon fill="#3D5166" points="808.5,219.6392,818.5,223.6392,808.5,227.6392,812.5,223.6392" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="615.5" x2="814.5" y1="223.6392" y2="223.6392"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="622.5" y="218.8843">03</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="120" x="640.5" y="218.8843">program + read back</text><polygon fill="#3D5166" points="626.5,248.5879,616.5,252.5879,626.5,256.5879,622.5,252.5879" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="620.5" x2="819.5" y1="252.5879" y2="252.5879"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="632.5" y="247.833">04</text><text xml:space="preserve" fill="#1E8449" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="19" x="650.5" y="247.833">OK</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="615.5" x2="657.5" y1="296.4854" y2="296.4854"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="657.5" x2="657.5" y1="296.4854" y2="309.4854"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="616.5" x2="657.5" y1="309.4854" y2="309.4854"/><polygon fill="#3D5166" points="626.5,305.4854,616.5,309.4854,626.5,313.4854,622.5,309.4854" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="622.5" y="284.2561">05</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="161" x="640.5" y="276.7817">cache key = (0x40, WRITE)</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="104" x="640.5" y="291.7305">cache = response</text><line style="stroke: #C0392B; stroke-width: 2.0;" x1="281.5" x2="291.5" y1="333.4341" y2="343.4341"/><line style="stroke: #C0392B; stroke-width: 2.0;" x1="281.5" x2="291.5" y1="343.4341" y2="333.4341"/><line style="stroke: #C0392B; stroke-width: 1.3;" x1="287.5" x2="609.5" y1="338.4341" y2="338.4341"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="292.5" y="333.6792">06</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="135" x="310.5" y="333.6792">[SEQ=0x40, 0x91, OK]</text><text xml:space="preserve" fill="#C0392B" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="88" x="453.5" y="333.6792">lost on the wire</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="84" x="400" y="372.6279">timeout (0.5 s)</text><polygon fill="#3D5166" points="593.5,406.3315,603.5,410.3315,593.5,414.3315,597.5,410.3315" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="275.5" x2="599.5" y1="410.3315" y2="410.3315"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="282.5" y="405.5767">07</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="228" x="300.5" y="405.5767">WRITE [SEQ=0x40, 0x08008200, data]</text><text xml:space="preserve" fill="#1E90D6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="57" x="536.5" y="405.5767">«resend»</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="615.5" x2="657.5" y1="454.229" y2="454.229"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="657.5" x2="657.5" y1="454.229" y2="467.229"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="616.5" x2="657.5" y1="467.229" y2="467.229"/><polygon fill="#3D5166" points="626.5,463.229,616.5,467.229,626.5,471.229,622.5,467.229" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="622.5" y="441.9998">08</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="168" x="640.5" y="434.5254">(0x40, WRITE) = cached key</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="147" x="640.5" y="449.4741">→ do NOT program again</text><polygon fill="#3D5166" points="286.5,492.1777,276.5,496.1777,286.5,500.1777,282.5,496.1777" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="280.5" x2="609.5" y1="496.1777" y2="496.1777"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="292.5" y="491.4229">09</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="108" x="310.5" y="491.4229">[SEQ=0x40, 0x91,</text><text xml:space="preserve" fill="#1E8449" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="19" x="422.5" y="491.4229">OK</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="4" x="441.5" y="491.4229">]</text><text xml:space="preserve" fill="#1E90D6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="85" x="453.5" y="491.4229">«from cache»</text><polygon fill="#3D5166" points="74.5,521.1265,64.5,525.1265,74.5,529.1265,70.5,525.1265" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="68.5" x2="274.5" y1="525.1265" y2="525.1265"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="80.5" y="520.3716">10</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="33" x="98.5" y="520.3716">return</text><path d="M477,543.1265 L477,584.1265 A5,5 0 0 0 482,589.1265 L949,589.1265 A5,5 0 0 0 954,584.1265 L954,548.1265 L944,538.1265 L482,538.1265 A5,5 0 0 0 477,543.1265 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M944,538.1265 L944,545.6265 A2.5,2.5 0 0 0 946.5,548.1265 L954,548.1265 L944,538.1265 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="456" x="483" y="554.3823">Running the command again would program the same words twice (not allowed on</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="360" x="483" y="568.1812">most flash), erase a block that now holds new data, or jump twice.</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="427" x="483" y="581.98">The one-entry cache is enough because the host sends one request at a time.</text><!--MD5=[8d3c11bc38610af1e3d6faa8cd8e09be]
+@startuml bootwire_response_lost_sequence
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>Fault: Response Lost</b></color></size>\n<size:13><color:#5B6B7C>the target answers the resend from its reply cache and does not run the command again</color></size>
+box "Host (PC)" #F4F7FB
+  participant "<b>bootwire CLI</b>\n<size:11><color:#C9D7E6>host application</color></size>" as APP #1B3A5F
+  participant "<b>BootWireClient</b>\n<size:11><color:#C9D7E6>command layer</color></size>" as HOST #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target protocol</b>\n<size:11><color:#CBE6DF>frame check, reply cache</color></size>" as TP #146C5F
+  participant "<b>Bootloader core</b>\n<size:11><color:#CBE6DF>flash driver</color></size>" as BL #146C5F
+end box
+
+autonumber "<b>00"
+APP -> HOST : write(0x08008200, 256 bytes)
+HOST -> TP : WRITE [SEQ=0x40, 0x08008200, data]
+activate TP
+TP -> BL : program + read back
+BL - -> TP : <color:#1E8449><b>OK</b></color>
+TP -> TP : cache key = (0x40, WRITE)\ncache = response
+TP -[#C0392B]>x HOST : [SEQ=0x40, 0x91, OK]  <color:#C0392B>lost on the wire</color>
+deactivate TP
+... timeout (0.5 s) ...
+HOST -> TP : WRITE [SEQ=0x40, 0x08008200, data]  <color:#1E90D6><b>«resend»</b></color>
+activate TP
+TP -> TP : (0x40, WRITE) = cached key\n→ do NOT program again
+TP - -> HOST : [SEQ=0x40, 0x91, <color:#1E8449><b>OK</b></color>]  <color:#1E90D6><b>«from cache»</b></color>
+deactivate TP
+HOST - -> APP : return
+note over TP, BL
+  Running the command again would program the same words twice (not allowed on
+  most flash), erase a block that now holds new data, or jump twice.
+  The one-entry cache is enough because the host sends one request at a time.
+end note
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

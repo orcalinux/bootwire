@@ -1,0 +1,27 @@
+@startuml bootwire_response_lost_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Fault: Response Lost</b></color></size>\n<size:13><color:#5B6B7C>the target answers the resend from its reply cache and does not run the command again</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : write(0x08008200, 256 bytes)
+HOST -> TP : WRITE [SEQ=0x40, 0x08008200, data]
+activate TP
+TP -> BL : program + read back
+BL --> TP : <color:#1E8449><b>OK</b></color>
+TP -> TP : cache key = (0x40, WRITE)\ncache = response
+TP -[#C0392B]>x HOST : [SEQ=0x40, 0x91, OK]  <color:#C0392B>lost on the wire</color>
+deactivate TP
+... timeout (0.5 s) ...
+HOST -> TP : WRITE [SEQ=0x40, 0x08008200, data]  <color:#1E90D6><b>«resend»</b></color>
+activate TP
+TP -> TP : (0x40, WRITE) = cached key\n→ do NOT program again
+TP --> HOST : [SEQ=0x40, 0x91, <color:#1E8449><b>OK</b></color>]  <color:#1E90D6><b>«from cache»</b></color>
+deactivate TP
+HOST --> APP : return
+note over TP, BL
+  Running the command again would program the same words twice (not allowed on
+  most flash), erase a block that now holds new data, or jump twice.
+  The one-entry cache is enough because the host sends one request at a time.
+end note
+@enduml

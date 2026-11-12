@@ -1,471 +1,424 @@
-# General Serial Protocol (GSP)
+# BootWire Protocol — Specification v0.2
 
-## Document Info
+| | |
+|---|---|
+| **Purpose** | Reliable firmware update and command exchange between a host (PC) and a 32-bit ARM Cortex-M bootloader over UART |
+| **Version** | 0.2 (protocol version byte = `2`) |
+| **Status** | Draft. Host side implemented in `desktop/`; target side to be implemented from this document |
+| **Last updated** | 2026-11-11 |
 
-- **Purpose**: A flexible, reliable, and extensible protocol for serial communication between a host (e.g., PC) and an embedded target over UART, supporting bootloader operations and customizable interactions.
-- **Last Updated**: 2025-06-30
-- **Version**: v0.1
-
----
+The key words **must**, **must not** and **should** mean what they say: a target or host that breaks a
+**must** is not BootWire-compatible.
 
 ## Contents
 
-<details>
-<summary><strong>Table of Contents</strong></summary>
-
-- [General Serial Protocol (GSP)](#general-serial-protocol-gsp)
-  - [Document Info](#document-info)
-  - [Contents](#contents)
-  - [1 Scope](#1-scope)
-  - [2 Architecture](#2-architecture)
-    - [2.1 Layered View](#21-layered-view)
-    - [2.2 Command Frame (CRA Header)](#22-command-frame-cra-header)
-      - [2.2.1 Field Explanations](#221-field-explanations)
-      - [2.2.2 ACK-only Frame](#222-ack-only-frame)
-        - [2.2.2.1 Bit-level layout](#2221-bit-level-layout)
-        - [2.2.2.2 Field Explanations — ACK-only Frame](#2222-field-explanations--ack-only-frame)
-    - [2.3 Response Frame (Bit-Field)](#23-response-frame-bit-field)
-      - [2.3.1 Field Explanations](#231-field-explanations)
-  - [3 Data Transfer Layer (DTL)](#3-data-transfer-layer-dtl)
-    - [3.1 Frame layout](#31-frame-layout)
-      - [Payload Breakdown](#payload-breakdown)
-      - [3.1.1 Field Explanations](#311-field-explanations)
-  - [4 Physical Layer](#4-physical-layer)
-  - [5 Time-outs \& Retries](#5-time-outs--retries)
-    - [5.1 Host Time-outs](#51-host-time-outs)
-    - [5.2 Target Time-outs](#52-target-time-outs)
-    - [5.3 Recommended Retry Limits](#53-recommended-retry-limits)
-  - [6 Interaction Sequences](#6-interaction-sequences)
-    - [6.1 Layered Sequence](#61-layered-sequence)
-    - [6.2 Error \& Retry](#62-error--retry)
-    - [6.3 Multiple Requests All Success Case](#63-multiple-requests-all-success-case)
-    - [6.4 Multiple Requests Timeout Case](#64-multiple-requests-timeout-case)
-    - [6.5 Single Command Duplicate ACK](#65-single-command-duplicate-ack)
-    - [6.6 Single Command ACK Miss](#66-single-command-ack-miss)
-    - [6.7 Single Corrupted Command](#67-single-corrupted-command)
-    - [6.8 Single Command Corrupted Response](#68-single-command-corrupted-response)
-    - [6.9 Bootloader Flow Example](#69-bootloader-flow-example)
-      - [6.9.1 Erase Flash Sequence](#691-erase-flash-sequence)
-      - [6.9.2 Write Chunk Sequence](#692-write-chunk-sequence)
-      - [6.9.3 Verify Chunk Sequence](#693-verify-chunk-sequence)
-      - [6.9.4 Reset and Run Sequence](#694-reset-and-run-sequence)
-  - [7 Services](#7-services)
-    - [7.1 Bootloader Services](#71-bootloader-services)
-      - [7.1.1 Erase Flash](#711-erase-flash)
-      - [7.1.2 Write Chunk](#712-write-chunk)
-      - [7.1.3 Verify Chunk](#713-verify-chunk)
-      - [7.1.4 Reset and Run](#714-reset-and-run)
-      - [7.1.5 Abort](#715-abort)
-    - [7.2 Extending the Protocol](#72-extending-the-protocol)
-  - [8 Reference Tables](#8-reference-tables)
-    - [8.1 Command IDs](#81-command-ids)
-    - [8.2 Status Codes](#82-status-codes)
-    - [8.3 CRC-16 Parameters](#83-crc-16-parameters)
-    - [8.4 SLIP Special Bytes](#84-slip-special-bytes)
-  - [9 Revision History](#9-revision-history)
-
-</details>
+1. [Overview](#1-overview)
+2. [Architecture](#2-architecture)
+3. [Physical layer](#3-physical-layer)
+4. [Frame layer](#4-frame-layer)
+5. [Transaction rules](#5-transaction-rules)
+6. [Commands](#6-commands)
+7. [Status codes](#7-status-codes)
+8. [Flash update procedure](#8-flash-update-procedure)
+9. [Fault handling](#9-fault-handling)
+10. [Target behaviour](#10-target-behaviour)
+11. [Timing](#11-timing)
+12. [Reference values and test vectors](#12-reference-values-and-test-vectors)
+13. [Diagram index](#13-diagram-index)
+14. [Revision history](#14-revision-history)
 
 ---
 
-## 1 Scope
+## 1 Overview
 
-The General Serial Protocol (GSP) enables robust, scriptable, and extensible communication between a host (e.g., a Python-based CLI on a PC) and an embedded target over a simple 3-wire UART (TX, RX, GND) with optional RTS/CTS flow control. While it supports bootloader operations such as erasing, programming, verifying, and running firmware on a remote MCU, GSP is designed as a general-purpose protocol. Users can define custom commands, payloads, and interaction sequences to suit diverse applications, such as debugging, configuration, or real-time data exchange.
+BootWire is a request/response protocol. The host sends one **request**; the target answers with one
+**response**; only then does the host send the next request. Every frame carries a CRC-16, every
+request carries a sequence number (SEQ), and the target keeps its last response so that a resent
+request is answered again without running the command twice.
 
-Key features include:
+Data correctness is checked at three levels:
 
-- **Bootloader Support**: Facilitates firmware delivery and management (erase, program, verify, run, abort).
-- **Extensibility**: Allows users to add custom commands and payloads for application-specific needs.
-- **Reliability**: Incorporates CRC-16 error detection, ACK mechanisms, and retry logic.
-- **Flexibility**: Supports pipelined transactions (up to 256 concurrent sessions) and prioritized command handling.
+| Level | Check | Catches |
+|---|---|---|
+| Frame | CRC-16 on every request and response | bytes damaged or lost on the wire |
+| Write | target reads flash back after every WRITE | flash not erased, program failure |
+| Image | CRC-32 of the whole image (VERIFY) before RUN | anything else: wrong address, missing chunk, host bug |
 
-A single Command-Response-ACK (CRA) transaction follows:
-
-![GSP CRA Transaction Flow](image/architecture/gsp_cra_transaction_flow.svg)
-
----
+![One transaction](image/architecture/bootwire_transaction_flow.svg)
 
 ## 2 Architecture
 
-GSP uses a four-layer architecture to ensure modularity and flexibility:
+Both sides have the same four layers. Each layer talks only to the layer below it and to its peer.
 
-- **Application Layer**: Manages high-level logic, such as bootloader state machines or custom application workflows.
-- **Command Layer**: Handles Command-Response-ACK (CRA) framing, session management, and prioritization.
-- **Data Transfer Layer**: Manages data fragmentation, CRC-16 error detection, and SLIP framing.
-- **Physical Layer**: Defines UART parameters, flow control, and timing.
+![Layered architecture](image/architecture/bootwire_layered_architecture.svg)
 
-### 2.1 Layered View
+| Layer | Host (`desktop/src/bootwire`) | Target (firmware) |
+|---|---|---|
+| Application | `bootwire` CLI, `BootWireClient.flash()` | bootloader core: flash driver, region checks, image check, jump |
+| Command | `BootWireClient.transact()`: SEQ, timeout, retry, status | dispatcher and one-entry reply cache |
+| Frame | `frame.py` (CRC-16), `slip.py` (SLIP, `SlipReader`) | SLIP RX state machine, CRC-16 |
+| Physical | `UARTTransport` (pyserial) | UART driver |
 
-![Client/Server Layered Architecture](image/architecture/gsp_client_server_layered_architecture.svg)
+What each layer adds to one WRITE on its way down the host stack (the target runs the same steps
+upward):
+
+![What each layer adds](image/architecture/bootwire_layer_encapsulation.svg)
 
-- **Application Layer**: Custom application logic or bootloader state machine & CLI
-- **Command Layer**: CRA framing, session IDs, priorities & ACK
-- **Data Transfer Layer**: Fragmentation, CRC-16, SLIP
-- **Physical Layer**: UART byte stream
+The host never hard-codes the target's flash layout. It reads it from the CONNECT response.
+
+![Flash memory map](image/architecture/bootwire_memory_map.svg)
+
+## 3 Physical layer
+
+| Parameter | Value |
+|---|---|
+| Interface | UART, 3 wires: TX, RX, GND (USB-serial adapter or the board's virtual COM port) |
+| Format | 8 data bits, no parity, 1 stop bit |
+| Baud rate | 115200 by default; any rate both sides agree on |
+| Flow control | none |
 
-### 2.2 Command Frame (CRA Header)
+Flow control is not needed: the host never has more than one frame in flight, and the largest frame
+is a few hundred bytes. XON/XOFF **must not** be used, because 0x11 and 0x13 are normal data bytes.
 
-![Command-Frame Bit-Field](image/frames/gsp_command_frame_bitfield.svg)
+## 4 Frame layer
+
+### 4.1 Request frame
+
+![Request frame](image/frames/bootwire_request_frame.svg)
+
+| Offset | Field | Size | Description |
+|---|---|---|---|
+| 0 | SEQ | 1 | Sequence number chosen by the host |
+| 1 | CMD | 1 | Command ID, `0x00`–`0x7F` (bit 7 = 0) |
+| 2 | PAYLOAD | N | Command parameters, 0 … `max_payload` bytes |
+| 2+N | CRC16 | 2 | CRC-16 of bytes 0 … N+1, little-endian |
 
-#### 2.2.1 Field Explanations
+### 4.2 Response frame
 
-- **Unique ID (8 bits)**: A per-transaction handle generated by the host and echoed by the target, supporting up to 256 concurrent sessions.
-- **Reserved (5 bits, bits 7…3 of Flags byte)**: Must be **0**. Reserved for future extensions; ignored by the target.
-- **AF – Acknowledge Flag (1 bit, bit 2)**:
+![Response frame](image/frames/bootwire_response_frame.svg)
 
-  | AF  | Meaning                                                      | Valid Priority bits |
-  | :-: | ------------------------------------------------------------ | ------------------- |
-  |  0  | **Command / Response** frame                                 | 0 – 3               |
-  |  1  | **ACK-only** frame (no payload; `Command = 0x00`, `Len = 0`) | 0                   |
+| Offset | Field | Size | Description |
+|---|---|---|---|
+| 0 | SEQ | 1 | Copied from the request |
+| 1 | CMD \| 0x80 | 1 | Request CMD with bit 7 set |
+| 2 | STATUS | 1 | `0x00` OK, else an error ([§7](#7-status-codes)) |
+| 3 | PAYLOAD | N | Result data, 0 … `max_payload` bytes |
+| 3+N | CRC16 | 2 | CRC-16 of bytes 0 … N+2, little-endian |
 
-  _If **AF = 1**, the two priority bits **must** be `0`, and the frame length is fixed at 5 bytes._
+### 4.3 Encoding rules
+
+- All multi-byte fields, in frames and payloads, are **little-endian** (native for Cortex-M).
+- **CRC-16/CCITT-FALSE**: polynomial `0x1021`, initial value `0xFFFF`, no reflection, no final XOR.
+  Check value: CRC of ASCII `123456789` = `0x29B1`. It is always present; there is no way to turn it off.
+- There is **no length field**. The SLIP END byte ends the frame and the CRC proves it is complete.
+- A request shorter than 4 bytes or a response shorter than 5 bytes is invalid.
+- A frame longer than `max_payload` + 4 (request) is invalid; the target drops it while receiving.
+
+### 4.4 SLIP framing
+
+Every frame is sent as `END`, the escaped frame, `END`. The CRC is computed on the frame before
+escaping and checked after un-escaping.
+
+![Frame to wire](image/frames/bootwire_wire_format.svg)
 
-- **Priority (2 bits, bits 1-0)**: Host-hinted urgency when **AF = 0**:
+| Name | Value | Meaning |
+|---|---|---|
+| END | `0xC0` | starts and ends every frame |
+| ESC | `0xDB` | the next byte is an escape code |
+| ESC_END | `0xDC` | `DB DC` stands for a data byte `0xC0` |
+| ESC_ESC | `0xDD` | `DB DD` stands for a data byte `0xDB` |
 
-  | Value | Meaning  |
-  | :---: | -------- |
-  |   0   | Low      |
-  |   1   | Normal   |
-  |   2   | High     |
-  |   3   | Critical |
+Receivers run this state machine on every byte. The target runs it in the UART RX interrupt; the host
+runs the same logic in `SlipReader`.
 
-- **Command (8 bits)**: Opcode chosen from [§8.1 · Command IDs](#81--command-ids) (e.g., `ERASE_FLASH 0x10`, or user-defined commands).
-- **Payload (8 × n bits)**: Command-specific data. Length _n_ is specified in **Payload Len** (bytes 3-4). Total header + payload ≤ 64 bytes.
+![SLIP RX state machine](image/states/bootwire_slip_rx_state.svg)
 
-#### 2.2.2 ACK-only Frame
+- Bytes before the first END are ignored (start-up noise, log text).
+- An empty frame (END END) is ignored.
+- ESC followed by anything other than ESC_END or ESC_ESC drops the frame.
+- A frame that grows past the buffer is dropped; reception restarts at the next END.
 
-![ACK-Frame Bit-Field](image/frames/gsp_ack_frame_bitfield.svg)
+## 5 Transaction rules
 
-##### 2.2.2.1 Bit-level layout
+These rules make BootWire safe against lost, damaged, repeated and late frames.
 
-|       **Byte**        | **Bit 7** | **Bit 6** | **Bit 5** | **Bit 4** | **Bit 3** | **Bit 2** | **Bit 1** | **Bit 0** | **Notes**                                                       |
-| :-------------------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | --------------------------------------------------------------- |
-| **0**<br>(Session ID) |     —     |     —     |     —     |     —     |     —     |     —     |     —     |     —     | Echoes the request being acknowledged                           |
-|   **1**<br>(Flags)    |   **0**   |   **0**   |   **0**   |   **0**   |   **0**   |   **1**   |   **0**   |   **0**   | Reserved (5 bits)=0; AF (bit 2)=1 → ACK; Priority (bits 1-0)=00 |
-|  **2**<br>(Command)   |   **0**   |   **0**   |   **0**   |   **0**   |   **0**   |   **0**   |   **0**   |   **0**   | Command Code = 0x00                                             |
+1. **One request at a time.** The host **must not** send a new request before it has the response to
+   the previous one, or has given up on it.
+2. **SEQ.** The host picks a random SEQ for the first request of a session and adds 1 (mod 256) for
+   each new request. A **resend uses the same frame**, so the same SEQ.
+3. **Matching.** The host accepts a response only if its CRC is correct, bit 7 of CMD is set, and
+   SEQ and CMD equal those of the request it is waiting for. Anything else is ignored.
+4. **Silence on bad frames.** The target **must not** answer a frame with a wrong CRC, a wrong
+   length, a bad escape, or bit 7 of CMD set. It sends nothing; the host times out and resends.
+   An error response is impossible here because even SEQ may be the damaged byte.
+5. **Reply cache.** The target keeps the last response it sent and the key (SEQ, CMD) of the request
+   it answered. If a request arrives with the same key, it **must** send the cached response again
+   and **must not** execute the command again. One entry is enough because of rule 1.
+6. **CONNECT starts a session.** CONNECT is always executed, even when its key matches the cache,
+   and it replaces the cache. Every host session **must** start with CONNECT, so a new host process
+   can never receive a cached response from an old session.
+7. **Errors are final.** A response with STATUS ≠ OK is returned to the caller at once. The host
+   **must not** retry it: the target would give the same answer.
+8. **Retry limit.** With no valid response before the timeout, the host resends, up to
+   `max_retries` times (default 3), then reports a timeout.
 
-##### 2.2.2.2 Field Explanations — ACK-only Frame
+| Situation | Target | Host |
+|---|---|---|
+| request lost | nothing received | timeout → resend same frame |
+| request damaged | CRC fails → silent | timeout → resend same frame |
+| response lost | already executed, response cached | timeout → resend → cached response |
+| response damaged | — | CRC fails → ignore → timeout → resend → cached response |
+| late response to an older request | — | SEQ or CMD differ → ignore |
+| bad parameters | error STATUS | report error, no retry |
+| target absent | — | timeout after 1 + `max_retries` attempts |
 
-- **Session ID (8 bits)**: Echoes the Unique ID from the request being acknowledged.
-- **Reserved (5 bits, bits 7…3 of Flags)**: Always **0**. Non-zero reserved bits result in _STATUS_BAD_FLAGS_.
-- **AF – Acknowledge Flag (1 bit, bit 2)**: Set to `1` for ACK-only frames (no payload). Priority must be `00`.
-- **Priority (2 bits, bits 1-0)**: Must be **00** in an ACK.
-- **Command (8 bits)**: Fixed to **0x00**.
-- **No Payload**: ACK-only frames do not contain any payload. The **Payload** section is omitted as the frame is solely for acknowledgment.
+![Host transaction state machine](image/states/bootwire_host_transaction_state.svg)
 
----
+![Target frame handling](image/states/bootwire_target_frame_handling.svg)
 
-### 2.3 Response Frame (Bit-Field)
+## 6 Commands
 
-![Response Frame Bit-Field](image/frames/gsp_response_frame_bitfield.svg)
+| ID | Name | Request payload | Response payload | Errors |
+|---|---|---|---|---|
+| `0x00` | CONNECT | protocol version (u8) | device info, 23 bytes | BAD_LENGTH |
+| `0x01` | PING | any bytes | the same bytes | — |
+| `0x10` | ERASE | address (u32), length (u32) | — | BAD_LENGTH, BAD_PARAM, FLASH |
+| `0x11` | WRITE | address (u32), data | — | BAD_LENGTH, BAD_PARAM, FLASH, VERIFY |
+| `0x12` | VERIFY | address (u32), length (u32), CRC-32 (u32) | CRC-32 computed by the target (u32) | BAD_LENGTH, BAD_PARAM, VERIFY |
+| `0x13` | RUN | — | — | BAD_LENGTH, NO_APP |
+| `0x40`–`0x7F` | user commands | defined by the user | defined by the user | UNKNOWN_CMD if not implemented |
 
-| Byte(s) | Field          | Description                                                               |
-| :-----: | :------------- | :------------------------------------------------------------------------ |
-|    0    | **Session ID** | Echoes the Unique ID from the request, tying each response to its command |
-|    1    | **Status**     | Outcome of the command; see [§8.2 Status Codes](#82-status-codes)         |
-|   2–3   | **Resp Len**   | Payload length in bytes (little-endian)                                   |
-|    …    | **Payload**    | Optional data (user-defined or command-specific)                          |
+Every other ID in `0x00`–`0x3F` is reserved for future BootWire commands and answered with UNKNOWN_CMD.
 
-#### 2.3.1 Field Explanations
+![Command payloads](image/frames/bootwire_command_payloads.svg)
 
-- **Session ID** (8 bits) – Identifies the session by echoing the command’s unique ID, ensuring the response matches the request.
-- **Status** (8 bits) – Indicates success or error code for the command execution (OK, error, timeout, etc.).
-- **Resp Len** (16 bits) – Byte count of the following payload, encoded little-endian.
-- **Payload** (0–60 bytes) – Contains response-specific or user-defined data; optional based on command type.
+### 6.1 CONNECT `0x00`
 
----
+Starts a session and reports what the target can do. The target clears its reply cache by storing
+this response in it.
 
-## 3 Data Transfer Layer (DTL)
+| Request offset | Field | Type |
+|---|---|---|
+| 0 | protocol version of the host (`2`) | u8 |
 
-![DTL Packet Format](image/frames/dtl_packet_format.svg)
+| Response offset | Field | Type | Meaning |
+|---|---|---|---|
+| 0 | protocol version | u8 | `2`; the host stops if it differs |
+| 1 | bootloader version major | u8 | |
+| 2 | bootloader version minor | u8 | |
+| 3 | bootloader version patch | u8 | |
+| 4 | max_payload | u16 | largest PAYLOAD the target accepts or sends, in bytes |
+| 6 | device ID | u32 | for example `DBGMCU->IDCODE` or a product ID |
+| 10 | app_start | u32 | first address of the application region |
+| 14 | app_size | u32 | size of the application region in bytes |
+| 18 | erase_block | u32 | ERASE address and length must be multiples of this (counted from app_start) |
+| 22 | write_align | u8 | WRITE address and length must be multiples of this |
 
-|  Field   | Size     | Description                                                     |
-| :------: | :------- | :-------------------------------------------------------------- |
-| SLIP END | 8 bits   | Start delimiter (0xC0) with 0xDB escaping                       |
-| Payload  | Variable | Contains CRC EN, Reserved, Command Payload, and optional CRC 16 |
-| SLIP END | 8 bits   | End delimiter (0xC0) with 0xDB escaping                         |
+The target answers CONNECT even if the host's version differs, so the host can print a clear message.
 
-### 3.1 Frame layout
+![CONNECT](image/sequences/bootwire_connect_sequence.svg)
 
-| SLIP END (Start) | Payload                                                      | SLIP END (End) |
-| :--------------: | :----------------------------------------------------------- | :------------: |
-|      8 bits      | 8 \* (n + 4) or 8 \* (n + 6) bits + k bits for SLIP encoding |     8 bits     |
+### 6.2 PING `0x01`
 
-#### Payload Breakdown
+Echoes the payload unchanged. Used to test the link and measure round-trip time.
 
-|      Field      | Size              | Description                                         |
-| :-------------: | :---------------- | :-------------------------------------------------- |
-|     CRC EN      | 1 bit             | Enables/disables CRC-16 (1 = enabled, 0 = disabled) |
-|    Reserved     | 7 bits            | Reserved for future use, must be 0                  |
-| Command Payload | 8 \* (n + 3) bits | Command-specific data, including header (n bytes)   |
-|     CRC 16      | 16 bits           | Optional CCITT-False CRC over the payload           |
+### 6.3 ERASE `0x10`
 
-#### 3.1.1 Field Explanations
+Erases `[address, address + length)`. Both values must be multiples of `erase_block` and the range
+must lie inside the application region. The host sends one ERASE per erase block so every response
+arrives quickly.
 
-- **SLIP END (Start)** (8 bits) – Marks the beginning of the DTL frame using the 0xC0 byte, with 0xDB escaping applied to handle occurrences of 0xC0 or 0xDB within the payload.
-- **Payload** (Variable) – Encapsulates the data content of the frame, including control flags and command data, with a size that varies based on the command length (n bytes) and SLIP encoding overhead (k bits). The total size is either 8 _ (n + 4) or 8 _ (n + 6) bits plus additional bits for SLIP encoding.
-- **SLIP END (End)** (8 bits) – Marks the end of the DTL frame using the 0xC0 byte, ensuring proper frame delineation with 0xDB escaping for data integrity.
-- **CRC EN** (1 bit) – A control bit that enables (1) or disables (0) the inclusion of the CRC-16 field, allowing flexibility in error checking based on application needs.
-- **Reserved** (7 bits) – Reserved for future protocol extensions; must be set to 0 and ignored by the target to ensure compatibility with future updates.
-- **Command Payload** (8 \* (n + 3) bits) – Contains the command-specific data, including a header of n bytes, where n is the length of the command data, providing up to 256 bytes of user-defined or flash-aligned data.
-- **CRC 16** (16 bits) – An optional field that, when enabled by CRC EN, provides a CCITT-False CRC calculated over the payload to detect transmission errors, ensuring data integrity.
+![ERASE](image/sequences/bootwire_erase_sequence.svg)
 
-> **Note:** The next packet is sent **only** after an ACK (0x00) is confirmed. The CRC 16 field is included only if CRC EN is set to 1.
+### 6.4 WRITE `0x11`
 
----
+Programs `data` at `address`. The address and the data length must be multiples of `write_align` and
+the range must lie inside the application region. After programming, the target **must** read the
+range back and answer VERIFY if it differs (for example because the flash was not erased).
+The largest data block is `max_payload − 4`. Each WRITE carries its own address, so the target keeps
+no transfer state between commands.
 
-## 4 Physical Layer
+![WRITE](image/sequences/bootwire_write_sequence.svg)
 
-| Parameter    | Value                           |
-| :----------- | :------------------------------ |
-| Baud Rate    | **115200 bps** (configurable)   |
-| Word Format  | 8 data bits, no parity, 1 stop  |
-| Flow Control | RTS/CTS (preferred) or XON/XOFF |
-| Idle Timeout | 2 × max frame transmission time |
+### 6.5 VERIFY `0x12`
 
----
+The target computes the CRC-32 of `[address, address + length)` and compares it with the CRC-32 in
+the request. It answers OK or VERIFY, and in both cases returns the CRC-32 it computed.
+CRC-32 is **CRC-32/ISO-HDLC** (the zlib / Ethernet CRC): polynomial `0x04C11DB7` reflected, initial
+value `0xFFFFFFFF`, final XOR `0xFFFFFFFF`. Check value: CRC of `123456789` = `0xCBF43926`.
 
-## 5 Time-outs & Retries
+![VERIFY](image/sequences/bootwire_verify_sequence.svg)
 
-### 5.1 Host Time-outs
+### 6.6 RUN `0x13`
 
-| Phase         | Timeout |
-| :------------ | :------ |
-| Wait for Resp | 200 ms  |
-| Chunk Verify  | 300 ms  |
+The target checks the application's vector table at `app_start`:
 
-### 5.2 Target Time-outs
+- the initial stack pointer (word 0) is inside RAM and 4-byte aligned, and
+- the reset vector (word 1) has bit 0 set (Thumb) and points inside the application region.
 
-| Phase        | Timeout |
-| :----------- | :------ |
-| Wait for ACK | 200 ms  |
+If the check fails it answers NO_APP and stays in the bootloader. If it passes it answers OK, waits
+until the response has left the UART, and starts the application ([§10.4](#104-jumping-to-the-application)).
+A lost RUN response cannot be recovered (the application owns the UART), so the host reports
+"not confirmed" rather than an error when RUN times out.
 
-### 5.3 Recommended Retry Limits
+![RUN](image/sequences/bootwire_run_sequence.svg)
 
-- **Command → Response**: 5 retries
-- **DTL chunk → ACK**: 5 retries
-- **Verify → ACK**: 3 retries
+### 6.7 User commands `0x40`–`0x7F`
 
----
+Free for application-specific commands (configuration, diagnostics, reading a serial number…). They
+use the same frames and obey the same transaction rules, including the reply cache: design them so
+that they are safe to answer from the cache.
 
-## 6 Interaction Sequences
+## 7 Status codes
 
-### 6.1 Layered Sequence
+| Value | Name | Meaning |
+|---|---|---|
+| `0x00` | OK | success |
+| `0x01` | GENERIC | failure without a more specific code |
+| `0x02` | UNKNOWN_CMD | command ID not supported |
+| `0x03` | BAD_LENGTH | payload length wrong for this command |
+| `0x04` | BAD_PARAM | address or length outside the application region, or not aligned |
+| `0x05` | FLASH | the flash controller reported an erase or program error |
+| `0x06` | VERIFY | read-back after WRITE differs, or VERIFY CRC-32 differs |
+| `0x07` | NO_APP | RUN refused: no valid application image |
 
-![Detailed Layered Sequence](image/sequences/gsp_layered_sequence_detailed.svg)
+## 8 Flash update procedure
 
-### 6.2 Error & Retry
+`bootwire flash app.bin` and `BootWireClient.flash()` do exactly this:
 
-![CRC-Error Auto-Retry](image/sequences/gsp_crc_error_retry_sequence.svg)
+1. **CONNECT**; check the protocol version; read the layout.
+2. Pad the image with `0xFF` up to `write_align`; check it fits the application region.
+3. **ERASE** every erase block the image touches, one command per block.
+4. **WRITE** the image in chunks of `max_payload − 4` bytes rounded down to `write_align`.
+5. **VERIFY** the whole padded image with one CRC-32.
+6. **RUN**, unless asked not to.
 
-### 6.3 Multiple Requests All Success Case
+Any error status stops the procedure. RUN is never sent for an image that did not pass VERIFY.
 
-![Multiple Requests All Success Case](image/sequences/gsp_multiple_requests_all_success.svg)
+![Complete update](image/sequences/bootwire_flash_update_sequence.svg)
 
-### 6.4 Multiple Requests Timeout Case
+## 9 Fault handling
 
-![Multiple Requests Timeout Case](image/sequences/gsp_multiple_requests_timeout_sequence.svg)
+Each fault in [§5](#5-transaction-rules) has its own diagram.
 
-### 6.5 Single Command Duplicate ACK
+| Fault | Diagram |
+|---|---|
+| request lost | ![](image/sequences/bootwire_request_lost_sequence.svg) |
+| request damaged | ![](image/sequences/bootwire_corrupted_request_sequence.svg) |
+| response lost: answered from the cache | ![](image/sequences/bootwire_response_lost_sequence.svg) |
+| response damaged | ![](image/sequences/bootwire_corrupted_response_sequence.svg) |
+| late response to an older request | ![](image/sequences/bootwire_stale_response_sequence.svg) |
+| new host session: why CONNECT comes first | ![](image/sequences/bootwire_new_session_sequence.svg) |
+| error status: no retry | ![](image/sequences/bootwire_error_status_sequence.svg) |
+| no answer after all retries | ![](image/sequences/bootwire_retries_exhausted_sequence.svg) |
 
-![Single Command Duplicate ACK](image/sequences/gsp_single_command_duplicate_ack_sequence.svg)
+## 10 Target behaviour
 
-### 6.6 Single Command ACK Miss
+### 10.1 Start-up
 
-![Single Command ACK Miss](image/sequences/gsp_single_command_ack_miss_sequence.svg)
+The bootloader runs first after every reset and decides whether to stay.
 
-### 6.7 Single Corrupted Command
+![Boot entry](image/states/bootwire_boot_entry.svg)
 
-![Single Corrupted Command](image/sequences/gsp_single_corrupted_command_sequence.svg)
+It **should** stay in the bootloader when any of these is true:
 
-### 6.8 Single Command Corrupted Response
+- a boot-request word in a RAM area that survives reset holds a magic value (set by the application
+  before it resets itself when asked to update);
+- a boot pin or button is held;
+- the application image fails the vector-table check of [§6.6](#66-run-0x13).
 
-![Single Command Corrupted Response](image/sequences/gsp_single_command_corrupted_response_sequence.svg)
+Otherwise it **should** wait a short boot window (for example 300 ms) for a CONNECT and start the
+application if none arrives.
 
-### 6.9 Bootloader Flow Example
+### 10.2 Receiving
 
-The following sequences illustrate how GSP can be used for bootloader operations, such as erasing, programming, verifying, and running firmware. These are examples of GSP's capabilities, but users can define custom flows for other applications.
+- Run the SLIP state machine of [§4.4](#44-slip-framing) in the UART RX interrupt (or on a DMA ring
+  buffer). Remove escapes while receiving, so the buffer only needs `max_payload + 4` bytes.
+- When a frame is complete, hand it to the main loop and stop filling the buffer until the main loop
+  has answered. A resend that arrives meanwhile may be lost; the host will resend again.
+- Use static buffers only. No `malloc`.
 
-#### 6.9.1 Erase Flash Sequence
+### 10.3 Executing
 
-![Erase Flash Sequence](image/sequences/gsp_erase_flash_sequence.svg)
+For every frame, in this order ([target frame handling](image/states/bootwire_target_frame_handling.svg)):
 
-#### 6.9.2 Write Chunk Sequence
+1. length ≥ 4 and CRC-16 correct, else drop silently;
+2. bit 7 of CMD clear, else drop silently;
+3. CMD ≠ CONNECT and (SEQ, CMD) equal to the cached key → send the cached response, stop;
+4. check the payload length, then the address range and alignment;
+5. execute; build the response; store it and its key in the cache; send it.
 
-![Write Chunk Sequence](image/sequences/gsp_write_chunk_sequence.svg)
+The region check is the bootloader's protection of itself: an address outside
+`[app_start, app_start + app_size)` **must** get BAD_PARAM, whatever the host sends.
 
-#### 6.9.3 Verify Chunk Sequence
+### 10.4 Jumping to the application
 
-![Verify Chunk Sequence](image/sequences/gsp_verify_chunk_sequence.svg)
+After the RUN response has been sent completely:
 
-#### 6.9.4 Reset and Run Sequence
+1. disable interrupts and the SysTick, de-initialise the UART and other peripherals the bootloader used;
+2. clear pending interrupts;
+3. set `SCB->VTOR = app_start`;
+4. load the main stack pointer with word 0 of the vector table (`__set_MSP`);
+5. branch to word 1 (the reset handler).
 
-![Reset and Run Sequence](image/sequences/gsp_reset_and_run_sequence.svg)
+## 11 Timing
 
----
+| Setting | Default | Where |
+|---|---|---|
+| response timeout | 0.5 s | `general.timeout` in `bootwire.yaml`, `--timeout` |
+| ERASE response timeout | 5 s (one erase block) | `general.erase_timeout` |
+| resends after the first attempt | 3 | `general.max_retries`, `--retries` |
+| boot window (target) | about 300 ms | firmware constant |
 
-## 7 Services
+The target **must** answer every command within the host timeout. Size `max_payload` so that
+programming and reading back one WRITE stays well inside 0.5 s; one erase block must finish inside
+`erase_timeout` (some Cortex-M parts take more than a second for a 128 KiB sector: raise it there).
 
-### 7.1 Bootloader Services
+## 12 Reference values and test vectors
 
-The following services demonstrate how GSP can be used for bootloader operations. These are predefined commands for firmware management, but users can extend GSP with custom commands for other purposes.
+The target must produce and accept exactly these bytes. They are also checked by
+`desktop/tests/test_frame.py`.
 
-#### 7.1.1 Erase Flash
+| Frame | Bytes (hex) |
+|---|---|
+| PING request, SEQ 0x01 | `01 01 1F 3E` |
+| PING response, SEQ 0x01, OK | `01 81 00 05 D3` |
+| CONNECT request, SEQ 0x00, version 2 | `00 00 02 DE EC` |
+| ERASE request, SEQ 0x03, 0x08008000, 0x800 | `03 10 00 80 00 08 00 08 00 00 7D 03` |
+| ERASE response, SEQ 0x03, BAD_PARAM | `03 90 04 A3 CD` |
+| WRITE request, SEQ 0x05, 0x08008000, data `C0 DB 11 22` | `05 11 00 80 00 08 C0 DB 11 22 E3 20` |
+| the same WRITE on the wire (SLIP) | `C0 05 11 00 80 00 08 DB DC DB DD 11 22 E3 20 C0` |
 
-Erase flash memory (full or partial) on the target MCU.
+| Check value | Result |
+|---|---|
+| CRC-16/CCITT-FALSE of `123456789` | `0x29B1` |
+| CRC-32/ISO-HDLC of `123456789` | `0xCBF43926` |
 
-**Command Message**
+## 13 Diagram index
 
-| Field         | Content              | Description                                                     |
-| :------------ | :------------------- | :-------------------------------------------------------------- |
-| AF            | `COMMAND_FRAME`      | Set frame as command frame (Flags.b3=0)                         |
-| Command       | `ERASE_FLASH` (0x10) | Full or partial erase request                                   |
-| Payload[0..3] | Start Address (LE)   | 32-bit little-endian flash address (omit for full-chip erase)   |
-| Payload[4..7] | Length (LE)          | 32-bit little-endian length in bytes (omit for full-chip erase) |
+Every diagram is generated from a source file; run `./render.sh` to regenerate `image/`:
 
-**Response Message**
+| Source | Draws | Tool |
+|---|---|---|
+| `py/bootwire_figures.py` | layered architecture, what each layer adds, memory map, frames, SLIP, payloads | Python 3, no packages |
+| `dot/architecture/`, `dot/states/` | host modules, host transaction and SLIP receive state machines | Graphviz |
+| `puml/architecture/`, `puml/states/`, `puml/sequences/` | one transaction, flowcharts, every sequence diagram | PlantUML (Java) |
+| `py/svg_post.py` | white background, font fallbacks and px sizes for every SVG | Python 3 |
 
-| Field   | Content     | Description                               |
-| :------ | :---------- | :---------------------------------------- |
-| Status  | Status byte | See [§8.2 Status Codes](#82-status-codes) |
-| Payload | —           | None                                      |
+All of them use one palette: navy for the host, teal for the target, green for OK, red for errors
+and lost frames, blue for resends and cached replies.
 
-#### 7.1.2 Write Chunk
+| Group | Diagrams |
+|---|---|
+| Architecture | [layered architecture](image/architecture/bootwire_layered_architecture.svg), [what each layer adds](image/architecture/bootwire_layer_encapsulation.svg), [one transaction](image/architecture/bootwire_transaction_flow.svg), [flash memory map](image/architecture/bootwire_memory_map.svg), [host software modules](image/architecture/bootwire_host_modules.svg) |
+| Frames | [request](image/frames/bootwire_request_frame.svg), [response](image/frames/bootwire_response_frame.svg), [frame to wire](image/frames/bootwire_wire_format.svg), [command payloads](image/frames/bootwire_command_payloads.svg) |
+| State machines | [host transaction](image/states/bootwire_host_transaction_state.svg), [SLIP receive](image/states/bootwire_slip_rx_state.svg), [target frame handling](image/states/bootwire_target_frame_handling.svg), [boot entry](image/states/bootwire_boot_entry.svg) |
+| Commands | [layered WRITE](image/sequences/bootwire_layered_sequence.svg), [CONNECT](image/sequences/bootwire_connect_sequence.svg), [ERASE](image/sequences/bootwire_erase_sequence.svg), [WRITE](image/sequences/bootwire_write_sequence.svg), [VERIFY](image/sequences/bootwire_verify_sequence.svg), [RUN](image/sequences/bootwire_run_sequence.svg), [complete update](image/sequences/bootwire_flash_update_sequence.svg) |
+| Faults | [request lost](image/sequences/bootwire_request_lost_sequence.svg), [request damaged](image/sequences/bootwire_corrupted_request_sequence.svg), [response lost](image/sequences/bootwire_response_lost_sequence.svg), [response damaged](image/sequences/bootwire_corrupted_response_sequence.svg), [late response](image/sequences/bootwire_stale_response_sequence.svg), [new session](image/sequences/bootwire_new_session_sequence.svg), [error status](image/sequences/bootwire_error_status_sequence.svg), [retries used up](image/sequences/bootwire_retries_exhausted_sequence.svg) |
 
-Send a data fragment (0–256 bytes) to the target.
+## 14 Revision history
 
-**Command Message**
-
-| Field   | Content                  | Description                |
-| :------ | :----------------------- | :------------------------- |
-| AF      | `COMMAND_FRAME`          | Set frame as command frame |
-| Command | `WRITE_CHUNK` (0x11)     | Write data chunk request   |
-| Payload | Chunk data (0–256 bytes) | Raw data fragment          |
-
-**Response Message**
-
-| Field   | Content     | Description                               |
-| :------ | :---------- | :---------------------------------------- |
-| Status  | Status byte | See [§8.2 Status Codes](#82-status-codes) |
-| Payload | —           | None                                      |
-
-#### 7.1.3 Verify Chunk
-
-Request CRC-check of the last written chunk.
-
-**Command Message**
-
-| Field   | Content               | Description                     |
-| :------ | :-------------------- | :------------------------------ |
-| AF      | `COMMAND_FRAME`       | Set frame as command frame      |
-| Command | `VERIFY_CHUNK` (0x12) | Verify previously written chunk |
-| Payload | —                     | None                            |
-
-**Response Message**
-
-| Field   | Content     | Description                               |
-| :------ | :---------- | :---------------------------------------- |
-| Status  | Status byte | See [§8.2 Status Codes](#82-status-codes) |
-| Payload | —           | None                                      |
-
-#### 7.1.4 Reset and Run
-
-Exit the protocol and start the application.
-
-**Command Message**
-
-| Field   | Content                | Description                    |
-| :------ | :--------------------- | :----------------------------- |
-| AF      | `COMMAND_FRAME`        | Set frame as command frame     |
-| Command | `RESET_AND_RUN` (0x13) | Exit protocol and run firmware |
-| Payload | —                      | None                           |
-
-**Response Message**
-
-| Field   | Content     | Description                               |
-| :------ | :---------- | :---------------------------------------- |
-| Status  | Status byte | See [§8.2 Status Codes](#82-status-codes) |
-| Payload | —           | None                                      |
-
-#### 7.1.5 Abort
-
-Cancel the current session.
-
-**Command Message**
-
-| Field   | Content         | Description                |
-| :------ | :-------------- | :------------------------- |
-| AF      | `COMMAND_FRAME` | Set frame as command frame |
-| Command | `ABORT` (0x14)  | Cancel in-flight session   |
-| Payload | —               | None                       |
-
-**Response Message**
-
-| Field   | Content     | Description                               |
-| :------ | :---------- | :---------------------------------------- |
-| Status  | Status byte | See [§8.2 Status Codes](#82-status-codes) |
-| Payload | —           | None                                      |
-
-### 7.2 Extending the Protocol
-
-GSP is designed to be extensible. Users can:
-
-- **Define Custom Commands**: Add new command IDs (beyond 0x14) with custom payloads and response formats.
-- **Customize Interactions**: Create application-specific sequences, such as real-time data streaming or debugging workflows.
-- **Modify Payloads**: Use the flexible payload field (up to 60 bytes) to encode application-specific data.
-- **Integrate with CLI**: Extend the host CLI to support new commands and interaction flows.
-
-To add a custom command:
-
-1. Assign a unique Command ID (e.g., 0x15 for a debug command).
-2. Define the payload structure and response format.
-3. Update the target firmware and host CLI to handle the new command.
-4. Document the command in the [§8.1 Command IDs](#81-command-ids) table.
-
----
-
-## 8 Reference Tables
-
-### 8.1 Command IDs
-
-| Code | Mnemonic      | Direction | Comments              |
-| :--: | :------------ | :-------: | :-------------------- |
-| 0x10 | ERASE_FLASH   | Host→MCU  | Full or partial erase |
-| 0x11 | WRITE_CHUNK   | Host→MCU  | Up to 256 bytes       |
-| 0x12 | VERIFY_CHUNK  | Host→MCU  | CRC check             |
-| 0x13 | RESET_AND_RUN | Host→MCU  | Jump to application   |
-| 0x14 | ABORT         | Host→MCU  | Cancel session        |
-
-### 8.2 Status Codes
-
-| Value | Description   |
-| :---- | :------------ |
-| 0x00  | OK            |
-| 0x01  | Generic error |
-| 0x02  | Flash failure |
-| 0x03  | Bad CRC       |
-| 0x04  | Timeout       |
-
-### 8.3 CRC-16 Parameters
-
-- **Polynomial**: 0x1021
-- **Initial Value**: 0xFFFF
-- **Reflect In/Out**: No
-- **XOR Out**: 0x0000
-
-### 8.4 SLIP Special Bytes
-
-| Name      | Value | Purpose                      |
-| :-------- | :---- | :--------------------------- |
-| `END`     | 0xC0  | Frame delimiter              |
-| `ESC`     | 0xDB  | Escape indicator             |
-| `ESC_END` | 0xDC  | Encodes literal 0xC0 in data |
-| `ESC_ESC` | 0xDD  | Encodes literal 0xDB in data |
-
----
-
-## 9 Revision History
-
-| Date       | Version | Notes                |
-| :--------- | :------ | :------------------- |
-| 2025-06-30 | v0.1    | Initial public draft |
+| Date | Version | Changes |
+|---|---|---|
+| 2025-06-30 | 0.1 | First draft: CRA (command, response, ACK) with session IDs, priorities, optional CRC |
+| 2026-11-11 | 0.2 | Redesigned for a bootloader: request/response with stop-and-wait and a reply cache; ACK frame, priorities, length fields and optional CRC removed; CRC-16 always on; CONNECT, PING, VERIFY with CRC-32, addressed WRITE; status codes and timing defined; all diagrams redrawn on a white background with one palette, new "what each layer adds" figure |

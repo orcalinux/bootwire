@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=BootWire
+Comment=Firmware updates and serial diagnostics
+Exec=bootwire-gui
+Icon=bootwire
+Terminal=false
+Categories=Development;Electronics;
+StartupWMClass=BootWire

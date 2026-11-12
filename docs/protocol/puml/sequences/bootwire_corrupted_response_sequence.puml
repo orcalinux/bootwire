@@ -1,0 +1,23 @@
+@startuml bootwire_corrupted_response_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Fault: Response Damaged</b></color></size>\n<size:13><color:#5B6B7C>the host ignores a reply with a bad CRC-16, resends, and gets the cached reply</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : verify_image(image)
+HOST -> TP : VERIFY [SEQ=0x52, address, length, CRC-32]
+activate TP
+TP -> BL : CRC-32 of flash
+BL --> TP : 0x5DD6F17A (matches)
+TP -> TP : cache key = (0x52, VERIFY)
+TP --> HOST : [SEQ=0x52, 0x92, OK, CRC]  <color:#C0392B>damaged on the wire</color>
+deactivate TP
+HOST -> HOST : CRC-16 mismatch → ignore\nkeep waiting until the deadline
+... timeout (0.5 s) ...
+HOST -> TP : VERIFY [SEQ=0x52, …]  <color:#1E90D6><b>«resend»</b></color>
+activate TP
+TP -> TP : (0x52, VERIFY) = cached key
+TP --> HOST : [SEQ=0x52, 0x92, <color:#1E8449><b>OK</b></color>, CRC]  <color:#1E90D6><b>«from cache»</b></color>
+deactivate TP
+HOST --> APP : 0x5DD6F17A
+@enduml

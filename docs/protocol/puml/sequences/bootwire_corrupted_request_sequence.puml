@@ -1,0 +1,25 @@
+@startuml bootwire_corrupted_request_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Fault: Request Damaged</b></color></size>\n<size:13><color:#5B6B7C>the target drops a frame with a bad CRC-16 and stays silent; the host resends after its timeout</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : write(0x08008100, 256 bytes)
+HOST -> TP : WRITE [SEQ=0x31, …]  <color:#C0392B>one bit flipped on the wire</color>
+activate TP
+TP -> TP : CRC-16 mismatch\n→ drop, send nothing
+deactivate TP
+note right of TP
+  No error response: the damaged byte could be SEQ
+  or CMD, so any answer might point at the wrong request.
+end note
+... timeout (0.5 s) ...
+HOST -> TP : WRITE [SEQ=0x31, …]  <color:#1E90D6><b>«resend»</b></color>
+activate TP
+TP -> TP : CRC-16 correct\n(0x31, WRITE) not cached → execute
+TP -> BL : program + read back
+BL --> TP : <color:#1E8449><b>OK</b></color>
+TP --> HOST : [SEQ=0x31, 0x91, <color:#1E8449><b>OK</b></color>]
+deactivate TP
+HOST --> APP : return
+@enduml

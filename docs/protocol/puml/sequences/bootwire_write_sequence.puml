@@ -1,0 +1,36 @@
+@startuml bootwire_write_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>WRITE</b></color></size>\n<size:13><color:#5B6B7C>one chunk per command; the target programs it, then reads it back</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : write_image(image, 0x08008000)
+HOST -> HOST : pad with 0xFF to the write alignment\nchunk = (max_payload − 4) rounded down\nto the alignment = 256 bytes
+loop for each 256-byte chunk
+  HOST -> TP : WRITE [SEQ, address, 256 data bytes]
+  activate TP
+  TP -> TP : address and length aligned?\ninside the application region?
+  alt a check fails
+    TP --> HOST : [SEQ, 0x91, <color:#C0392B><b>BAD_PARAM</b></color>]
+    HOST --> APP : BootWireStatusError (nothing written)
+  else checks pass
+    TP -> BL : program the chunk
+    BL -> BL : read back and compare with the payload
+    alt program error
+      TP --> HOST : [SEQ, 0x91, <color:#C0392B><b>FLASH</b></color>]
+      HOST --> APP : BootWireStatusError
+    else read-back differs (flash was not erased)
+      TP --> HOST : [SEQ, 0x91, <color:#C0392B><b>VERIFY</b></color>]
+      HOST --> APP : BootWireStatusError
+    else written correctly
+      TP --> HOST : [SEQ, 0x91, <color:#1E8449><b>OK</b></color>]
+      deactivate TP
+      HOST -> APP : progress("write", done, total)
+    end
+  end
+end
+note over HOST, BL
+  WRITE carries its own address, so the target keeps no transfer state.
+  A lost or repeated chunk can never land at the wrong place.
+end note
+@enduml

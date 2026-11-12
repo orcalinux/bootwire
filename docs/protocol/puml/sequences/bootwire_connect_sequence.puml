@@ -1,0 +1,26 @@
+@startuml bootwire_connect_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>CONNECT</b></color></size>\n<size:13><color:#5B6B7C>start of every session: the target reports its flash layout and clears its reply cache</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : connect()
+HOST -> TP : CONNECT [SEQ=0x9C, protocol version = 2]
+activate TP
+TP -> TP : CONNECT always executes,\neven if (SEQ, CMD) equals the cached key
+TP -> BL : read device ID and flash layout
+BL --> TP : layout
+TP -> TP : cache key = (0x9C, CONNECT)\n(replaces anything from an older session)
+TP --> HOST : [SEQ=0x9C, 0x80, <color:#1E8449><b>OK</b></color>, 23-byte device info]
+deactivate TP
+HOST -> HOST : unpack DeviceInfo
+alt protocol version ≠ 2
+  HOST --> APP : BootWireError: versions differ\n(stop: frames may mean something else)
+else same version
+  HOST --> APP : DeviceInfo: app region, erase block,\nwrite alignment, max payload
+  note over APP, HOST
+    The host plans every later command with these values:
+    chunk size, erase blocks, address range.
+  end note
+end
+@enduml

@@ -1,0 +1,36 @@
+@startuml bootwire_boot_entry
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Target Start-up</b></color></size>\n<size:13><color:#5B6B7C>after every reset: stay in the bootloader, or start the application?</color></size>
+
+start
+:reset;
+:init clock, UART, boot pin;
+if (boot request word in RAM\nholds the magic value?) then (yes)
+  :clear the word;
+  note right
+    The application sets the word and resets
+    itself when the host asks it to update.
+  end note
+elseif (boot pin held?) then (yes)
+elseif (application image valid?\nSP in RAM, reset vector inside the\napplication region, Thumb bit set) then (no)
+else (yes)
+  :listen for a CONNECT frame
+  during the boot window (for example 300 ms);
+  if (CONNECT received?) then (no)
+    #E6F4EA:de-init UART and clock,
+    SCB->VTOR = app_start, set MSP,
+    jump to the application reset handler;
+    end
+  else (yes)
+  endif
+endif
+#DCEBFB:bootloader main loop;
+repeat
+  :wait for a frame from the SLIP RX state machine;
+  :handle the frame (see target frame handling)
+  and send the response;
+repeat while (RUN accepted?) is (no)
+->yes;
+#E6F4EA:jump to the application;
+end
+@enduml

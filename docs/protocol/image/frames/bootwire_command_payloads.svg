@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="1571" viewBox="0 0 1040 1571" role="img"><rect id="bootwire-background" x="0" y="0" width="1040" height="1571" fill="#FFFFFF"/>
+<title>BootWire command payloads</title>
+<defs></defs>
+<rect width="1040" height="1571" fill="#FFFFFF"/>
+<text x="520.0" y="42.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Command Payloads</text>
+<text x="520.0" y="66.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">Offsets inside PAYLOAD  ·  all fields little-endian  ·  the response STATUS byte is not shown</text>
+<rect x="32.0" y="92.0" width="976.0" height="213.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,104 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#1B3A5F" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="120.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">CONNECT</text>
+<rect x="144.0" y="103.0" width="44.9" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="166.5" y="118.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">0x00</text>
+<text x="200.9" y="119.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">start a session, read the device info</text>
+<rect x="906.3" y="104.0" width="85.7" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="949.1" y="118.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_LENGTH</text>
+<text x="897.3" y="119.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" text-anchor="end" fill="#AFC6E0" xml:space="preserve">errors</text>
+<text x="54.0" y="166.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">REQUEST</text>
+<text x="54.0" y="228.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RESPONSE</text>
+<text x="54.0" y="290.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve"></text>
+<rect x="150.0" y="146.0" width="191.5" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="245.8" y="167.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">protocol version = 2</text>
+<text x="245.8" y="184.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[0] u8</text>
+<rect x="347.5" y="146.0" width="638.5" height="50.0" rx="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2"/>
+<text x="666.8" y="175.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#5B6B7C" xml:space="preserve"></text>
+<rect x="150.0" y="208.0" width="68.8" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="184.4" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">protocol</text>
+<text x="184.4" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[0] u8</text>
+<rect x="224.8" y="208.0" width="62.6" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="256.1" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">bl major</text>
+<text x="256.1" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[1] u8</text>
+<rect x="293.4" y="208.0" width="62.6" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="324.7" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">bl minor</text>
+<text x="324.7" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[2] u8</text>
+<rect x="361.9" y="208.0" width="62.6" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="393.2" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">bl patch</text>
+<text x="393.2" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[3] u8</text>
+<rect x="430.5" y="208.0" width="87.6" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="474.3" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">max_payload</text>
+<text x="474.3" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[4..5] u16</text>
+<rect x="524.1" y="208.0" width="84.5" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="566.3" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">device_id</text>
+<text x="566.3" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[6..9] u32</text>
+<rect x="614.5" y="208.0" width="90.7" height="50.0" rx="7" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="659.9" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">app_start</text>
+<text x="659.9" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[10..13] u32</text>
+<rect x="711.2" y="208.0" width="90.7" height="50.0" rx="7" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="756.6" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">app_size</text>
+<text x="756.6" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[14..17] u32</text>
+<rect x="808.0" y="208.0" width="90.7" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="853.3" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">erase_block</text>
+<text x="853.3" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[18..21] u32</text>
+<rect x="904.7" y="208.0" width="81.3" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="945.3" y="229.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">write_align</text>
+<text x="945.3" y="246.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[22] u8</text>
+<text x="150.0" y="285.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#5B6B7C" xml:space="preserve">23 bytes. The host takes the flash layout from here and never hard-codes it. CONNECT always runs and clears the reply cache.</text>
+<rect x="32.0" y="323.0" width="976.0" height="182.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,335 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#1B3A5F" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="351.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">PING</text>
+<rect x="101.6" y="334.0" width="44.9" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="124.0" y="349.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">0x01</text>
+<text x="158.5" y="350.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">link test</text>
+<text x="54.0" y="397.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">REQUEST</text>
+<text x="54.0" y="459.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RESPONSE</text>
+<rect x="150.0" y="377.0" width="836.0" height="50.0" rx="7" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="568.0" y="398.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">any bytes</text>
+<text x="568.0" y="415.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">0 … max_payload</text>
+<rect x="150.0" y="439.0" width="836.0" height="50.0" rx="7" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="568.0" y="468.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">the same bytes, echoed (the host checks they are equal)</text>
+<rect x="32.0" y="523.0" width="976.0" height="213.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,535 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#1B3A5F" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="551.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">ERASE</text>
+<rect x="118.6" y="534.0" width="44.9" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="141.0" y="549.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">0x10</text>
+<text x="175.5" y="550.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">erase whole blocks</text>
+<rect x="943.0" y="535.0" width="49.0" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="967.5" y="549.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">FLASH</text>
+<rect x="856.9" y="535.0" width="81.1" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="897.5" y="549.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_PARAM</text>
+<rect x="766.2" y="535.0" width="85.7" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="809.1" y="549.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_LENGTH</text>
+<text x="757.2" y="550.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" text-anchor="end" fill="#AFC6E0" xml:space="preserve">errors</text>
+<text x="54.0" y="597.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">REQUEST</text>
+<text x="54.0" y="659.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RULES</text>
+<text x="54.0" y="690.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RESPONSE</text>
+<rect x="150.0" y="577.0" width="415.0" height="50.0" rx="7" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="357.5" y="598.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">address</text>
+<text x="357.5" y="615.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[0..3] u32</text>
+<rect x="571.0" y="577.0" width="415.0" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="778.5" y="598.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">length</text>
+<text x="778.5" y="615.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[4..7] u32</text>
+<text x="150.0" y="654.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">Both multiples of </text>
+<text x="245.9" y="654.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" fill="#1F2D3D" xml:space="preserve">erase_block</text>
+<text x="328.6" y="654.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve"> (counted from </text>
+<text x="412.7" y="654.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" fill="#1F2D3D" xml:space="preserve">app_start</text>
+<text x="480.4" y="654.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">), inside the application region.</text>
+<rect x="150.0" y="670.0" width="836.0" height="50.0" rx="7" fill="#FFFFFF" stroke="#B7C3CF" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="568.0" y="699.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" text-anchor="middle" fill="#8A99A8" xml:space="preserve">empty</text>
+<rect x="32.0" y="754.0" width="976.0" height="232.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,766 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#1B3A5F" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="782.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">WRITE</text>
+<rect x="114.8" y="765.0" width="44.9" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="137.2" y="780.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">0x11</text>
+<text x="171.7" y="781.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">program bytes, then read them back</text>
+<rect x="940.1" y="766.0" width="51.9" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="966.0" y="780.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">VERIFY</text>
+<rect x="886.1" y="766.0" width="49.0" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="910.6" y="780.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">FLASH</text>
+<rect x="800.0" y="766.0" width="81.1" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="840.5" y="780.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_PARAM</text>
+<rect x="709.3" y="766.0" width="85.7" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="752.1" y="780.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_LENGTH</text>
+<text x="700.3" y="781.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" text-anchor="end" fill="#AFC6E0" xml:space="preserve">errors</text>
+<text x="54.0" y="828.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">REQUEST</text>
+<text x="54.0" y="890.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RULES</text>
+<text x="54.0" y="940.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RESPONSE</text>
+<rect x="150.0" y="808.0" width="230.6" height="50.0" rx="7" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="265.3" y="829.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">address</text>
+<text x="265.3" y="846.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[0..3] u32</text>
+<rect x="386.6" y="808.0" width="599.4" height="50.0" rx="7" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="686.3" y="829.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">data</text>
+<text x="686.3" y="846.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[4..N-1]  1 … max_payload − 4 bytes</text>
+<text x="150.0" y="885.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">Address and data length multiples of </text>
+<text x="355.7" y="885.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" fill="#1F2D3D" xml:space="preserve">write_align</text>
+<text x="438.4" y="885.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">, inside the application region, into erased flash.</text>
+<text x="150.0" y="904.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">The target reads the data back after programming: a mismatch gives VERIFY.</text>
+<rect x="150.0" y="920.0" width="836.0" height="50.0" rx="7" fill="#FFFFFF" stroke="#B7C3CF" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="568.0" y="949.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" text-anchor="middle" fill="#8A99A8" xml:space="preserve">empty</text>
+<rect x="32.0" y="1004.0" width="976.0" height="213.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,1016 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#1B3A5F" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="1032.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">VERIFY</text>
+<rect x="121.4" y="1015.0" width="44.9" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="143.9" y="1030.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">0x12</text>
+<text x="178.3" y="1031.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">compare a CRC-32 of flash</text>
+<rect x="940.1" y="1016.0" width="51.9" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="966.0" y="1030.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">VERIFY</text>
+<rect x="854.0" y="1016.0" width="81.1" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="894.5" y="1030.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_PARAM</text>
+<rect x="763.3" y="1016.0" width="85.7" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="806.1" y="1030.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_LENGTH</text>
+<text x="754.3" y="1031.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" text-anchor="end" fill="#AFC6E0" xml:space="preserve">errors</text>
+<text x="54.0" y="1078.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">REQUEST</text>
+<text x="54.0" y="1140.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RESPONSE</text>
+<text x="54.0" y="1202.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">CRC-32</text>
+<rect x="150.0" y="1058.0" width="274.7" height="50.0" rx="7" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="287.3" y="1079.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">address</text>
+<text x="287.3" y="1096.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[0..3] u32</text>
+<rect x="430.7" y="1058.0" width="274.7" height="50.0" rx="7" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="568.0" y="1079.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">length</text>
+<text x="568.0" y="1096.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[4..7] u32</text>
+<rect x="711.3" y="1058.0" width="274.7" height="50.0" rx="7" fill="#FBE1E4" stroke="#C0394B" stroke-width="1.2"/>
+<text x="848.7" y="1079.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">CRC-32 expected</text>
+<text x="848.7" y="1096.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[8..11] u32</text>
+<rect x="150.0" y="1120.0" width="836.0" height="50.0" rx="7" fill="#FBE1E4" stroke="#C0394B" stroke-width="1.2"/>
+<text x="568.0" y="1141.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">CRC-32 the target computed, sent with OK and with VERIFY</text>
+<text x="568.0" y="1158.0" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">[0..3] u32</text>
+<text x="150.0" y="1197.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#5B6B7C" xml:space="preserve">CRC-32/ISO-HDLC: poly 0x04C11DB7 reflected, init and xor-out 0xFFFFFFFF  ·  zlib.crc32  ·  check "123456789" = 0xCBF43926</text>
+<rect x="32.0" y="1235.0" width="976.0" height="182.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,1247 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#1B3A5F" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="1263.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">RUN</text>
+<rect x="96.8" y="1246.0" width="44.9" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="119.3" y="1261.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">0x13</text>
+<text x="153.7" y="1262.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">check the image and start it</text>
+<rect x="934.8" y="1247.0" width="57.2" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="963.4" y="1261.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">NO_APP</text>
+<rect x="844.1" y="1247.0" width="85.7" height="20.0" rx="10" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="887.0" y="1261.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#C0392B" xml:space="preserve">BAD_LENGTH</text>
+<text x="835.1" y="1262.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" text-anchor="end" fill="#AFC6E0" xml:space="preserve">errors</text>
+<text x="54.0" y="1309.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">REQUEST</text>
+<text x="54.0" y="1371.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">RESPONSE</text>
+<rect x="150.0" y="1289.0" width="836.0" height="50.0" rx="7" fill="#FFFFFF" stroke="#B7C3CF" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="568.0" y="1318.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" text-anchor="middle" fill="#8A99A8" xml:space="preserve">empty</text>
+<rect x="150.0" y="1351.0" width="207.5" height="50.0" rx="7" fill="#FFFFFF" stroke="#B7C3CF" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="253.8" y="1380.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" text-anchor="middle" fill="#8A99A8" xml:space="preserve">empty</text>
+<rect x="363.5" y="1351.0" width="622.5" height="50.0" rx="7" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.2"/>
+<text x="674.8" y="1380.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">then the target jumps to the application</text>
+<rect x="32.0" y="1435.0" width="976.0" height="108.0" rx="12" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<path d="M32,1447 a12,12 0 0 1 12,-12 h952 a12,12 0 0 1 12,12 v32 h-976 z" fill="#4A6582" stroke="none" stroke-width="0" stroke-linejoin="round"/>
+<text x="52.0" y="1463.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF" xml:space="preserve">User commands</text>
+<rect x="192.3" y="1446.0" width="81.0" height="22.0" rx="11.0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="232.8" y="1461.3" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" font-weight="bold" text-anchor="middle" fill="#4A6582" xml:space="preserve">0x40…0x7F</text>
+<text x="285.3" y="1462.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" fill="#AFC6E0" xml:space="preserve">your own commands</text>
+<text x="54.0" y="1509.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" font-weight="bold" fill="#5B6B7C" xml:space="preserve">PAYLOADS</text>
+<text x="150.0" y="1504.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">Defined by you. Same frame, CRC, SEQ, retry and reply-cache rules.</text>
+<text x="150.0" y="1523.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#5B6B7C" xml:space="preserve">A command ID the target does not know gets </text>
+<text x="403.6" y="1523.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" fill="#C0392B" xml:space="preserve">UNKNOWN_CMD</text>
+<text x="505.7" y="1523.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#5B6B7C" xml:space="preserve">. IDs 0x00 … 0x3F are reserved for BootWire.</text>
+</svg>

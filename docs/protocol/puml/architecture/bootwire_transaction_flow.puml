@@ -1,0 +1,25 @@
+@startuml bootwire_transaction_flow
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>One Transaction</b></color></size>\n<size:13><color:#5B6B7C>one request in flight; a resend uses the same SEQ and is answered from the cache</color></size>
+
+box "Host (PC)" #F4F7FB
+  participant "<b>Host</b>\n<size:11><color:#C9D7E6>BootWireClient</color></size>" as H #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target</b>\n<size:11><color:#CBE6DF>bootloader</color></size>" as T #146C5F
+end box
+
+H -> T : Request  [SEQ=n, CMD, PAYLOAD, CRC16]
+activate T
+note right of T
+  check CRC, look up reply cache,
+  execute, cache the reply
+end note
+T --> H : Response [SEQ=n, CMD|0x80, STATUS, PAYLOAD, CRC16]
+deactivate T
+note over H, T
+  Exactly one request is in flight. The next request uses SEQ = n+1.
+  No valid response in time: the host resends the **same** frame (same SEQ).
+  The target answers a resend from its cache, so a command never runs twice.
+end note
+@enduml

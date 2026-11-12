@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="927px" preserveAspectRatio="none" style="width:1075px;height:927px;" version="1.1" viewBox="0 0 1075 927" width="1075px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="1075" height="927" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="385" x="343.75" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="152" x="460.25" y="36.6978">Target Start-up</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="369" x="351.75" y="53.3418">after every reset: stay in the bootloader, or start the application?</text><ellipse cx="541.75" cy="74.0967" fill="#1B3A5F" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"/><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="49" x="517.25" y="104.0967"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="29" x="527.25" y="126.2905">reset</text><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="168" x="457.75" y="159.0454"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="148" x="467.75" y="181.2393">init clock, UART, boot pin</text><polygon fill="#FFFFFF" points="32,213.9941,172,213.9941,184,227.793,172,241.5918,32,241.5918,20,227.793,32,213.9941" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="106" y="253.7856">yes</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="140" x="32" y="225.25">boot request word in RAM</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="127" x="32" y="239.0488">holds the magic value?</text><path d="M172.5,276.5405 L172.5,291.3394 L152.5,295.3394 L172.5,299.3394 L172.5,314.1382 A0,0 0 0 0 172.5,314.1382 L416.5,314.1382 A0,0 0 0 0 416.5,314.1382 L416.5,286.5405 L406.5,276.5405 L172.5,276.5405 A0,0 0 0 0 172.5,276.5405 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M406.5,276.5405 L406.5,286.5405 L416.5,286.5405 L406.5,276.5405 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="223" x="178.5" y="292.7964">The application sets the word and resets</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="202" x="178.5" y="306.5952">itself when the host asks it to update.</text><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="101" x="51.5" y="277.865"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="61.5" y="300.0588">clear the word</text><polygon fill="#FFFFFF" points="448.5,215.793,526.5,215.793,538.5,227.793,526.5,239.793,448.5,239.793,436.5,227.793,448.5,215.793" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="491.5" y="251.9868">yes</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="78" x="448.5" y="232.1494">boot pin held?</text><polygon fill="#FFFFFF" points="570.5,207.0947,753.5,207.0947,765.5,227.793,753.5,248.4912,570.5,248.4912,558.5,227.793,570.5,207.0947" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="666" y="260.6851">no</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="133" x="570.5" y="218.3506">application image valid?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="183" x="570.5" y="232.1494">SP in RAM, reset vector inside the</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="179" x="570.5" y="245.9482">application region, Thumb bit set</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="765.5" y="225.0381">yes</text><rect fill="#F4F7FB" height="49.8975" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="278" x="785.5" y="251.181"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="162" x="795.5" y="273.3749">listen for a CONNECT frame</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="258" x="795.5" y="288.3236">during the boot window (for example 300 ms)</text><rect fill="#E6F4EA" height="64.8462" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="230" x="809.5" y="383.6125"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="137" x="819.5" y="405.8064">de-init UART and clock,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="207" x="819.5" y="420.7551">SCB-&gt;VTOR = app_start, set MSP,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="210" x="819.5" y="435.7039">jump to the application reset handler</text><ellipse cx="924.5" cy="478.4587" fill="#FFFFFF" rx="10" ry="10" style="stroke: #1B3A5F; stroke-width: 1.5;"/><line style="stroke: #1B3A5F; stroke-width: 2.5;" x1="918.3128" x2="930.6872" y1="472.2716" y2="484.6459"/><line style="stroke: #1B3A5F; stroke-width: 2.5;" x1="930.6872" x2="918.3128" y1="472.2716" y2="484.6459"/><polygon fill="#FFFFFF" points="866.5,334.1382,982.5,334.1382,994.5,346.1382,982.5,358.1382,866.5,358.1382,854.5,346.1382,866.5,334.1382" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="928.5" y="370.332">no</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="116" x="866.5" y="350.4946">CONNECT received?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="994.5" y="343.3833">yes</text><rect fill="#DCEBFB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="140" x="471.75" y="550.4587"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="120" x="481.75" y="572.6526">bootloader main loop</text><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="297" x="393.25" y="649.4075"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="277" x="403.25" y="671.6013">wait for a frame from the SLIP RX state machine</text><rect fill="#F4F7FB" height="49.8975" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="274" x="404.75" y="704.3818"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="254" x="414.75" y="726.5757">handle the frame (see target frame handling)</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="132" x="414.75" y="741.5244">and send the response</text><polygon fill="#FFFFFF" points="541.75,605.4075,553.75,617.4075,541.75,629.4075,529.75,617.4075,541.75,605.4075" style="stroke: #1B3A5F; stroke-width: 1.5;"/><polygon fill="#FFFFFF" points="498.25,774.2793,585.25,774.2793,597.25,786.2793,585.25,798.2793,498.25,798.2793,486.25,786.2793,498.25,774.2793" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="87" x="498.25" y="790.6357">RUN accepted?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="597.25" y="783.5244">no</text><rect fill="#E6F4EA" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="151" x="466.25" y="841.9829"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="131" x="476.25" y="864.1768">jump to the application</text><ellipse cx="541.75" cy="906.9316" fill="#FFFFFF" rx="10" ry="10" style="stroke: #1B3A5F; stroke-width: 1.5;"/><line style="stroke: #1B3A5F; stroke-width: 2.5;" x1="535.5628" x2="547.9372" y1="900.7445" y2="913.1188"/><line style="stroke: #1B3A5F; stroke-width: 2.5;" x1="547.9372" x2="535.5628" y1="900.7445" y2="913.1188"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="84.0967" y2="104.0967"/><polygon fill="#3D5166" points="537.75,94.0967,541.75,104.0967,545.75,94.0967,541.75,98.0967" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="139.0454" y2="159.0454"/><polygon fill="#3D5166" points="537.75,149.0454,541.75,159.0454,545.75,149.0454,541.75,153.0454" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="924.5" x2="924.5" y1="448.4587" y2="468.4587"/><polygon fill="#3D5166" points="920.5,458.4587,924.5,468.4587,928.5,458.4587,924.5,462.4587" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="924.5" x2="924.5" y1="358.1382" y2="383.6125"/><polygon fill="#3D5166" points="920.5,373.6125,924.5,383.6125,928.5,373.6125,924.5,377.6125" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="994.5" x2="1049.5" y1="346.1382" y2="346.1382"/><polygon fill="#3D5166" points="1045.5,430.5356,1049.5,440.5356,1053.5,430.5356,1049.5,434.5356" style="stroke: #3D5166; stroke-width: 1.5;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="1049.5" x2="1049.5" y1="346.1382" y2="510.4587"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="1049.5" x2="924.5" y1="510.4587" y2="510.4587"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="924.5" x2="924.5" y1="510.4587" y2="530.4587"/><polygon fill="#3D5166" points="920.5,520.4587,924.5,530.4587,928.5,520.4587,924.5,524.4587" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="924.5" x2="924.5" y1="301.0785" y2="334.1382"/><polygon fill="#3D5166" points="920.5,324.1382,924.5,334.1382,928.5,324.1382,924.5,328.1382" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="102" x2="102" y1="241.5918" y2="277.865"/><polygon fill="#3D5166" points="98,267.865,102,277.865,106,267.865,102,271.865" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="102" x2="102" y1="312.8137" y2="530.4587"/><polygon fill="#3D5166" points="98,520.4587,102,530.4587,106,520.4587,102,524.4587" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="487.5" x2="487.5" y1="239.793" y2="530.4587"/><polygon fill="#3D5166" points="483.5,520.4587,487.5,530.4587,491.5,520.4587,487.5,524.4587" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="662" x2="662" y1="248.4912" y2="530.4587"/><polygon fill="#3D5166" points="658,520.4587,662,530.4587,666,520.4587,662,524.4587" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="184" x2="436.5" y1="227.793" y2="227.793"/><polygon fill="#3D5166" points="426.5,223.793,436.5,227.793,426.5,231.793,430.5,227.793" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="538.5" x2="558.5" y1="227.793" y2="227.793"/><polygon fill="#3D5166" points="548.5,223.793,558.5,227.793,548.5,231.793,552.5,227.793" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="193.9941" y2="198.9941"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="102" y1="198.9941" y2="198.9941"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="102" x2="102" y1="198.9941" y2="213.9941"/><polygon fill="#3D5166" points="98,203.9941,102,213.9941,106,203.9941,102,207.9941" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="765.5" x2="924.5" y1="227.793" y2="227.793"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="924.5" x2="924.5" y1="227.793" y2="251.181"/><polygon fill="#3D5166" points="920.5,241.181,924.5,251.181,928.5,241.181,924.5,245.181" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="102" x2="924.5" y1="530.4587" y2="530.4587"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="530.4587" y2="550.4587"/><polygon fill="#3D5166" points="537.75,540.4587,541.75,550.4587,545.75,540.4587,541.75,544.4587" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="684.3562" y2="704.3818"/><polygon fill="#3D5166" points="537.75,694.3818,541.75,704.3818,545.75,694.3818,541.75,698.3818" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="629.4075" y2="649.4075"/><polygon fill="#3D5166" points="537.75,639.4075,541.75,649.4075,545.75,639.4075,541.75,643.4075" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="597.25" x2="702.25" y1="786.2793" y2="786.2793"/><polygon fill="#3D5166" points="698.25,704.3562,702.25,694.3562,706.25,704.3562,702.25,700.3562" style="stroke: #3D5166; stroke-width: 1.5;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="702.25" x2="702.25" y1="617.4075" y2="786.2793"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="702.25" x2="553.75" y1="617.4075" y2="617.4075"/><polygon fill="#3D5166" points="563.75,613.4075,553.75,617.4075,563.75,621.4075,559.75,617.4075" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="754.2793" y2="774.2793"/><polygon fill="#3D5166" points="537.75,764.2793,541.75,774.2793,545.75,764.2793,541.75,768.2793" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="585.4075" y2="605.4075"/><polygon fill="#3D5166" points="537.75,595.4075,541.75,605.4075,545.75,595.4075,541.75,599.4075" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="798.2793" y2="841.9829"/><polygon fill="#3D5166" points="537.75,831.9829,541.75,841.9829,545.75,831.9829,541.75,835.9829" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="545.75" y="821.728">yes</text><line style="stroke: #3D5166; stroke-width: 1.5;" x1="541.75" x2="541.75" y1="876.9316" y2="896.9316"/><polygon fill="#3D5166" points="537.75,886.9316,541.75,896.9316,545.75,886.9316,541.75,890.9316" style="stroke: #3D5166; stroke-width: 1.0;"/><!--MD5=[85c43a3b7532c1cf6f8a37d246a5438f]
+@startuml bootwire_boot_entry
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>Target Start-up</b></color></size>\n<size:13><color:#5B6B7C>after every reset: stay in the bootloader, or start the application?</color></size>
+
+start
+:reset;
+:init clock, UART, boot pin;
+if (boot request word in RAM\nholds the magic value?) then (yes)
+  :clear the word;
+  note right
+    The application sets the word and resets
+    itself when the host asks it to update.
+  end note
+elseif (boot pin held?) then (yes)
+elseif (application image valid?\nSP in RAM, reset vector inside the\napplication region, Thumb bit set) then (no)
+else (yes)
+  :listen for a CONNECT frame
+  during the boot window (for example 300 ms);
+  if (CONNECT received?) then (no)
+    #E6F4EA:de-init UART and clock,
+    SCB->VTOR = app_start, set MSP,
+    jump to the application reset handler;
+    end
+  else (yes)
+  endif
+endif
+#DCEBFB:bootloader main loop;
+repeat
+  :wait for a frame from the SLIP RX state machine;
+  :handle the frame (see target frame handling)
+  and send the response;
+repeat while (RUN accepted?) is (no)
+->yes;
+#E6F4EA:jump to the application;
+end
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

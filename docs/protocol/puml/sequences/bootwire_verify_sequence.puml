@@ -1,0 +1,27 @@
+@startuml bootwire_verify_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>VERIFY</b></color></size>\n<size:13><color:#5B6B7C>the target computes the CRC-32 of the flash and compares it with the host's</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : verify_image(image)
+HOST -> HOST : expected = CRC-32 of the padded image\n(CRC-32/ISO-HDLC, same as zlib.crc32)
+HOST -> TP : VERIFY [SEQ, address, length, expected]
+activate TP
+TP -> TP : payload is 12 bytes?\ninside the application region?
+TP -> BL : CRC-32 over flash[address, address + length)
+BL --> TP : actual
+alt actual = expected
+  TP --> HOST : [SEQ, 0x92, <color:#1E8449><b>OK</b></color>, actual]
+  HOST --> APP : CRC-32 (image is in flash, bit for bit)
+else actual ≠ expected
+  TP --> HOST : [SEQ, 0x92, <color:#C0392B><b>VERIFY</b></color>, actual]
+  deactivate TP
+  HOST --> APP : BootWireStatusError(<color:#C0392B><b>VERIFY</b></color>, payload = actual)
+  APP -> APP : print "CRC-32 of file … , flash …"\nexit code 1, do not run
+end
+note over HOST, BL
+  CRC-16 protects each frame on the wire, read-back protects each WRITE,
+  and this CRC-32 proves the complete image before the target may run it.
+end note
+@enduml

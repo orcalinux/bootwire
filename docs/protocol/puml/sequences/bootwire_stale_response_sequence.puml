@@ -1,0 +1,34 @@
+@startuml bootwire_stale_response_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Fault: Late Response</b></color></size>\n<size:13><color:#5B6B7C>a reply to an older request carries another SEQ and is ignored</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : erase(block)
+HOST -> TP : ERASE [SEQ=0x80, …]
+activate TP
+TP -> BL : erase the block (slow part)
+... erase_timeout passes before the answer ...
+HOST -> TP : ERASE [SEQ=0x80, …]  <color:#1E90D6><b>«resend, waits in the target RX»</b></color>
+BL --> TP : done
+TP --> HOST : [SEQ=0x80, 0x90, <color:#1E8449><b>OK</b></color>]
+deactivate TP
+HOST --> APP : return
+APP -> HOST : write(chunk)
+HOST -> HOST : flush RX, SEQ = 0x81
+activate TP
+TP -> TP : the resend is handled now:\n(0x80, ERASE) = cached key
+TP --> HOST : [SEQ=0x80, 0x90, <color:#1E8449><b>OK</b></color>]  <color:#1E90D6><b>«replay arrives late»</b></color>
+deactivate TP
+HOST -> TP : WRITE [SEQ=0x81, …]
+HOST -> HOST : SEQ 0x80 ≠ 0x81 → ignore
+activate TP
+TP -> BL : program + read back
+TP --> HOST : [SEQ=0x81, 0x91, <color:#1E8449><b>OK</b></color>]
+deactivate TP
+HOST --> APP : return
+note over HOST, TP
+  The host accepts a response only when both SEQ and CMD match the request
+  it is waiting for. Late copies of older answers are harmless.
+end note
+@enduml

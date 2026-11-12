@@ -1,4 +1,4 @@
-from gsp_core.protocol.crc import crc16
+from bootwire.protocol.crc import crc16
 
 def test_crc_empty():
     # CRC of empty data should equal initial seed 0xFFFF

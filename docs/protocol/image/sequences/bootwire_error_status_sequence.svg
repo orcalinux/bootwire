@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="547px" preserveAspectRatio="none" style="width:884px;height:547px;" version="1.1" viewBox="0 0 884 547" width="884px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="884" height="547" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="485" x="195.75" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="122" x="377.25" y="36.6978">Error Status</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="469" x="203.75" y="53.3418">the target rejects the request; the host raises the error at once and does not retry</text><rect fill="#F4F7FB" height="457.229" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="426.5" x="4" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="65" x="184.75" y="85.2285">Host (PC)</text><rect fill="#EEF6F4" height="457.229" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="332.5" x="541" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="204" x="605.25" y="85.2285">Target (Cortex-M bootloader)</text><rect fill="#DCEBFB" height="133.4438" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="616.5" y="256.0869"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="63" x2="63" y1="134.793" y2="535.3257"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="363.5" x2="363.5" y1="134.793" y2="535.3257"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="621" x2="621" y1="134.793" y2="535.3257"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="803.5" x2="803.5" y1="134.793" y2="535.3257"/><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="95" x="16" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="23" y="111.3892">bootwire CLI</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="75" x="26" y="124.4619">host application</text><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="110" x="308.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="96" x="315.5" y="111.3892">BootWireClient</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="327" y="124.4619">command layer</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="137" x="553" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="97" x="573" y="111.3892">Target protocol</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="560" y="124.4619">frame check, reply cache</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="116" x="745.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="752.5" y="111.3892">Bootloader core</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="776" y="124.4619">flash driver</text><rect fill="#DCEBFB" height="133.4438" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="616.5" y="256.0869"/><polygon fill="#3D5166" points="351.5,161.7417,361.5,165.7417,351.5,169.7417,355.5,165.7417" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="63.5" x2="357.5" y1="165.7417" y2="165.7417"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="70.5" y="160.9868">01</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="246" x="88.5" y="160.9868">send(WRITE, address 0x08000000 + data)</text><path d="M74,183.7417 L74,224.7417 A5,5 0 0 0 79,229.7417 L353,229.7417 A5,5 0 0 0 358,224.7417 L358,188.7417 L348,178.7417 L79,178.7417 A5,5 0 0 0 74,183.7417 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M348,178.7417 L348,186.2417 A2.5,2.5 0 0 0 350.5,188.7417 L358,188.7417 L348,178.7417 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="263" x="80" y="194.9976">bootwire write checks the range on the host first.</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="251" x="80" y="208.7964">A raw "bootwire send" or a buggy host can still</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="209" x="80" y="222.5952">ask for it, so the target must check too.</text><polygon fill="#3D5166" points="604.5,252.0869,614.5,256.0869,604.5,260.0869,608.5,256.0869" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="363.5" x2="610.5" y1="256.0869" y2="256.0869"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="370.5" y="251.332">02</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="216" x="388.5" y="251.332">WRITE [SEQ=0x60, 0x08000000, …]</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="626.5" x2="668.5" y1="299.9844" y2="299.9844"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="668.5" x2="668.5" y1="299.9844" y2="312.9844"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="627.5" x2="668.5" y1="312.9844" y2="312.9844"/><polygon fill="#3D5166" points="637.5,308.9844,627.5,312.9844,637.5,316.9844,633.5,312.9844" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="633.5" y="287.7551">03</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="140" x="651.5" y="280.2808">0x08000000 &lt; app_start</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="98" x="651.5" y="295.2295">→ BAD_PARAM</text><path d="M631,330.9844 L631,357.9844 A5,5 0 0 0 636,362.9844 L827,362.9844 A5,5 0 0 0 832,357.9844 L832,335.9844 L822,325.9844 L636,325.9844 A5,5 0 0 0 631,330.9844 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M822,325.9844 L822,333.4844 A2.5,2.5 0 0 0 824.5,335.9844 L832,335.9844 L822,325.9844 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="180" x="637" y="342.2402">Nothing is written: the bootloader</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="119" x="637" y="356.0391">protects its own flash.</text><polygon fill="#3D5166" points="374.5,385.5308,364.5,389.5308,374.5,393.5308,370.5,389.5308" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="368.5" x2="620.5" y1="389.5308" y2="389.5308"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="380.5" y="384.7759">04</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="108" x="398.5" y="384.7759">[SEQ=0x60, 0x91,</text><text xml:space="preserve" fill="#C0392B" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="510.5" y="384.7759">BAD_PARAM</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="4" x="591.5" y="384.7759">]</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="363.5" x2="405.5" y1="433.4282" y2="433.4282"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="405.5" x2="405.5" y1="433.4282" y2="446.4282"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="364.5" x2="405.5" y1="446.4282" y2="446.4282"/><polygon fill="#3D5166" points="374.5,442.4282,364.5,446.4282,374.5,450.4282,370.5,446.4282" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="370.5" y="421.199">05</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="177" x="388.5" y="413.7246">STATUS ≠ OK → stop at once</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="220" x="388.5" y="428.6733">(a resend would get the same answer)</text><polygon fill="#3D5166" points="74.5,471.377,64.5,475.377,74.5,479.377,70.5,475.377" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="68.5" x2="362.5" y1="475.377" y2="475.377"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="80.5" y="470.6221">06</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="169" x="98.5" y="470.6221">BootWireStatusError(WRITE,</text><text xml:space="preserve" fill="#C0392B" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="271.5" y="470.6221">BAD_PARAM</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="4" x="352.5" y="470.6221">)</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="63.5" x2="105.5" y1="504.3257" y2="504.3257"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="105.5" x2="105.5" y1="504.3257" y2="517.3257"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="64.5" x2="105.5" y1="517.3257" y2="517.3257"/><polygon fill="#3D5166" points="74.5,513.3257,64.5,517.3257,74.5,521.3257,70.5,517.3257" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="70.5" y="499.5708">07</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="149" x="88.5" y="499.5708">print the error, exit code 1</text><!--MD5=[8cc9bc08ae92f57aacf784155737559a]
+@startuml bootwire_error_status_sequence
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>Error Status</b></color></size>\n<size:13><color:#5B6B7C>the target rejects the request; the host raises the error at once and does not retry</color></size>
+box "Host (PC)" #F4F7FB
+  participant "<b>bootwire CLI</b>\n<size:11><color:#C9D7E6>host application</color></size>" as APP #1B3A5F
+  participant "<b>BootWireClient</b>\n<size:11><color:#C9D7E6>command layer</color></size>" as HOST #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target protocol</b>\n<size:11><color:#CBE6DF>frame check, reply cache</color></size>" as TP #146C5F
+  participant "<b>Bootloader core</b>\n<size:11><color:#CBE6DF>flash driver</color></size>" as BL #146C5F
+end box
+
+autonumber "<b>00"
+APP -> HOST : send(WRITE, address 0x08000000 + data)
+note left of HOST
+  bootwire write checks the range on the host first.
+  A raw "bootwire send" or a buggy host can still
+  ask for it, so the target must check too.
+end note
+HOST -> TP : WRITE [SEQ=0x60, 0x08000000, …]
+activate TP
+TP -> TP : 0x08000000 < app_start\n→ BAD_PARAM
+note right of TP
+  Nothing is written: the bootloader
+  protects its own flash.
+end note
+TP - -> HOST : [SEQ=0x60, 0x91, <color:#C0392B><b>BAD_PARAM</b></color>]
+deactivate TP
+HOST -> HOST : STATUS ≠ OK → stop at once\n(a resend would get the same answer)
+HOST - -> APP : BootWireStatusError(WRITE, <color:#C0392B><b>BAD_PARAM</b></color>)
+APP -> APP : print the error, exit code 1
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

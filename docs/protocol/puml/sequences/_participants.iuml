@@ -1,0 +1,9 @@
+' The four lanes used by most BootWire sequence diagrams: host lanes navy, target lanes teal.
+box "Host (PC)" #F4F7FB
+  participant "<b>bootwire CLI</b>\n<size:11><color:#C9D7E6>host application</color></size>" as APP #1B3A5F
+  participant "<b>BootWireClient</b>\n<size:11><color:#C9D7E6>command layer</color></size>" as HOST #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target protocol</b>\n<size:11><color:#CBE6DF>frame check, reply cache</color></size>" as TP #146C5F
+  participant "<b>Bootloader core</b>\n<size:11><color:#CBE6DF>flash driver</color></size>" as BL #146C5F
+end box

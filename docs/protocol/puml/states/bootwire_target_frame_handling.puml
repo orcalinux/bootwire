@@ -1,0 +1,51 @@
+@startuml bootwire_target_frame_handling
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Target: Handling One Received Frame</b></color></size>\n<size:13><color:#5B6B7C>what the bootloader does with every frame the SLIP RX state machine delivers</color></size>
+
+start
+:SLIP RX delivers a complete frame
+(rx_buf, len);
+if (len ≥ 4 and CRC-16 correct?) then (yes)
+else (no)
+  #FDECEA:drop silently;
+  note right
+    Never answer a frame you cannot trust:
+    even SEQ may be the damaged byte.
+    The host times out and resends.
+  end note
+  stop
+endif
+if (bit 7 of CMD set?\n(it is a response)) then (yes)
+  #FDECEA:drop silently;
+  stop
+else (no)
+endif
+if (CMD ≠ CONNECT and\n(SEQ, CMD) = cached key?) then (yes)
+  #DCEBFB:send the cached response again;
+  note right
+    This is a resend because the response
+    was lost. Do **not** execute again:
+    an ERASE, WRITE or RUN must run once.
+  end note
+  stop
+else (no)
+endif
+:execute the command:
+check payload length, address range and alignment,
+then erase, or program and read back,
+or compute CRC-32, or check the vector table;
+:build response:
+SEQ, CMD | 0x80, STATUS, PAYLOAD, CRC-16;
+:cache key = (SEQ, CMD), cache = response;
+:SLIP encode and send;
+if (CMD = RUN and STATUS = OK?) then (yes)
+  :wait until the last byte has left the UART;
+  #E6F4EA:de-initialise peripherals, disable interrupts,
+  SCB->VTOR = app_start, set MSP,
+  jump to the application reset handler;
+  end
+else (no)
+  #FFFFFF:ready for the next frame;
+  stop
+endif
+@enduml

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="487px" preserveAspectRatio="none" style="width:878px;height:487px;" version="1.1" viewBox="0 0 878 487" width="878px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="878" height="487" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="416" x="227" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="334" x="268" y="36.6978">Fault: No Answer After All Retries</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="400" x="235" y="53.3418">1 + max_retries attempts with the same SEQ, then BootWireTimeout</text><rect fill="#F4F7FB" height="397.6826" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="491.5" x="4" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="65" x="217.25" y="85.2285">Host (PC)</text><rect fill="#EEF6F4" height="397.6826" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="303" x="564" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="204" x="613.5" y="85.2285">Target (Cortex-M bootloader)</text><rect fill="#FFFFFF" height="88.8462" rx="5" ry="5" style="stroke: #9DB3CC; stroke-width: 2.0;" width="375.5" x="355.5" y="222.6904"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="63" x2="63" y1="134.793" y2="268.5879"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="63" x2="63" y1="268.5879" y2="311.5366"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="63" x2="63" y1="311.5366" y2="475.7793"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="428.5" x2="428.5" y1="134.793" y2="268.5879"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="428.5" x2="428.5" y1="268.5879" y2="311.5366"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="428.5" x2="428.5" y1="311.5366" y2="475.7793"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="644" x2="644" y1="134.793" y2="268.5879"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="644" x2="644" y1="268.5879" y2="311.5366"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="644" x2="644" y1="311.5366" y2="475.7793"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="797" x2="797" y1="134.793" y2="268.5879"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="797" x2="797" y1="268.5879" y2="311.5366"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="797" x2="797" y1="311.5366" y2="475.7793"/><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="95" x="16" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="23" y="111.3892">bootwire CLI</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="75" x="26" y="124.4619">host application</text><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="110" x="373.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="96" x="380.5" y="111.3892">BootWireClient</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="392" y="124.4619">command layer</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="137" x="576" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="97" x="596" y="111.3892">Target protocol</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="583" y="124.4619">frame check, reply cache</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="116" x="739" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="746" y="111.3892">Bootloader core</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="769.5" y="124.4619">flash driver</text><polygon fill="#3D5166" points="416.5,161.7417,426.5,165.7417,416.5,169.7417,420.5,165.7417" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="63.5" x2="422.5" y1="165.7417" y2="165.7417"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="70.5" y="160.9868">01</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="32" x="88.5" y="160.9868">ping()</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="428.5" x2="470.5" y1="194.6904" y2="194.6904"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="470.5" x2="470.5" y1="194.6904" y2="207.6904"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="429.5" x2="470.5" y1="207.6904" y2="207.6904"/><polygon fill="#3D5166" points="439.5,203.6904,429.5,207.6904,439.5,211.6904,435.5,207.6904" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="435.5" y="189.9355">02</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="72" x="453.5" y="189.9355">SEQ = 0x70</text><path d="M360.5,222.6904 L428.5,222.6904 L428.5,228.6904 L418.5,238.6904 L355.5,238.6904 L355.5,227.6904 " fill="#E4ECF5" style="stroke: #9DB3CC; stroke-width: 1.0;"/><rect fill="none" height="88.8462" rx="5" ry="5" style="stroke: #9DB3CC; stroke-width: 2.0;" width="375.5" x="355.5" y="222.6904"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="28" x="370.5" y="235.8843">loop</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="232" x="443.5" y="236.8843">[attempt 1 … 4  (1 + max_retries = 3)]</text><line style="stroke: #C0392B; stroke-width: 2.0;" x1="626.5" x2="636.5" y1="255.5879" y2="265.5879"/><line style="stroke: #C0392B; stroke-width: 2.0;" x1="626.5" x2="636.5" y1="265.5879" y2="255.5879"/><line style="stroke: #C0392B; stroke-width: 1.3;" x1="428.5" x2="631.5" y1="260.5879" y2="260.5879"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="435.5" y="255.833">03</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="107" x="453.5" y="255.833">PING [SEQ=0x70]</text><text xml:space="preserve" fill="#C0392B" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="568.5" y="255.833">no answer</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="84" x="388.25" y="294.7817">timeout (0.5 s)</text><polygon fill="#3D5166" points="74.5,335.4854,64.5,339.4854,74.5,343.4854,70.5,339.4854" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="68.5" x2="427.5" y1="339.4854" y2="339.4854"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="80.5" y="334.7305">04</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="323" x="98.5" y="334.7305">BootWireTimeout("PING: no response after 4 attempts")</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="63.5" x2="105.5" y1="383.3828" y2="383.3828"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="105.5" x2="105.5" y1="383.3828" y2="396.3828"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="64.5" x2="105.5" y1="396.3828" y2="396.3828"/><polygon fill="#3D5166" points="74.5,392.3828,64.5,396.3828,74.5,400.3828,70.5,396.3828" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="70.5" y="371.1536">05</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="301" x="88.5" y="363.6792">"Is the board in bootloader mode and the port right?"</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="64" x="88.5" y="378.6279">exit code 1</text><path d="M366,414.3828 L366,455.3828 A5,5 0 0 0 371,460.3828 L853,460.3828 A5,5 0 0 0 858,455.3828 L858,419.3828 L848,409.3828 L371,409.3828 A5,5 0 0 0 366,414.3828 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M848,409.3828 L848,416.8828 A2.5,2.5 0 0 0 850.5,419.3828 L858,419.3828 L848,409.3828 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="359" x="421.25" y="425.6387">Typical causes: wrong port or baud rate, the application is running</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="306" x="421.25" y="439.4375">instead of the bootloader, cable unplugged, target stuck.</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="373" x="421.25" y="453.2363">Worst-case wait = (1 + max_retries) × timeout = 2 s with the defaults.</text><!--MD5=[c800f1d34bdb6f8210e71ae0f3e22f46]
+@startuml bootwire_retries_exhausted_sequence
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>Fault: No Answer After All Retries</b></color></size>\n<size:13><color:#5B6B7C>1 + max_retries attempts with the same SEQ, then BootWireTimeout</color></size>
+box "Host (PC)" #F4F7FB
+  participant "<b>bootwire CLI</b>\n<size:11><color:#C9D7E6>host application</color></size>" as APP #1B3A5F
+  participant "<b>BootWireClient</b>\n<size:11><color:#C9D7E6>command layer</color></size>" as HOST #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target protocol</b>\n<size:11><color:#CBE6DF>frame check, reply cache</color></size>" as TP #146C5F
+  participant "<b>Bootloader core</b>\n<size:11><color:#CBE6DF>flash driver</color></size>" as BL #146C5F
+end box
+
+autonumber "<b>00"
+APP -> HOST : ping()
+HOST -> HOST : SEQ = 0x70
+loop attempt 1 … 4  (1 + max_retries = 3)
+  HOST -[#C0392B]>x TP : PING [SEQ=0x70]  <color:#C0392B>no answer</color>
+  ... timeout (0.5 s) ...
+end
+HOST - -> APP : BootWireTimeout("PING: no response after 4 attempts")
+APP -> APP : "Is the board in bootloader mode and the port right?"\nexit code 1
+note over HOST, BL
+  Typical causes: wrong port or baud rate, the application is running
+  instead of the bootloader, cable unplugged, target stuck.
+  Worst-case wait = (1 + max_retries) × timeout = 2 s with the defaults.
+end note
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

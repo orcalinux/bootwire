@@ -1,0 +1,53 @@
+// Host transaction state machine: BootWireClient.transact() in desktop/src/bootwire/client.py
+// Colours: see py/bootwire_figures.py (NAVY #1B3A5F, INK #1F2D3D, MUTED #5B6B7C).
+digraph bootwire_host_transaction_state {
+  graph [fontname="Arial", bgcolor="#FFFFFF", pad="0.35", nodesep="0.7", ranksep="0.5",
+         labelloc="t", newrank=true,
+         label=<<font point-size="22" color="#1B3A5F"><b>Host Transaction State Machine</b></font><br/><font point-size="13" color="#5B6B7C">BootWireClient.transact(cmd, payload): send one request, return one valid response</font><br/> >];
+  node  [shape=plain, fontname="Arial", fontsize="12.5", fontcolor="#1F2D3D"];
+  edge  [fontname="Arial", fontsize="12", fontcolor="#1F2D3D", color="#5B6B7C", penwidth="1.4",
+         arrowsize="0.8"];
+
+  start [shape=circle, style=filled, fillcolor="#1B3A5F", color="#1B3A5F", width="0.24", label=""];
+  end   [shape=doublecircle, style=filled, fillcolor="#1B3A5F", color="#1B3A5F", width="0.16", label=""];
+
+  Build [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#1B3A5F" bgcolor="#F4F7FB">
+    <tr><td><font point-size="15" color="#1B3A5F"><b>Build</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">SEQ = next SEQ, then +1<br/>frame = SLIP( SEQ, CMD, PAYLOAD, CRC-16 )<br/>attempt = 1</td></tr></table>>];
+
+  Send [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#1B3A5F" bgcolor="#F4F7FB">
+    <tr><td><font point-size="15" color="#1B3A5F"><b>Send</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">flush the RX buffer<br/>write the frame</td></tr></table>>];
+
+  Wait [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#1B3A5F" bgcolor="#F4F7FB">
+    <tr><td><font point-size="15" color="#1B3A5F"><b>Wait</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">feed received bytes to SlipReader<br/>until the deadline: timeout,<br/>or erase_timeout for ERASE</td></tr></table>>];
+
+  Retry [shape=diamond, style=filled, fillcolor="#FFFFFF", color="#1B3A5F", penwidth="1.4",
+         width="0.42", height="0.42", label="", xlabel=<<font color="#5B6B7C">retry?</font>>];
+
+  Done [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#1E8449" bgcolor="#E6F4EA">
+    <tr><td><font point-size="15" color="#1E8449"><b>Done</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">return PAYLOAD</td></tr></table>>];
+
+  Failed [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#C0392B" bgcolor="#FDECEA">
+    <tr><td><font point-size="15" color="#C0392B"><b>Failed</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">raise BootWireStatusError<br/>never retried: the target<br/>would give the same answer</td></tr></table>>];
+
+  TimedOut [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#C0392B" bgcolor="#FDECEA">
+    <tr><td><font point-size="15" color="#C0392B"><b>TimedOut</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">raise BootWireTimeout</td></tr></table>>];
+
+  start -> Build [label=<  transact(cmd, payload)>];
+  Build -> Send;
+  Send  -> Wait;
+  Wait  -> Wait  [label=<<b>ignore</b> and keep waiting:<br align="left"/>bad CRC-16, or SEQ / CMD differ<br align="left"/>(a late reply to an older request)<br align="left"/>>, color="#8A99A8", fontcolor="#5B6B7C"];
+  Wait  -> Done  [label=<valid, SEQ and CMD match,<br/><b>STATUS = OK</b>>, color="#1E8449"];
+  Wait  -> Failed [label=<valid, SEQ and CMD match,<br/><b>STATUS ≠ OK</b>>, color="#C0392B"];
+  Wait  -> Retry [label=<  <b>deadline passed</b>>];
+  Retry -> Send  [label=<<b>attempt ≤ max_retries</b><br/>attempt + 1,<br/>same frame, same SEQ>, color="#1E90D6", fontcolor="#1F2D3D", penwidth="1.8"];
+  Retry -> TimedOut [label=<  <b>retries used up</b>>, color="#C0392B"];
+  Done -> end; Failed -> end; TimedOut -> end;
+
+  { rank=same; Done; Failed; Retry; }
+}

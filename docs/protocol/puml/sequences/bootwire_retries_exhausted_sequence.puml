@@ -1,0 +1,20 @@
+@startuml bootwire_retries_exhausted_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Fault: No Answer After All Retries</b></color></size>\n<size:13><color:#5B6B7C>1 + max_retries attempts with the same SEQ, then BootWireTimeout</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : ping()
+HOST -> HOST : SEQ = 0x70
+loop attempt 1 … 4  (1 + max_retries = 3)
+  HOST -[#C0392B]>x TP : PING [SEQ=0x70]  <color:#C0392B>no answer</color>
+  ... timeout (0.5 s) ...
+end
+HOST --> APP : BootWireTimeout("PING: no response after 4 attempts")
+APP -> APP : "Is the board in bootloader mode and the port right?"\nexit code 1
+note over HOST, BL
+  Typical causes: wrong port or baud rate, the application is running
+  instead of the bootloader, cable unplugged, target stuck.
+  Worst-case wait = (1 + max_retries) × timeout = 2 s with the defaults.
+end note
+@enduml

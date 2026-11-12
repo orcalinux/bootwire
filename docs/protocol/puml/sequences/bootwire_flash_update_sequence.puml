@@ -1,0 +1,55 @@
+@startuml bootwire_flash_update_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Complete Firmware Update</b></color></size>\n<size:13><color:#5B6B7C>bootwire flash app.bin: CONNECT, ERASE, WRITE, VERIFY, RUN</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : flash(image)
+
+group 1. CONNECT
+  HOST -> TP : CONNECT [version 2]
+  TP --> HOST : <color:#1E8449><b>OK</b></color>, device info
+  ref over HOST, BL : bootwire_connect_sequence
+end
+
+HOST -> HOST : pad the image, check it fits the application region
+
+group 2. ERASE every block the image touches
+  loop N blocks
+    HOST -> TP : ERASE [address, block size]
+    TP -> BL : erase block
+    TP --> HOST : <color:#1E8449><b>OK</b></color>
+  end
+  ref over HOST, BL : bootwire_erase_sequence
+end
+
+group 3. WRITE the image in chunks
+  loop image size / 256
+    HOST -> TP : WRITE [address, 256 bytes]
+    TP -> BL : program + read back
+    TP --> HOST : <color:#1E8449><b>OK</b></color>
+  end
+  ref over HOST, BL : bootwire_write_sequence
+end
+
+group 4. VERIFY the whole image
+  HOST -> TP : VERIFY [address, length, CRC-32]
+  TP -> BL : CRC-32 of flash
+  TP --> HOST : <color:#1E8449><b>OK</b></color>
+  ref over HOST, BL : bootwire_verify_sequence
+end
+
+group 5. RUN (skipped with --no-run)
+  HOST -> TP : RUN
+  TP --> HOST : <color:#1E8449><b>OK</b></color>, then jump
+  ref over HOST, BL : bootwire_run_sequence
+end
+
+HOST --> APP : done
+
+note over APP, BL
+  Strictly one request at a time. Any error status stops the update at once,
+  and RUN is never sent for an image that did not pass VERIFY.
+  Lost or damaged frames anywhere above are repaired by resend (see the fault diagrams).
+end note
+@enduml

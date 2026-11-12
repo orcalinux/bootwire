@@ -1,0 +1,32 @@
+@startuml bootwire_run_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>RUN</b></color></size>\n<size:13><color:#5B6B7C>the target checks the image, answers, then jumps to the application</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : run()
+HOST -> TP : RUN [SEQ]
+activate TP
+TP -> BL : check the vector table at app_start:\ninitial SP inside RAM and 4-byte aligned,\nreset vector inside the application region, Thumb bit set
+alt image not valid (erased or wrong address)
+  TP --> HOST : [SEQ, 0x93, <color:#C0392B><b>NO_APP</b></color>]
+  HOST --> APP : BootWireStatusError(<color:#C0392B><b>NO_APP</b></color>)
+  note over TP : stays in the bootloader
+else image valid
+  TP --> HOST : [SEQ, 0x93, <color:#1E8449><b>OK</b></color>]
+  TP -> TP : wait until the response has left the UART
+  TP -> BL : disable interrupts, de-init UART and clock,\nSCB->VTOR = app_start, MSP = initial SP,\njump to the reset handler
+  deactivate TP
+  note over TP, BL
+    The application owns the UART from here.
+    BootWire frames get no answer.
+  end note
+  HOST --> APP : return
+end
+
+== response lost ==
+HOST -> HOST : timeout: resend RUN
+HOST -[#C0392B]>x TP : RUN [same SEQ] (application running, no answer)
+HOST --> APP : BootWireTimeout
+APP -> APP : warning: "RUN sent but not confirmed,\nthe application may already be running"
+@enduml

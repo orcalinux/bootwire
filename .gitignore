@@ -1,0 +1,12 @@
+# Generated desktop review captures and local design-tool state
+.impeccable/review/*.png
+.impeccable/cache/
+.impeccable/config.local.json
+
+# Python environment, caches, and distribution outputs
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.egg-info/
+**/build/
+**/dist/
