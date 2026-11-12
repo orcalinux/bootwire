@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640" role="img"><rect id="bootwire-background" x="0" y="0" width="1000" height="640" fill="#FFFFFF"/>
+<title>BootWire SLIP framing on the wire</title>
+<defs><marker id="e1E90D6-100" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1E90D6"/></marker></defs>
+<rect width="1000" height="640" fill="#FFFFFF"/>
+<text x="500.0" y="42.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">SLIP Framing on the Wire</text>
+<text x="500.0" y="66.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">WRITE request, SEQ 0x05: 4 data bytes C0 DB 11 22 to 0x08008000</text>
+<line x1="228.0" y1="140.0" x2="266.0" y2="140.0" stroke="#2F6DB5" stroke-width="2"/>
+<text x="247.0" y="132.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#173E6B" xml:space="preserve">SEQ</text>
+<line x1="274.0" y1="140.0" x2="312.0" y2="140.0" stroke="#6B4FBB" stroke-width="2"/>
+<text x="293.0" y="132.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#3B2A73" xml:space="preserve">CMD</text>
+<line x1="320.0" y1="140.0" x2="496.0" y2="140.0" stroke="#2E8B65" stroke-width="2"/>
+<text x="408.0" y="132.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">address</text>
+<line x1="504.0" y1="140.0" x2="680.0" y2="140.0" stroke="#2E8B65" stroke-width="2"/>
+<text x="592.0" y="132.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">data</text>
+<line x1="688.0" y1="140.0" x2="772.0" y2="140.0" stroke="#C0394B" stroke-width="2"/>
+<text x="730.0" y="132.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">CRC-16</text>
+<text x="40.0" y="167.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="15" font-weight="bold" fill="#1B3A5F" xml:space="preserve">Frame</text>
+<text x="40.0" y="185.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" fill="#5B6B7C" xml:space="preserve">12 bytes</text>
+<text x="40.0" y="347.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="15" font-weight="bold" fill="#1B3A5F" xml:space="preserve">On the wire</text>
+<text x="40.0" y="365.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" fill="#5B6B7C" xml:space="preserve">16 bytes</text>
+<path d="M247.0,192 C247.0,260 201.0,260 201.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M293.0,192 C293.0,260 247.0,260 247.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M339.0,192 C339.0,260 293.0,260 293.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M385.0,192 C385.0,260 339.0,260 339.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M431.0,192 C431.0,260 385.0,260 385.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M477.0,192 C477.0,260 431.0,260 431.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M523.0,192 C523.0,260 477.0,260 477.0,328" fill="none" stroke="#C98A00" stroke-width="2" stroke-linejoin="round"/>
+<path d="M523.0,192 C523.0,260 523.0,260 523.0,328" fill="none" stroke="#C98A00" stroke-width="2" stroke-linejoin="round"/>
+<path d="M569.0,192 C569.0,260 569.0,260 569.0,328" fill="none" stroke="#C98A00" stroke-width="2" stroke-linejoin="round"/>
+<path d="M569.0,192 C569.0,260 615.0,260 615.0,328" fill="none" stroke="#C98A00" stroke-width="2" stroke-linejoin="round"/>
+<path d="M615.0,192 C615.0,260 661.0,260 661.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M661.0,192 C661.0,260 707.0,260 707.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M707.0,192 C707.0,260 753.0,260 753.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<path d="M753.0,192 C753.0,260 799.0,260 799.0,328" fill="none" stroke="#C9D4E0" stroke-width="1.2" stroke-linejoin="round"/>
+<rect x="226.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#DCEBFB" stroke="#2F6DB5" stroke-width="1.2"/>
+<text x="247.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#173E6B" xml:space="preserve">05</text>
+<rect x="272.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#E9E2F9" stroke="#6B4FBB" stroke-width="1.2"/>
+<text x="293.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#3B2A73" xml:space="preserve">11</text>
+<rect x="318.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="339.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">00</text>
+<rect x="364.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="385.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">80</text>
+<rect x="410.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="431.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">00</text>
+<rect x="456.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="477.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">08</text>
+<rect x="502.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="523.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">C0</text>
+<rect x="548.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="569.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">DB</text>
+<rect x="594.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="615.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">11</text>
+<rect x="640.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="661.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">22</text>
+<rect x="686.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#FBE1E4" stroke="#C0394B" stroke-width="1.2"/>
+<text x="707.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">E3</text>
+<rect x="732.0" y="150.0" width="42.0" height="40.0" rx="5" fill="#FBE1E4" stroke="#C0394B" stroke-width="1.2"/>
+<text x="753.0" y="175.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">20</text>
+<rect x="134.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#1B3A5F" stroke="#1B3A5F" stroke-width="1.2"/>
+<text x="155.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#FFFFFF" xml:space="preserve">C0</text>
+<rect x="180.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#DCEBFB" stroke="#2F6DB5" stroke-width="1.2"/>
+<text x="201.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#173E6B" xml:space="preserve">05</text>
+<rect x="226.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#E9E2F9" stroke="#6B4FBB" stroke-width="1.2"/>
+<text x="247.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#3B2A73" xml:space="preserve">11</text>
+<rect x="272.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="293.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">00</text>
+<rect x="318.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="339.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">80</text>
+<rect x="364.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="385.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">00</text>
+<rect x="410.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#E4F3EC" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="431.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">08</text>
+<rect x="456.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#FFE2A6" stroke="#C98A00" stroke-width="1.2"/>
+<text x="477.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">DB</text>
+<rect x="502.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#FFE2A6" stroke="#C98A00" stroke-width="1.2"/>
+<text x="523.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">DC</text>
+<rect x="548.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#FFE2A6" stroke="#C98A00" stroke-width="1.2"/>
+<text x="569.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">DB</text>
+<rect x="594.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#FFE2A6" stroke="#C98A00" stroke-width="1.2"/>
+<text x="615.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">DD</text>
+<rect x="640.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="661.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">11</text>
+<rect x="686.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#CDEBDD" stroke="#2E8B65" stroke-width="1.2"/>
+<text x="707.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#13513A" xml:space="preserve">22</text>
+<rect x="732.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#FBE1E4" stroke="#C0394B" stroke-width="1.2"/>
+<text x="753.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">E3</text>
+<rect x="778.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#FBE1E4" stroke="#C0394B" stroke-width="1.2"/>
+<text x="799.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#6E1A26" xml:space="preserve">20</text>
+<rect x="824.0" y="330.0" width="42.0" height="40.0" rx="5" fill="#1B3A5F" stroke="#1B3A5F" stroke-width="1.2"/>
+<text x="845.0" y="355.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#FFFFFF" xml:space="preserve">C0</text>
+<line x1="150.0" y1="204.0" x2="150.0" y2="316.0" stroke="#1E90D6" stroke-width="2" marker-end="url(#e1E90D6-100)"/>
+<text x="162.0" y="256.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" fill="#1F2D3D" xml:space="preserve">SLIP encode</text>
+<text x="162.0" y="273.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" fill="#5B6B7C" xml:space="preserve">host TX, target TX</text>
+<line x1="850.0" y1="316.0" x2="850.0" y2="204.0" stroke="#1E90D6" stroke-width="2" marker-end="url(#e1E90D6-100)"/>
+<text x="838.0" y="256.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" font-weight="bold" text-anchor="end" fill="#1F2D3D" xml:space="preserve">SLIP decode</text>
+<text x="838.0" y="273.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" text-anchor="end" fill="#5B6B7C" xml:space="preserve">RX state machine</text>
+<path d="M136.0,378 L136.0,383 L174.0,383 L174.0,378" fill="none" stroke="#8A99A8" stroke-width="1" stroke-linejoin="round"/>
+<text x="155.0" y="400.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">END</text>
+<path d="M182.0,378 L182.0,383 L450.0,383 L450.0,378" fill="none" stroke="#8A99A8" stroke-width="1" stroke-linejoin="round"/>
+<text x="316.0" y="400.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">unchanged</text>
+<path d="M458.0,378 L458.0,383 L542.0,383 L542.0,378" fill="none" stroke="#8A99A8" stroke-width="1" stroke-linejoin="round"/>
+<text x="500.0" y="400.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">C0 → DB DC</text>
+<path d="M550.0,378 L550.0,383 L634.0,383 L634.0,378" fill="none" stroke="#8A99A8" stroke-width="1" stroke-linejoin="round"/>
+<text x="592.0" y="400.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">DB → DB DD</text>
+<path d="M642.0,378 L642.0,383 L818.0,383 L818.0,378" fill="none" stroke="#8A99A8" stroke-width="1" stroke-linejoin="round"/>
+<text x="730.0" y="400.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">unchanged</text>
+<path d="M826.0,378 L826.0,383 L864.0,383 L864.0,378" fill="none" stroke="#8A99A8" stroke-width="1" stroke-linejoin="round"/>
+<text x="845.0" y="400.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">END</text>
+<rect x="46.0" y="440.0" width="218.0" height="64.0" rx="10" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<rect x="58.0" y="452.0" width="40.0" height="40.0" rx="5" fill="#1B3A5F" stroke="#1B3A5F" stroke-width="1.2"/>
+<text x="78.0" y="477.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#FFFFFF" xml:space="preserve">C0</text>
+<text x="110.0" y="469.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" fill="#1B3A5F" xml:space="preserve">END</text>
+<text x="110.0" y="487.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" fill="#5B6B7C" xml:space="preserve">starts and ends every frame</text>
+<rect x="276.0" y="440.0" width="218.0" height="64.0" rx="10" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<rect x="288.0" y="452.0" width="40.0" height="40.0" rx="5" fill="#FFE2A6" stroke="#C98A00" stroke-width="1.2"/>
+<text x="308.0" y="477.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#5C3D00" xml:space="preserve">DB</text>
+<text x="340.0" y="469.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" fill="#1B3A5F" xml:space="preserve">ESC</text>
+<text x="340.0" y="487.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" fill="#5B6B7C" xml:space="preserve">an escape code follows</text>
+<rect x="506.0" y="440.0" width="218.0" height="64.0" rx="10" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<rect x="518.0" y="452.0" width="40.0" height="40.0" rx="5" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="538.0" y="477.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">DC</text>
+<text x="570.0" y="469.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" fill="#1B3A5F" xml:space="preserve">ESC_END</text>
+<text x="570.0" y="487.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" fill="#5B6B7C" xml:space="preserve">after ESC: data byte C0</text>
+<rect x="736.0" y="440.0" width="218.0" height="64.0" rx="10" fill="#FFFFFF" stroke="#DFE6EE" stroke-width="1.2"/>
+<rect x="748.0" y="452.0" width="40.0" height="40.0" rx="5" fill="#EEF3F9" stroke="#8FA8C4" stroke-width="1.2"/>
+<text x="768.0" y="477.4" font-family="'DejaVu Sans Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#1F3B5C" xml:space="preserve">DD</text>
+<text x="800.0" y="469.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" fill="#1B3A5F" xml:space="preserve">ESC_ESC</text>
+<text x="800.0" y="487.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11.5" fill="#5B6B7C" xml:space="preserve">after ESC: data byte DB</text>
+<rect x="46.0" y="526.0" width="908.0" height="59.2" rx="10" fill="#F4F7FB" stroke="#DFE6EE" stroke-width="1"/>
+<rect x="46.0" y="526.0" width="5.0" height="59.2" rx="2" fill="#1E90D6" stroke="none" stroke-width="1.0"/>
+<text x="66.0" y="550.6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">CRC-16 is computed before escaping and checked after un-escaping.</text>
+<text x="66.0" y="569.4" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#5B6B7C" xml:space="preserve">Worst case on the wire: 2 × frame length + 2 bytes. </text>
+<text x="352.2" y="569.4" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#5B6B7C" xml:space="preserve">Bytes before the first END are ignored; END END is an empty frame and is ignored.</text>
+</svg>

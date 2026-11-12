@@ -1,0 +1,785 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T15:05:00Z",
+  "title": "Design System: BootWire Desktop",
+  "extensions": {
+    "platform": "Native Qt Quick / PySide6; all dimensions are logical pixels.",
+    "sourceOfTruth": "desktop/src/bootwire_gui/qml/Theme.qml",
+    "previewNotice": "All HTML/CSS snippets are illustrative light-theme translations for the design panel, not production assets or promises of browser rendering. NativeSource and qml fields identify the implementation.",
+    "colorMeta": {
+      "light-canvas": {
+        "role": "neutral",
+        "displayName": "Light Canvas",
+        "tonalRamp": [
+          "oklch(0.150 0.0017 258.3)",
+          "oklch(0.260 0.0030 258.3)",
+          "oklch(0.380 0.0043 258.3)",
+          "oklch(0.490 0.0045 258.3)",
+          "oklch(0.610 0.0045 258.3)",
+          "oklch(0.720 0.0042 258.3)",
+          "oklch(0.840 0.0024 258.3)",
+          "oklch(0.950 0.0008 258.3)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-surface": {
+        "role": "neutral",
+        "displayName": "Light Surface",
+        "tonalRamp": [
+          "oklch(0.150 0.0000 89.9)",
+          "oklch(0.260 0.0000 89.9)",
+          "oklch(0.380 0.0000 89.9)",
+          "oklch(0.490 0.0000 89.9)",
+          "oklch(0.610 0.0000 89.9)",
+          "oklch(0.720 0.0000 89.9)",
+          "oklch(0.840 0.0000 89.9)",
+          "oklch(0.950 0.0000 89.9)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-inset": {
+        "role": "neutral",
+        "displayName": "Light Inset",
+        "tonalRamp": [
+          "oklch(0.150 0.0017 258.3)",
+          "oklch(0.260 0.0029 258.3)",
+          "oklch(0.380 0.0043 258.3)",
+          "oklch(0.490 0.0045 258.3)",
+          "oklch(0.610 0.0045 258.3)",
+          "oklch(0.720 0.0042 258.3)",
+          "oklch(0.840 0.0024 258.3)",
+          "oklch(0.950 0.0008 258.3)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-ink": {
+        "role": "neutral",
+        "displayName": "Light Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0160 250.8)",
+          "oklch(0.260 0.0277 250.8)",
+          "oklch(0.380 0.0405 250.8)",
+          "oklch(0.490 0.0426 250.8)",
+          "oklch(0.610 0.0426 250.8)",
+          "oklch(0.720 0.0398 250.8)",
+          "oklch(0.840 0.0227 250.8)",
+          "oklch(0.950 0.0071 250.8)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "Light Muted",
+        "tonalRamp": [
+          "oklch(0.150 0.0144 251.3)",
+          "oklch(0.260 0.0250 251.3)",
+          "oklch(0.380 0.0366 251.3)",
+          "oklch(0.490 0.0385 251.3)",
+          "oklch(0.610 0.0385 251.3)",
+          "oklch(0.720 0.0360 251.3)",
+          "oklch(0.840 0.0205 251.3)",
+          "oklch(0.950 0.0064 251.3)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-line": {
+        "role": "neutral",
+        "displayName": "Light Line",
+        "tonalRamp": [
+          "oklch(0.150 0.0054 254.6)",
+          "oklch(0.260 0.0094 254.6)",
+          "oklch(0.380 0.0137 254.6)",
+          "oklch(0.490 0.0144 254.6)",
+          "oklch(0.610 0.0144 254.6)",
+          "oklch(0.720 0.0134 254.6)",
+          "oklch(0.840 0.0077 254.6)",
+          "oklch(0.950 0.0024 254.6)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-accent": {
+        "role": "primary",
+        "displayName": "Light Accent",
+        "tonalRamp": [
+          "oklch(0.150 0.0595 257.5)",
+          "oklch(0.260 0.1032 257.5)",
+          "oklch(0.380 0.1508 257.5)",
+          "oklch(0.490 0.1587 257.5)",
+          "oklch(0.610 0.1587 257.5)",
+          "oklch(0.720 0.1481 257.5)",
+          "oklch(0.840 0.0846 257.5)",
+          "oklch(0.950 0.0265 257.5)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-accent-fill": {
+        "role": "primary",
+        "displayName": "Light Accent Fill",
+        "tonalRamp": [
+          "oklch(0.150 0.0064 256.3)",
+          "oklch(0.260 0.0111 256.3)",
+          "oklch(0.380 0.0162 256.3)",
+          "oklch(0.490 0.0171 256.3)",
+          "oklch(0.610 0.0171 256.3)",
+          "oklch(0.720 0.0160 256.3)",
+          "oklch(0.840 0.0091 256.3)",
+          "oklch(0.950 0.0029 256.3)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-success": {
+        "role": "secondary",
+        "displayName": "Light Success",
+        "tonalRamp": [
+          "oklch(0.150 0.0370 165.7)",
+          "oklch(0.260 0.0642 165.7)",
+          "oklch(0.380 0.0938 165.7)",
+          "oklch(0.490 0.0987 165.7)",
+          "oklch(0.610 0.0987 165.7)",
+          "oklch(0.720 0.0921 165.7)",
+          "oklch(0.840 0.0526 165.7)",
+          "oklch(0.950 0.0164 165.7)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-warning": {
+        "role": "secondary",
+        "displayName": "Light Warning",
+        "tonalRamp": [
+          "oklch(0.150 0.0399 72.1)",
+          "oklch(0.260 0.0692 72.1)",
+          "oklch(0.380 0.1011 72.1)",
+          "oklch(0.490 0.1064 72.1)",
+          "oklch(0.610 0.1064 72.1)",
+          "oklch(0.720 0.0993 72.1)",
+          "oklch(0.840 0.0567 72.1)",
+          "oklch(0.950 0.0177 72.1)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "light-error": {
+        "role": "secondary",
+        "displayName": "Light Error",
+        "tonalRamp": [
+          "oklch(0.150 0.0618 20.0)",
+          "oklch(0.260 0.1071 20.0)",
+          "oklch(0.380 0.1565 20.0)",
+          "oklch(0.490 0.1647 20.0)",
+          "oklch(0.610 0.1647 20.0)",
+          "oklch(0.720 0.1537 20.0)",
+          "oklch(0.840 0.0878 20.0)",
+          "oklch(0.950 0.0275 20.0)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-canvas": {
+        "role": "neutral",
+        "displayName": "Dark Canvas",
+        "tonalRamp": [
+          "oklch(0.150 0.0090 251.6)",
+          "oklch(0.260 0.0156 251.6)",
+          "oklch(0.380 0.0228 251.6)",
+          "oklch(0.490 0.0240 251.6)",
+          "oklch(0.610 0.0240 251.6)",
+          "oklch(0.720 0.0224 251.6)",
+          "oklch(0.840 0.0128 251.6)",
+          "oklch(0.950 0.0040 251.6)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark Surface",
+        "tonalRamp": [
+          "oklch(0.150 0.0112 251.0)",
+          "oklch(0.260 0.0194 251.0)",
+          "oklch(0.380 0.0284 251.0)",
+          "oklch(0.490 0.0299 251.0)",
+          "oklch(0.610 0.0299 251.0)",
+          "oklch(0.720 0.0279 251.0)",
+          "oklch(0.840 0.0159 251.0)",
+          "oklch(0.950 0.0050 251.0)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-inset": {
+        "role": "neutral",
+        "displayName": "Dark Inset",
+        "tonalRamp": [
+          "oklch(0.150 0.0119 247.5)",
+          "oklch(0.260 0.0207 247.5)",
+          "oklch(0.380 0.0302 247.5)",
+          "oklch(0.490 0.0318 247.5)",
+          "oklch(0.610 0.0318 247.5)",
+          "oklch(0.720 0.0297 247.5)",
+          "oklch(0.840 0.0170 247.5)",
+          "oklch(0.950 0.0053 247.5)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Dark Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0043 252.1)",
+          "oklch(0.260 0.0074 252.1)",
+          "oklch(0.380 0.0108 252.1)",
+          "oklch(0.490 0.0114 252.1)",
+          "oklch(0.610 0.0114 252.1)",
+          "oklch(0.720 0.0106 252.1)",
+          "oklch(0.840 0.0061 252.1)",
+          "oklch(0.950 0.0019 252.1)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark Muted",
+        "tonalRamp": [
+          "oklch(0.150 0.0122 252.7)",
+          "oklch(0.260 0.0212 252.7)",
+          "oklch(0.380 0.0310 252.7)",
+          "oklch(0.490 0.0326 252.7)",
+          "oklch(0.610 0.0326 252.7)",
+          "oklch(0.720 0.0304 252.7)",
+          "oklch(0.840 0.0174 252.7)",
+          "oklch(0.950 0.0054 252.7)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark Line",
+        "tonalRamp": [
+          "oklch(0.150 0.0139 247.4)",
+          "oklch(0.260 0.0241 247.4)",
+          "oklch(0.380 0.0352 247.4)",
+          "oklch(0.490 0.0370 247.4)",
+          "oklch(0.610 0.0370 247.4)",
+          "oklch(0.720 0.0346 247.4)",
+          "oklch(0.840 0.0198 247.4)",
+          "oklch(0.950 0.0062 247.4)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Dark Accent",
+        "tonalRamp": [
+          "oklch(0.150 0.0480 252.6)",
+          "oklch(0.260 0.0833 252.6)",
+          "oklch(0.380 0.1217 252.6)",
+          "oklch(0.490 0.1281 252.6)",
+          "oklch(0.610 0.1281 252.6)",
+          "oklch(0.720 0.1196 252.6)",
+          "oklch(0.840 0.0683 252.6)",
+          "oklch(0.950 0.0214 252.6)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-accent-fill": {
+        "role": "primary",
+        "displayName": "Dark Accent Fill",
+        "tonalRamp": [
+          "oklch(0.150 0.0281 252.1)",
+          "oklch(0.260 0.0487 252.1)",
+          "oklch(0.380 0.0711 252.1)",
+          "oklch(0.490 0.0749 252.1)",
+          "oklch(0.610 0.0749 252.1)",
+          "oklch(0.720 0.0699 252.1)",
+          "oklch(0.840 0.0399 252.1)",
+          "oklch(0.950 0.0125 252.1)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-success": {
+        "role": "secondary",
+        "displayName": "Dark Success",
+        "tonalRamp": [
+          "oklch(0.150 0.0404 168.6)",
+          "oklch(0.260 0.0701 168.6)",
+          "oklch(0.380 0.1024 168.6)",
+          "oklch(0.490 0.1078 168.6)",
+          "oklch(0.610 0.1078 168.6)",
+          "oklch(0.720 0.1006 168.6)",
+          "oklch(0.840 0.0575 168.6)",
+          "oklch(0.950 0.0180 168.6)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-warning": {
+        "role": "secondary",
+        "displayName": "Dark Warning",
+        "tonalRamp": [
+          "oklch(0.150 0.0409 81.6)",
+          "oklch(0.260 0.0709 81.6)",
+          "oklch(0.380 0.1036 81.6)",
+          "oklch(0.490 0.1091 81.6)",
+          "oklch(0.610 0.1091 81.6)",
+          "oklch(0.720 0.1018 81.6)",
+          "oklch(0.840 0.0582 81.6)",
+          "oklch(0.950 0.0182 81.6)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-error": {
+        "role": "secondary",
+        "displayName": "Dark Error",
+        "tonalRamp": [
+          "oklch(0.150 0.0411 19.7)",
+          "oklch(0.260 0.0712 19.7)",
+          "oklch(0.380 0.1041 19.7)",
+          "oklch(0.490 0.1096 19.7)",
+          "oklch(0.610 0.1096 19.7)",
+          "oklch(0.720 0.1023 19.7)",
+          "oklch(0.840 0.0585 19.7)",
+          "oklch(0.950 0.0183 19.7)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail": {
+        "role": "neutral",
+        "displayName": "Rail",
+        "tonalRamp": [
+          "oklch(0.150 0.0201 250.2)",
+          "oklch(0.260 0.0348 250.2)",
+          "oklch(0.380 0.0509 250.2)",
+          "oklch(0.490 0.0536 250.2)",
+          "oklch(0.610 0.0536 250.2)",
+          "oklch(0.720 0.0500 250.2)",
+          "oklch(0.840 0.0286 250.2)",
+          "oklch(0.950 0.0089 250.2)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-text": {
+        "role": "neutral",
+        "displayName": "Rail Text",
+        "tonalRamp": [
+          "oklch(0.150 0.0113 248.2)",
+          "oklch(0.260 0.0197 248.2)",
+          "oklch(0.380 0.0287 248.2)",
+          "oklch(0.490 0.0302 248.2)",
+          "oklch(0.610 0.0302 248.2)",
+          "oklch(0.720 0.0282 248.2)",
+          "oklch(0.840 0.0161 248.2)",
+          "oklch(0.950 0.0050 248.2)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-selected": {
+        "role": "neutral",
+        "displayName": "Rail Selected",
+        "tonalRamp": [
+          "oklch(0.150 0.0234 249.7)",
+          "oklch(0.260 0.0406 249.7)",
+          "oklch(0.380 0.0594 249.7)",
+          "oklch(0.490 0.0625 249.7)",
+          "oklch(0.610 0.0625 249.7)",
+          "oklch(0.720 0.0584 249.7)",
+          "oklch(0.840 0.0333 249.7)",
+          "oklch(0.950 0.0104 249.7)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-hover": {
+        "role": "neutral",
+        "displayName": "Rail Hover",
+        "tonalRamp": [
+          "oklch(0.150 0.0227 249.1)",
+          "oklch(0.260 0.0393 249.1)",
+          "oklch(0.380 0.0574 249.1)",
+          "oklch(0.490 0.0604 249.1)",
+          "oklch(0.610 0.0604 249.1)",
+          "oklch(0.720 0.0564 249.1)",
+          "oklch(0.840 0.0322 249.1)",
+          "oklch(0.950 0.0101 249.1)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-focus": {
+        "role": "neutral",
+        "displayName": "Rail Focus",
+        "tonalRamp": [
+          "oklch(0.150 0.0390 251.4)",
+          "oklch(0.260 0.0676 251.4)",
+          "oklch(0.380 0.0988 251.4)",
+          "oklch(0.490 0.1041 251.4)",
+          "oklch(0.610 0.1041 251.4)",
+          "oklch(0.720 0.0971 251.4)",
+          "oklch(0.840 0.0555 251.4)",
+          "oklch(0.950 0.0173 251.4)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-dot-selected": {
+        "role": "neutral",
+        "displayName": "Rail Dot Selected",
+        "tonalRamp": [
+          "oklch(0.150 0.0375 250.9)",
+          "oklch(0.260 0.0651 250.9)",
+          "oklch(0.380 0.0951 250.9)",
+          "oklch(0.490 0.1001 250.9)",
+          "oklch(0.610 0.1001 250.9)",
+          "oklch(0.720 0.0934 250.9)",
+          "oklch(0.840 0.0534 250.9)",
+          "oklch(0.950 0.0167 250.9)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-dot": {
+        "role": "neutral",
+        "displayName": "Rail Dot",
+        "tonalRamp": [
+          "oklch(0.150 0.0202 248.8)",
+          "oklch(0.260 0.0350 248.8)",
+          "oklch(0.380 0.0512 248.8)",
+          "oklch(0.490 0.0539 248.8)",
+          "oklch(0.610 0.0539 248.8)",
+          "oklch(0.720 0.0503 248.8)",
+          "oklch(0.840 0.0287 248.8)",
+          "oklch(0.950 0.0090 248.8)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-divider": {
+        "role": "neutral",
+        "displayName": "Rail Divider",
+        "tonalRamp": [
+          "oklch(0.150 0.0212 248.4)",
+          "oklch(0.260 0.0367 248.4)",
+          "oklch(0.380 0.0537 248.4)",
+          "oklch(0.490 0.0565 248.4)",
+          "oklch(0.610 0.0565 248.4)",
+          "oklch(0.720 0.0527 248.4)",
+          "oklch(0.840 0.0301 248.4)",
+          "oklch(0.950 0.0094 248.4)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "rail-caption": {
+        "role": "neutral",
+        "displayName": "Rail Caption",
+        "tonalRamp": [
+          "oklch(0.150 0.0157 248.4)",
+          "oklch(0.260 0.0271 248.4)",
+          "oklch(0.380 0.0397 248.4)",
+          "oklch(0.490 0.0418 248.4)",
+          "oklch(0.610 0.0418 248.4)",
+          "oklch(0.720 0.0390 248.4)",
+          "oklch(0.840 0.0223 248.4)",
+          "oklch(0.950 0.0070 248.4)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(0.150 0.0000 89.9)",
+          "oklch(0.260 0.0000 89.9)",
+          "oklch(0.380 0.0000 89.9)",
+          "oklch(0.490 0.0000 89.9)",
+          "oklch(0.610 0.0000 89.9)",
+          "oklch(0.720 0.0000 89.9)",
+          "oklch(0.840 0.0000 89.9)",
+          "oklch(0.950 0.0000 89.9)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      },
+      "dark-primary-text": {
+        "role": "neutral",
+        "displayName": "Dark Primary Text",
+        "tonalRamp": [
+          "oklch(0.150 0.0171 251.2)",
+          "oklch(0.260 0.0297 251.2)",
+          "oklch(0.380 0.0434 251.2)",
+          "oklch(0.490 0.0457 251.2)",
+          "oklch(0.610 0.0457 251.2)",
+          "oklch(0.720 0.0426 251.2)",
+          "oklch(0.840 0.0244 251.2)",
+          "oklch(0.950 0.0076 251.2)"
+        ],
+        "rampPurpose": "Illustrative synthesized OKLCH swatches only; not implemented Theme.qml tokens."
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "supporting": {
+        "displayName": "Supporting",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "secondary": {
+        "displayName": "Secondary",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "Observed QML role; see DESIGN.md."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Observed QML role; see DESIGN.md."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "feedback",
+        "value": "110\u2013120ms",
+        "purpose": "Control hover/check feedback"
+      },
+      {
+        "name": "popup-enter",
+        "value": "100ms",
+        "purpose": "Menu/dropdown opacity"
+      },
+      {
+        "name": "chevron",
+        "value": "140ms OutCubic",
+        "purpose": "Dropdown open state"
+      },
+      {
+        "name": "activity-spin",
+        "value": "850ms linear loop",
+        "purpose": "Active operation indicator"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-connection-and-rail",
+        "value": "1150px",
+        "condition": "window.width < 1150",
+        "purpose": "Rail 184px, port 150px, Refresh hidden; otherwise 214px and 215px."
+      },
+      {
+        "name": "compact-evidence-column",
+        "value": "1200px",
+        "condition": "window.width < 1200",
+        "purpose": "Evidence column prefers 230px; otherwise 290px. No mobile stacking."
+      }
+    ],
+    "controlStates": {
+      "ActionButton": {
+        "focus": "2px accent border; primary fill has the same color",
+        "disabledOpacity": 0.45,
+        "primaryHoverAndPress": "Unchanged accent fill",
+        "secondaryHover": "accentFill",
+        "secondaryPress": "line"
+      },
+      "Field": {
+        "focus": "2px accent border",
+        "disabledOpacity": 0.5
+      },
+      "rail": "2px rail-focus border; persistent selected fill"
+    },
+    "caveats": [
+      "No custom transition or animation duration tokens. Qt BusyIndicator may animate through its style.",
+      "Uncustomized Qt Quick Controls inherit palette and active style; screenshots show one environment.",
+      "Primary button focus border is not visually distinct from its accent fill.",
+      "Synthetic tonal ramps are panel metadata, not application palette additions."
+    ],
+    "narrativeNote": "No named creative metaphor was confirmed; the northStar field is intentionally empty.",
+    "applicationIcon": {
+      "source": "desktop/src/bootwire_gui/assets/bootwire.svg",
+      "formats": [
+        "svg",
+        "png",
+        "ico"
+      ],
+      "desktopFileId": "bootwire"
+    },
+    "customControls": [
+      "SelectField.qml",
+      "CheckField.qml",
+      "NumberField.qml",
+      "SlimScrollBar.qml",
+      "StageProgress.qml",
+      "ActivitySpinner.qml",
+      "ActionMenu.qml",
+      "MenuOption.qml",
+      "MenuRule.qml",
+      "Glyph.qml"
+    ],
+    "dropdownScrolling": {
+      "gutterGap": "4px",
+      "rows": "Width follows the list viewport, excluding the scrollbar gutter.",
+      "visibility": "Scrollbar and gutter are present only when content exceeds the viewport."
+    },
+    "alignment": {
+      "iconOnlyActions": "Glyph center aligns to the button center independently of padding.",
+      "shortcutHelp": "76px key column, 24px gutter, aligned description column."
+    },
+    "windowChrome": {
+      "height": "46px",
+      "menus": "Styled Qt MenuBar with hover switching and keyboard navigation",
+      "controls": "Minimize, maximize/restore, close",
+      "moveResize": "Native system move/resize from the custom title bar and edge grips",
+      "nativeDecorations": false
+    },
+    "focusPolicy": "Action controls use Qt visualFocus for keyboard-only focus rings; mouse activation does not leave an outline. Editable fields retain editing-focus feedback.",
+    "appearanceAction": {
+      "lightMode": {
+        "label": "Dark",
+        "glyph": "Outline crescent moon"
+      },
+      "darkMode": {
+        "label": "Light",
+        "glyph": "Sun"
+      },
+      "meaning": "The destination theme, not the current theme."
+    },
+    "developerPanel": {
+      "collapsedHeight": "40px",
+      "defaultExpandedHeight": "280px",
+      "tabs": [
+        "Output",
+        "BootWire",
+        "System terminal"
+      ],
+      "shortcuts": [
+        "Ctrl+J",
+        "Ctrl+`"
+      ],
+      "outputType": "11px mono, 10px timestamps",
+      "terminal": {
+        "background": "#111E2C",
+        "foreground": "#E7EDF7",
+        "cursor": "#A8CFFF",
+        "font": "13px DejaVu Sans Mono"
+      },
+      "interaction": "Top-edge resize, selectable output, cooperative device cancellation, local PTY/ConPTY shell",
+      "placement": "Flush bottom edge; compact status strip above"
+    },
+    "windowManagement": {
+      "minimumSize": "640\u00d7540",
+      "snapping": "Operating-system configured shortcuts; no app tiling key bindings",
+      "narrowBreakpoint": "1000px",
+      "narrowRail": "64px icons with tooltips",
+      "firmwareLayout": "Single column below 1000px; two columns otherwise"
+    },
+    "iconography": {
+      "grid": "24px square",
+      "stroke": "2px",
+      "actionSize": "18px",
+      "navigationSize": "20px",
+      "alignment": "Icon-and-label groups centered together"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary-light",
+      "description": "Illustrative light-theme HTML/CSS translation; native QML is authoritative.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/ActionButton.qml",
+      "qml": "ActionButton { text: \"Flash firmware\"; primary: true }",
+      "html": "<button class=\"ds-button-primary\">Flash firmware</button>",
+      "css": ".ds-button-primary{font:600 13px \"DejaVu Sans\",sans-serif;min-width:82px;height:40px;padding:0 15px;border-radius:9px;background:#185DB8;color:#FFFFFF;border:0;}.ds-button-primary:hover,.ds-button-primary:active{background:#185DB8;}.ds-button-primary:focus-visible{outline:none;border:2px solid #FFFFFF;}.ds-button-primary:disabled{opacity:.45;}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary-light",
+      "description": "Illustrative light-theme HTML/CSS translation; native QML is authoritative.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/ActionButton.qml",
+      "qml": "ActionButton { text: \"Verify only\";  }",
+      "html": "<button class=\"ds-button-secondary\">Verify only</button>",
+      "css": ".ds-button-secondary{font:600 13px \"DejaVu Sans\",sans-serif;min-width:82px;height:40px;padding:0 15px;border-radius:9px;background:#FFFFFF;color:#182A3D;border:1px solid #DCE3EC;}.ds-button-secondary:hover{background:#E9F1FC;}.ds-button-secondary:active{background:#DCE3EC;}.ds-button-secondary:focus-visible{outline:none;border:2px solid #185DB8;}.ds-button-secondary:disabled{opacity:.45;}"
+    },
+    {
+      "name": "Destructive Button",
+      "kind": "button",
+      "refersTo": "button-destructive-light",
+      "description": "Illustrative light-theme HTML/CSS translation; native QML is authoritative.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/ActionButton.qml",
+      "qml": "ActionButton { text: \"Erase region\"; destructive: true }",
+      "html": "<button class=\"ds-button-destructive\">Erase region</button>",
+      "css": ".ds-button-destructive{font:600 13px \"DejaVu Sans\",sans-serif;min-width:82px;height:40px;padding:0 15px;border-radius:9px;background:#FFFFFF;color:#B02F3C;border:1px solid #DCE3EC;}.ds-button-destructive:hover{background:#E9F1FC;}.ds-button-destructive:active{background:#DCE3EC;}.ds-button-destructive:focus-visible{outline:none;border:2px solid #185DB8;}.ds-button-destructive:disabled{opacity:.45;}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field-light",
+      "description": "Illustrative light-theme translation of the native text field.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/Field.qml",
+      "qml": "Field { placeholderText: \"Load address\" }",
+      "html": "<input class=\"ds-field\" placeholder=\"Load address\" aria-label=\"Load address\">",
+      "css": ".ds-field{height:40px;padding:0 12px;font:14px \"DejaVu Sans\",sans-serif;color:#182A3D;background:#FFFFFF;border:1px solid #DCE3EC;border-radius:9px;}.ds-field::placeholder{color:#586A7E}.ds-field:focus-visible{outline:none;border:2px solid #185DB8}.ds-field::selection{background:#185DB8;color:#FFFFFF}.ds-field:disabled{opacity:.5}"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel-light",
+      "description": "Illustrative light-theme translation; 22px padding belongs to the caller.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/Panel.qml",
+      "qml": "Panel { /* caller supplies content anchors.margins: 22 */ }",
+      "html": "<section class=\"ds-panel\">Firmware image</section>",
+      "css": ".ds-panel{padding:22px;background:#FFFFFF;color:#182A3D;border:1px solid #DCE3EC;border-radius:12px;font:600 17px \"DejaVu Sans\",sans-serif}"
+    },
+    {
+      "name": "Rail Navigation",
+      "kind": "nav",
+      "description": "Illustrative translation of a selected native rail button.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/Main.qml",
+      "qml": "// Main.qml rail Repeater delegate: Button; implicitHeight: 46; radius: 8",
+      "html": "<nav class=\"ds-rail\"><button class=\"ds-nav\" aria-current=\"page\"><span class=\"ds-dot\"></span>Firmware</button></nav>",
+      "css": ".ds-rail{padding:18px;background:#142C44;width:178px}.ds-nav{height:46px;width:100%;text-align:left;border:0;border-radius:8px;background:#2B4967;color:#FFFFFF;font:600 14px \"DejaVu Sans\",sans-serif}.ds-nav:hover{background:#2B4967}.ds-nav:focus-visible{outline:none;border:2px solid #82B9F5}.ds-dot{display:inline-block;width:6px;height:6px;margin:0 12px 0 8px;border-radius:3px;background:#8FC5FF}"
+    },
+    {
+      "name": "Operation Stages",
+      "kind": "custom",
+      "description": "Illustrative stage translation. StageProgress.qml and ActivitySpinner.qml implement themed operation feedback.",
+      "nativeSource": "desktop/src/bootwire_gui/qml/Main.qml",
+      "qml": "// Main.qml Repeater model: [\"Erase\", \"Write\", \"Verify\"]",
+      "html": "<div class=\"ds-stages\"><span>\u25cf Erase</span><span>\u25cf Write</span><span>\u25cf Verify</span></div>",
+      "css": ".ds-stages{display:flex;gap:30px;padding:20px;background:#FFFFFF;border:1px solid #DCE3EC;border-radius:12px;font:12px \"DejaVu Sans\",sans-serif;color:#157657}"
+    }
+  ],
+  "narrative": {
+    "northStar": "",
+    "overview": "BootWire uses a clean, spacious desktop workspace with light and dark themes. Persistent navy navigation anchors a cool neutral canvas; bordered surfaces organize firmware work and its evidence. Blue identifies actions and active protocol traffic, while semantic color supports explicit outcomes.\n\nThis is a native Qt Quick system. Theme.qml is the color authority, and QML components define geometry and behavior. No creative metaphor has been approved or inferred.",
+    "keyCharacteristics": [
+      "Spacious workspace and persistent navigation.",
+      "Shared geometry across light and dark themes.",
+      "Visible connection state, operation stages, and outcomes.",
+      "Monospaced technical evidence beside readable interface text."
+    ],
+    "rules": [],
+    "dos": [
+      "Do use Theme.qml semantic colors in both themes.",
+      "Do preserve simulator labels and explicit operation outcomes.",
+      "Do use the existing QML controls and keyboard focus treatments.",
+      "Do keep technical values monospaced and long payloads wrapping."
+    ],
+    "donts": [
+      "Don't substitute a web or mobile navigation pattern for the desktop rail.",
+      "Don't add shadows, gradients, or motion as if they were established tokens.",
+      "Don't communicate a failure or simulator state through color alone.",
+      "Don't replace the approved logo or palette while extending the control skins."
+    ]
+  }
+}

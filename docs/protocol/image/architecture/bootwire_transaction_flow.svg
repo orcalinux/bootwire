@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="333px" preserveAspectRatio="none" style="width:724px;height:333px;" version="1.1" viewBox="0 0 724 333" width="724px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="724" height="333" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="497" x="111" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="167" x="276" y="36.6978">One Transaction</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="481" x="119" y="53.3418">one request in flight; a resend uses the same SEQ and is answered from the cache</text><rect fill="#F4F7FB" height="243.5879" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="108" x="4" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="65" x="25.5" y="85.2285">Host (PC)</text><rect fill="#EEF6F4" height="243.5879" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="210" x="400.5" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="204" x="403.5" y="85.2285">Target (Cortex-M bootloader)</text><rect fill="#DCEBFB" height="76.5464" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="500.5" y="165.7417"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="58" x2="58" y1="134.793" y2="321.6846"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="505" x2="505" y1="134.793" y2="321.6846"/><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="84" x="16" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="27" x="44.5" y="111.3892">Host</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="23" y="124.4619">BootWireClient</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="65" x="473" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="41" x="485" y="111.3892">Target</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="51" x="480" y="124.4619">bootloader</text><rect fill="#DCEBFB" height="76.5464" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="500.5" y="165.7417"/><polygon fill="#3D5166" points="488.5,161.7417,498.5,165.7417,488.5,169.7417,492.5,165.7417" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="58" x2="494.5" y1="165.7417" y2="165.7417"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="263" x="65" y="160.9868">Request  [SEQ=n, CMD, PAYLOAD, CRC16]</text><path d="M515,183.7417 L515,210.7417 A5,5 0 0 0 520,215.7417 L707,215.7417 A5,5 0 0 0 712,210.7417 L712,188.7417 L702,178.7417 L520,178.7417 A5,5 0 0 0 515,183.7417 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M702,178.7417 L702,186.2417 A2.5,2.5 0 0 0 704.5,188.7417 L712,188.7417 L702,178.7417 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="176" x="521" y="194.9976">check CRC, look up reply cache,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="130" x="521" y="208.7964">execute, cache the reply</text><polygon fill="#3D5166" points="69,238.2881,59,242.2881,69,246.2881,65,242.2881" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="63" x2="504.5" y1="242.2881" y2="242.2881"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="358" x="75" y="237.5332">Response [SEQ=n, CMD|0x80, STATUS, PAYLOAD, CRC16]</text><path d="M15,260.2881 L15,301.2881 A5,5 0 0 0 20,306.2881 L543,306.2881 A5,5 0 0 0 548,301.2881 L548,265.2881 L538,255.2881 L20,255.2881 A5,5 0 0 0 15,260.2881 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M538,255.2881 L538,262.7881 A2.5,2.5 0 0 0 540.5,265.2881 L548,265.2881 L538,255.2881 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="354" x="66" y="271.5439">Exactly one request is in flight. The next request uses SEQ = n+1.</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="259" x="66" y="285.3428">No valid response in time: the host resends the</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="32" x="328" y="285.3428">same</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="106" x="363" y="285.3428">frame (same SEQ).</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="422" x="66" y="299.1416">The target answers a resend from its cache, so a command never runs twice.</text><!--MD5=[836a02970e916f12dfdbbff81a3f0adc]
+@startuml bootwire_transaction_flow
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>One Transaction</b></color></size>\n<size:13><color:#5B6B7C>one request in flight; a resend uses the same SEQ and is answered from the cache</color></size>
+
+box "Host (PC)" #F4F7FB
+  participant "<b>Host</b>\n<size:11><color:#C9D7E6>BootWireClient</color></size>" as H #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target</b>\n<size:11><color:#CBE6DF>bootloader</color></size>" as T #146C5F
+end box
+
+H -> T : Request  [SEQ=n, CMD, PAYLOAD, CRC16]
+activate T
+note right of T
+  check CRC, look up reply cache,
+  execute, cache the reply
+end note
+T - -> H : Response [SEQ=n, CMD|0x80, STATUS, PAYLOAD, CRC16]
+deactivate T
+note over H, T
+  Exactly one request is in flight. The next request uses SEQ = n+1.
+  No valid response in time: the host resends the **same** frame (same SEQ).
+  The target answers a resend from its cache, so a command never runs twice.
+end note
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

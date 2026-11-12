@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1210px" preserveAspectRatio="none" style="width:667px;height:1210px;" version="1.1" viewBox="0 0 667 1210" width="667px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="667" height="1210" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="465" x="99.75" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="383" x="140.75" y="36.6978">Target: Handling One Received Frame</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="449" x="107.75" y="53.3418">what the bootloader does with every frame the SLIP RX state machine delivers</text><ellipse cx="256.5" cy="74.0967" fill="#1B3A5F" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"/><rect fill="#F4F7FB" height="49.8975" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="219" x="147" y="104.0967"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="199" x="157" y="126.2905">SLIP RX delivers a complete frame</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="68" x="157" y="141.2393">(rx_buf, len)</text><path d="M321.5,223.4641 L321.5,245.1624 L301.5,249.1624 L321.5,253.1624 L321.5,274.8606 A0,0 0 0 0 321.5,274.8606 L555.5,274.8606 A0,0 0 0 0 555.5,274.8606 L555.5,233.4641 L545.5,223.4641 L321.5,223.4641 A0,0 0 0 0 321.5,223.4641 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M545.5,223.4641 L545.5,233.4641 L555.5,233.4641 L545.5,223.4641 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="213" x="327.5" y="239.72">Never answer a frame you cannot trust:</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="201" x="327.5" y="253.5188">even SEQ may be the damaged byte.</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="178" x="327.5" y="267.3176">The host times out and resends.</text><rect fill="#FDECEA" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="90" x="211.5" y="231.688"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="221.5" y="253.8818">drop silently</text><ellipse cx="256.5" cy="305.8606" fill="#FFFFFF" rx="11" ry="11" style="stroke: #1B3A5F; stroke-width: 1.0;"/><ellipse cx="256.5" cy="305.8606" fill="#1B3A5F" rx="6" ry="6" style="stroke: #8D9CAF; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="178.5,173.9941,334.5,173.9941,346.5,185.9941,334.5,197.9941,178.5,197.9941,166.5,185.9941,178.5,173.9941" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="260.5" y="210.188">no</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="156" x="178.5" y="190.3506">len ≥ 4 and CRC-16 correct?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="346.5" y="183.2393">yes</text><rect fill="#FDECEA" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="90" x="211.5" y="411.9326"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="221.5" y="434.1265">drop silently</text><ellipse cx="256.5" cy="485.0076" fill="#FFFFFF" rx="11" ry="11" style="stroke: #1B3A5F; stroke-width: 1.0;"/><ellipse cx="256.5" cy="485.0076" fill="#1B3A5F" rx="6" ry="6" style="stroke: #8D9CAF; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="210,358.8606,303,358.8606,315,372.6594,303,386.4583,210,386.4583,198,372.6594,210,358.8606" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="260.5" y="398.6521">yes</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="93" x="210" y="370.1165">bit 7 of CMD set?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="93" x="210" y="383.9153">(it is a response)</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="315" y="369.9045">no</text><path d="M380.5,591.0752 L380.5,612.7734 L360.5,616.7734 L380.5,620.7734 L380.5,642.4717 A0,0 0 0 0 380.5,642.4717 L631.5,642.4717 A0,0 0 0 0 631.5,642.4717 L631.5,601.0752 L621.5,591.0752 L380.5,591.0752 A0,0 0 0 0 380.5,591.0752 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><path d="M621.5,591.0752 L621.5,601.0752 L631.5,601.0752 L621.5,591.0752 " fill="#FFF8E6" style="stroke: #E8C66A; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="216" x="386.5" y="607.3311">This is a resend because the response</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="68" x="386.5" y="621.1299">was lost. Do</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="18" x="457.5" y="621.1299">not</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="79" x="478.5" y="621.1299">execute again:</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="230" x="386.5" y="634.9287">an ERASE, WRITE or RUN must run once.</text><rect fill="#DCEBFB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="208" x="152.5" y="599.2991"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="188" x="162.5" y="621.4929">send the cached response again</text><ellipse cx="256.5" cy="673.4717" fill="#FFFFFF" rx="11" ry="11" style="stroke: #1B3A5F; stroke-width: 1.0;"/><ellipse cx="256.5" cy="673.4717" fill="#1B3A5F" rx="6" ry="6" style="stroke: #8D9CAF; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="183,538.0076,330,538.0076,342,551.8064,330,565.6052,183,565.6052,171,551.8064,183,538.0076" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="260.5" y="577.7991">yes</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="124" x="183" y="549.2634">CMD ≠ CONNECT and</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="147" x="183" y="563.0623">(SEQ, CMD) = cached key?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="342" y="549.0515">no</text><rect fill="#F4F7FB" height="79.7949" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="322" x="95.5" y="726.4717"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="133" x="105.5" y="748.6655">execute the command:</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="302" x="105.5" y="763.6143">check payload length, address range and alignment,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="221" x="105.5" y="778.563">then erase, or program and read back,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="264" x="105.5" y="793.5117">or compute CRC-32, or check the vector table</text><rect fill="#F4F7FB" height="49.8975" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="305" x="104" y="826.2666"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="88" x="114" y="848.4604">build response:</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="285" x="114" y="863.4092">SEQ, CMD | 0x80, STATUS, PAYLOAD, CRC-16</text><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="281" x="116" y="896.1641"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="261" x="126" y="918.3579">cache key = (SEQ, CMD), cache = response</text><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="151" x="181" y="951.1128"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="131" x="191" y="973.3066">SLIP encode and send</text><polygon fill="#FFFFFF" points="168,1006.0615,345,1006.0615,357,1018.0615,345,1030.0615,168,1030.0615,156,1018.0615,168,1006.0615" style="stroke: #1B3A5F; stroke-width: 1.5;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="177" x="168" y="1022.418">CMD = RUN and STATUS = OK?</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="21" x="135" y="1015.3066">yes</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="14" x="357" y="1015.3066">no</text><rect fill="#F4F7FB" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="253" x="15" y="1040.0615"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="233" x="25" y="1062.2554">wait until the last byte has left the UART</text><rect fill="#E6F4EA" height="64.8462" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="263" x="10" y="1095.0103"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="243" x="20" y="1117.2041">de-initialise peripherals, disable interrupts,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="207" x="20" y="1132.1528">SCB-&gt;VTOR = app_start, set MSP,</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="210" x="20" y="1147.1016">jump to the application reset handler</text><ellipse cx="141.5" cy="1189.8564" fill="#FFFFFF" rx="10" ry="10" style="stroke: #1B3A5F; stroke-width: 1.5;"/><line style="stroke: #1B3A5F; stroke-width: 2.5;" x1="135.3128" x2="147.6872" y1="1183.6693" y2="1196.0436"/><line style="stroke: #1B3A5F; stroke-width: 2.5;" x1="147.6872" x2="135.3128" y1="1183.6693" y2="1196.0436"/><rect fill="#FFFFFF" height="34.9487" rx="12.5" ry="12.5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="157" x="293" y="1040.0615"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="137" x="303" y="1062.2554">ready for the next frame</text><ellipse cx="371.5" cy="1106.0103" fill="#FFFFFF" rx="11" ry="11" style="stroke: #1B3A5F; stroke-width: 1.0;"/><ellipse cx="371.5" cy="1106.0103" fill="#1B3A5F" rx="6" ry="6" style="stroke: #8D9CAF; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="84.0967" y2="104.0967"/><polygon fill="#3D5166" points="252.5,94.0967,256.5,104.0967,260.5,94.0967,256.5,98.0967" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="266.6367" y2="294.8606"/><polygon fill="#3D5166" points="252.5,284.8606,256.5,294.8606,260.5,284.8606,256.5,288.8606" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="197.9941" y2="231.688"/><polygon fill="#3D5166" points="252.5,221.688,256.5,231.688,260.5,221.688,256.5,225.688" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="346.5" x2="565.5" y1="185.9941" y2="185.9941"/><polygon fill="#3D5166" points="561.5,264.6624,565.5,274.6624,569.5,264.6624,565.5,268.6624" style="stroke: #3D5166; stroke-width: 1.5;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="565.5" x2="565.5" y1="185.9941" y2="338.8606"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="565.5" x2="256.5" y1="338.8606" y2="338.8606"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="338.8606" y2="358.8606"/><polygon fill="#3D5166" points="252.5,348.8606,256.5,358.8606,260.5,348.8606,256.5,352.8606" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="153.9941" y2="173.9941"/><polygon fill="#3D5166" points="252.5,163.9941,256.5,173.9941,260.5,163.9941,256.5,167.9941" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="446.8813" y2="474.0076"/><polygon fill="#3D5166" points="252.5,464.0076,256.5,474.0076,260.5,464.0076,256.5,468.0076" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="386.4583" y2="411.9326"/><polygon fill="#3D5166" points="252.5,401.9326,256.5,411.9326,260.5,401.9326,256.5,405.9326" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="315" x2="327" y1="372.6594" y2="372.6594"/><polygon fill="#3D5166" points="323,444.0076,327,454.0076,331,444.0076,327,448.0076" style="stroke: #3D5166; stroke-width: 1.5;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="327" x2="327" y1="372.6594" y2="518.0076"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="327" x2="256.5" y1="518.0076" y2="518.0076"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="518.0076" y2="538.0076"/><polygon fill="#3D5166" points="252.5,528.0076,256.5,538.0076,260.5,528.0076,256.5,532.0076" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="634.2478" y2="662.4717"/><polygon fill="#3D5166" points="252.5,652.4717,256.5,662.4717,260.5,652.4717,256.5,656.4717" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="565.6052" y2="599.2991"/><polygon fill="#3D5166" points="252.5,589.2991,256.5,599.2991,260.5,589.2991,256.5,593.2991" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="342" x2="641.5" y1="551.8064" y2="551.8064"/><polygon fill="#3D5166" points="637.5,631.374,641.5,641.374,645.5,631.374,641.5,635.374" style="stroke: #3D5166; stroke-width: 1.5;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="641.5" x2="641.5" y1="551.8064" y2="706.4717"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="641.5" x2="256.5" y1="706.4717" y2="706.4717"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="706.4717" y2="726.4717"/><polygon fill="#3D5166" points="252.5,716.4717,256.5,726.4717,260.5,716.4717,256.5,720.4717" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="806.2666" y2="826.2666"/><polygon fill="#3D5166" points="252.5,816.2666,256.5,826.2666,260.5,816.2666,256.5,820.2666" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="876.1641" y2="896.1641"/><polygon fill="#3D5166" points="252.5,886.1641,256.5,896.1641,260.5,886.1641,256.5,890.1641" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="931.1128" y2="951.1128"/><polygon fill="#3D5166" points="252.5,941.1128,256.5,951.1128,260.5,941.1128,256.5,945.1128" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="141.5" x2="141.5" y1="1075.0103" y2="1095.0103"/><polygon fill="#3D5166" points="137.5,1085.0103,141.5,1095.0103,145.5,1085.0103,141.5,1089.0103" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="141.5" x2="141.5" y1="1159.8564" y2="1179.8564"/><polygon fill="#3D5166" points="137.5,1169.8564,141.5,1179.8564,145.5,1169.8564,141.5,1173.8564" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="371.5" x2="371.5" y1="1075.0103" y2="1095.0103"/><polygon fill="#3D5166" points="367.5,1085.0103,371.5,1095.0103,375.5,1085.0103,371.5,1089.0103" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="156" x2="141.5" y1="1018.0615" y2="1018.0615"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="141.5" x2="141.5" y1="1018.0615" y2="1040.0615"/><polygon fill="#3D5166" points="137.5,1030.0615,141.5,1040.0615,145.5,1030.0615,141.5,1034.0615" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="357" x2="371.5" y1="1018.0615" y2="1018.0615"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="371.5" x2="371.5" y1="1018.0615" y2="1040.0615"/><polygon fill="#3D5166" points="367.5,1030.0615,371.5,1040.0615,375.5,1030.0615,371.5,1034.0615" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.5;" x1="256.5" x2="256.5" y1="986.0615" y2="1006.0615"/><polygon fill="#3D5166" points="252.5,996.0615,256.5,1006.0615,260.5,996.0615,256.5,1000.0615" style="stroke: #3D5166; stroke-width: 1.0;"/><!--MD5=[e4d0131b2e24051822f48bd77a6f89a2]
+@startuml bootwire_target_frame_handling
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>Target: Handling One Received Frame</b></color></size>\n<size:13><color:#5B6B7C>what the bootloader does with every frame the SLIP RX state machine delivers</color></size>
+
+start
+:SLIP RX delivers a complete frame
+(rx_buf, len);
+if (len ≥ 4 and CRC-16 correct?) then (yes)
+else (no)
+  #FDECEA:drop silently;
+  note right
+    Never answer a frame you cannot trust:
+    even SEQ may be the damaged byte.
+    The host times out and resends.
+  end note
+  stop
+endif
+if (bit 7 of CMD set?\n(it is a response)) then (yes)
+  #FDECEA:drop silently;
+  stop
+else (no)
+endif
+if (CMD ≠ CONNECT and\n(SEQ, CMD) = cached key?) then (yes)
+  #DCEBFB:send the cached response again;
+  note right
+    This is a resend because the response
+    was lost. Do **not** execute again:
+    an ERASE, WRITE or RUN must run once.
+  end note
+  stop
+else (no)
+endif
+:execute the command:
+check payload length, address range and alignment,
+then erase, or program and read back,
+or compute CRC-32, or check the vector table;
+:build response:
+SEQ, CMD | 0x80, STATUS, PAYLOAD, CRC-16;
+:cache key = (SEQ, CMD), cache = response;
+:SLIP encode and send;
+if (CMD = RUN and STATUS = OK?) then (yes)
+  :wait until the last byte has left the UART;
+  #E6F4EA:de-initialise peripherals, disable interrupts,
+  SCB->VTOR = app_start, set MSP,
+  jump to the application reset handler;
+  end
+else (no)
+  #FFFFFF:ready for the next frame;
+  stop
+endif
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

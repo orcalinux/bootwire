@@ -1,0 +1,34 @@
+@startuml bootwire_erase_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>ERASE</b></color></size>\n<size:13><color:#5B6B7C>one command per erase block, each answered within erase_timeout</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : erase_region(0x08008000, 20000)
+HOST -> HOST : check the range is inside the application region\nround out to whole blocks: 10 × 2048 bytes
+loop for each erase block
+  HOST -> TP : ERASE [SEQ, address, 2048]\n(timeout = erase_timeout)
+  activate TP
+  TP -> TP : payload is 8 bytes?\naddress and length block-aligned?\ninside the application region?
+  alt a check fails
+    TP --> HOST : [SEQ, 0x90, <color:#C0392B><b>BAD_LENGTH</b></color> or <color:#C0392B><b>BAD_PARAM</b></color>]
+    HOST --> APP : BootWireStatusError (nothing erased)
+  else checks pass
+    TP -> BL : erase the block
+    BL --> TP : result
+    alt erase failed
+      TP --> HOST : [SEQ, 0x90, <color:#C0392B><b>FLASH</b></color>]
+      HOST --> APP : BootWireStatusError
+    else erased
+      TP --> HOST : [SEQ, 0x90, <color:#1E8449><b>OK</b></color>]
+      deactivate TP
+      HOST -> APP : progress("erase", done, total)
+    end
+  end
+end
+note over HOST, BL
+  One block per command keeps every response quick (a page or sector erase),
+  so one timeout fits all parts. A full-region erase in one command could take
+  seconds, longer than the host can tell from a lost frame.
+end note
+@enduml

@@ -1,35 +1,47 @@
 [project]
-name = "gsp-toolkit"
-version = "0.0.1"
-description = "Host-side SDK & CLI for the General Serial Protocol"
+name = "bootwire"
+version = "0.2.0"
+description = "Host-side library and CLI for the BootWire Protocol bootloader"
 readme = "README.md"
 authors = [
   { name = "Mahmoud Abdelraouf" }
 ]
+license = { text = "MIT" }
 requires-python = ">=3.9"
 dependencies = [
   "pyserial>=3.5",
   "typer>=0.9",
-  "PyYAML>=6.0",
-  "argcomplete>=3.1.1",
   "rich>=13.0",
-  "prompt_toolkit>=3.0"
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+gui = [
+  "PySide6>=6.8,<7; python_version >= '3.10'",
+  "pyte>=0.8.2,<0.9",
+  "ptyprocess>=0.7,<0.8; sys_platform != 'win32'",
+  "pywinpty>=2.0.13,<4; sys_platform == 'win32'",
 ]
 
 [project.scripts]
-# now points at the renamed CLI package
-gsp = "gsp_cli.main:app"
+bootwire = "bootwire_cli.main:app"
+bootwire-gui = "bootwire_gui.main:main"
 
 [build-system]
-requires = [
-  "setuptools>=67",
-  "wheel"
-]
+requires = ["setuptools>=67", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
-where   = ["src"]
-include = ["gsp_core", "gsp_cli"]
+where = ["src"]
+include = ["bootwire", "bootwire.*", "bootwire_cli", "bootwire_cli.*", "bootwire_gui", "bootwire_gui.*"]
+
+[tool.setuptools.package-data]
+bootwire_gui = ["qml/*.qml", "qml/qmldir", "assets/*.svg", "assets/*.png", "assets/*.ico", "assets/*.desktop"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

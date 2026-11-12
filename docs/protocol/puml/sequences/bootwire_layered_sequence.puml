@@ -1,0 +1,44 @@
+@startuml bootwire_layered_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>One WRITE Through Every Layer</b></color></size>\n<size:13><color:#5B6B7C>what each layer does on the host and on the target</color></size>
+
+box "Host (PC)" #F4F7FB
+  participant "<b>bootwire CLI</b>\n<size:11><color:#C9D7E6>application</color></size>" as HA #1B3A5F
+  participant "<b>BootWireClient</b>\n<size:11><color:#C9D7E6>command layer</color></size>" as HC #1B3A5F
+  participant "<b>frame + SLIP</b>\n<size:11><color:#C9D7E6>frame layer</color></size>" as HF #1B3A5F
+  participant "<b>UART</b>\n<size:11><color:#C9D7E6>physical layer</color></size>" as HP #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>UART RX ISR</b>\n<size:11><color:#CBE6DF>SLIP RX</color></size>" as TP #146C5F
+  participant "<b>frame check</b>\n<size:11><color:#CBE6DF>frame layer</color></size>" as TF #146C5F
+  participant "<b>dispatcher</b>\n<size:11><color:#CBE6DF>reply cache</color></size>" as TC #146C5F
+  participant "<b>flash driver</b>\n<size:11><color:#CBE6DF>application</color></size>" as TA #146C5F
+end box
+
+autonumber "<b>00"
+HA -> HC : write(0x08008000,\n256 bytes)
+HC -> HF : build_request(\nSEQ=0x21, WRITE,\naddress + data)
+HF -> HF : + CRC-16\n+ SLIP: escape C0, DB,\nEND at both ends
+HF --> HC : wire bytes
+HC -> HP : reset_input()\nwrite(wire)
+HC -> HC : start the timer\n(0.5 s)
+HP -> TP : C0 21 11 00 80 00 08\n… CRC C0
+TP -> TP : un-escape into\nrx_buf until END
+TP -> TF : frame complete\n(len = 264)
+TF -> TF : len ≥ 4, CRC-16 good,\nbit 7 of CMD clear
+TF -> TC : SEQ=0x21, WRITE,\npayload
+TC -> TC : (0x21, WRITE) is not\nthe cached key:\na new request
+TC -> TA : program 256 bytes\nat 0x08008000
+TA -> TA : read back\nand compare
+TA --> TC : <color:#1E8449><b>OK</b></color>
+TC -> TC : cache the response\nunder (0x21, WRITE)
+TC -> TF : response(SEQ=0x21,\n0x91, OK)
+TF -> TF : + CRC-16\n+ SLIP encode
+TF -> HP : C0 21 91 00 … C0
+HP --> HC : read(): bytes
+HC -> HF : SlipReader.feed()\nparse_response()
+HF -> HF : CRC-16 good
+HF --> HC : Response(SEQ=0x21,\nWRITE, <color:#1E8449><b>OK</b></color>)
+HC -> HC : SEQ, CMD match,\nSTATUS = OK:\nnext SEQ = 0x22
+HC --> HA : return
+@enduml

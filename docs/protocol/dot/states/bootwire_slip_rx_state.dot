@@ -1,0 +1,33 @@
+// SLIP receive state machine: target UART RX interrupt, host SlipReader (protocol/slip.py)
+digraph bootwire_slip_rx_state {
+  graph [fontname="Arial", bgcolor="#FFFFFF", pad="0.35", nodesep="0.8", ranksep="1.4",
+         rankdir="LR", labelloc="t",
+         label=<<font point-size="22" color="#1B3A5F"><b>SLIP Receive State Machine</b></font><br/><font point-size="13" color="#5B6B7C">runs on every received byte: target UART RX interrupt, host SlipReader  ·  MAX_FRAME = max_payload + 4 (SEQ, CMD, CRC-16)</font><br/> >];
+  node  [shape=plain, fontname="Arial", fontsize="12.5", fontcolor="#1F2D3D"];
+  edge  [fontname="Arial", fontsize="12", fontcolor="#1F2D3D", color="#5B6B7C", penwidth="1.4",
+         arrowsize="0.8"];
+
+  start [shape=circle, style=filled, fillcolor="#1B3A5F", color="#1B3A5F", width="0.24", label=""];
+
+  WAIT_SYNC [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#1B3A5F" bgcolor="#F4F7FB">
+    <tr><td><font point-size="15" color="#1B3A5F"><b>WAIT_SYNC</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">discard every byte<br/>until an END (C0)</td></tr></table>>];
+
+  IN_FRAME [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#1B3A5F" bgcolor="#F4F7FB">
+    <tr><td><font point-size="15" color="#1B3A5F"><b>IN_FRAME</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">store decoded bytes<br/>in rx_buf[len++]</td></tr></table>>];
+
+  ESCAPE [label=<<table border="1.4" cellborder="0" cellspacing="0" cellpadding="6" style="rounded" color="#C98A00" bgcolor="#FFF6E0">
+    <tr><td><font point-size="15" color="#8A5A00"><b>ESCAPE</b></font></td></tr><hr/>
+    <tr><td align="left" balign="left">the previous byte<br/>was ESC (DB)</td></tr></table>>];
+
+  start -> WAIT_SYNC;
+  WAIT_SYNC -> WAIT_SYNC [label=<other byte>, color="#8A99A8", fontcolor="#5B6B7C"];
+  WAIT_SYNC -> IN_FRAME [label=<<b>END</b><br/>len = 0>];
+  IN_FRAME -> IN_FRAME [label=<<b>data byte</b>: rx_buf[len++] = byte<br align="left"/><font color="#1E8449"><b>END</b>, len &gt; 0: <b>deliver the frame</b>, len = 0</font><br align="left"/><font color="#5B6B7C"><b>END</b>, len = 0: ignore (END END)</font><br align="left"/>>];
+  IN_FRAME -> ESCAPE [label=<<b>ESC</b> (DB)>, color="#C98A00"];
+  ESCAPE -> IN_FRAME [label=<<b>ESC_END</b> (DC): store C0<br/><b>ESC_ESC</b> (DD): store DB>, color="#C98A00"];
+  ESCAPE -> IN_FRAME [label=<<font color="#C0392B"><b>END</b></font>: drop the frame,<br/>len = 0 (a new frame starts)>, color="#C0392B", style=dashed];
+  ESCAPE -> WAIT_SYNC [label=<<font color="#C0392B"><b>any other byte</b></font><br/>drop the frame>, color="#C0392B", style=dashed];
+  IN_FRAME -> WAIT_SYNC [label=<<font color="#C0392B"><b>len &gt; MAX_FRAME</b></font><br/>drop the frame>, color="#C0392B", style=dashed];
+}

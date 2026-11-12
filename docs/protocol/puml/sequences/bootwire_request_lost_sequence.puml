@@ -1,0 +1,18 @@
+@startuml bootwire_request_lost_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Fault: Request Lost</b></color></size>\n<size:13><color:#5B6B7C>no reply before the timeout: the host resends the same frame with the same SEQ</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : ping(b"hi")
+HOST -> HOST : SEQ = 0x2A, start timer
+HOST -[#C0392B]>x TP : PING [SEQ=0x2A, "hi"]  <color:#C0392B>lost on the wire</color>
+... timeout (0.5 s), nothing received ...
+HOST -> HOST : resend 2/4\n(same frame, same SEQ)
+HOST -> TP : PING [SEQ=0x2A, "hi"]  <color:#1E90D6><b>«resend»</b></color>
+activate TP
+TP -> TP : CRC-16 correct\n(0x2A, PING) not cached → execute
+TP --> HOST : [SEQ=0x2A, 0x81, <color:#1E8449><b>OK</b></color>, "hi"]
+deactivate TP
+HOST --> APP : b"hi"
+@enduml

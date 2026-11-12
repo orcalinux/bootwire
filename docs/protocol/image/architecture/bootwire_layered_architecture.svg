@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="652" viewBox="0 0 1040 652" role="img"><rect id="bootwire-background" x="0" y="0" width="1040" height="652" fill="#FFFFFF"/>
+<title>BootWire layered architecture</title>
+<defs><marker id="s7FA9D6-70" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#7FA9D6"/></marker><marker id="e7FA9D6-70" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7FA9D6"/></marker><marker id="s1E90D6-130" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#1E90D6"/></marker><marker id="e1E90D6-130" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1E90D6"/></marker></defs>
+<rect width="1040" height="652" fill="#FFFFFF"/>
+<text x="520.0" y="42.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Layered Architecture</text>
+<text x="520.0" y="66.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">Host and target run the same four layers. Each layer uses the one below it and talks to its peer on the other side.</text>
+<rect x="24.0" y="92.0" width="992.0" height="528.0" rx="18" fill="#F4F7FB" stroke="#DFE6EE" stroke-width="1"/>
+<rect x="64.0" y="118.0" width="320.0" height="436.0" rx="16" fill="#1B3A5F" stroke="none" stroke-width="1.0"/>
+<text x="224.0" y="156.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#FFFFFF" xml:space="preserve">Host</text>
+<text x="224.0" y="177.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#AFC6E0" xml:space="preserve">PC  ·  Python  ·  desktop/src/bootwire</text>
+<rect x="86.0" y="198.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="224.0" y="225.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Application layer</text>
+<text x="224.0" y="245.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">bootwire CLI  ·  BootWireClient.flash()</text>
+<line x1="224.0" y1="265.0" x2="224.0" y2="283.0" stroke="#7FA9D6" stroke-width="2" marker-start="url(#s7FA9D6-70)" marker-end="url(#e7FA9D6-70)"/>
+<rect x="86.0" y="288.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="224.0" y="315.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Command layer</text>
+<text x="224.0" y="335.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">BootWireClient: SEQ, timeout, retry</text>
+<line x1="224.0" y1="355.0" x2="224.0" y2="373.0" stroke="#7FA9D6" stroke-width="2" marker-start="url(#s7FA9D6-70)" marker-end="url(#e7FA9D6-70)"/>
+<rect x="86.0" y="378.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="224.0" y="405.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Frame layer</text>
+<text x="224.0" y="425.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">frame.py (CRC-16)  ·  slip.py</text>
+<line x1="224.0" y1="445.0" x2="224.0" y2="463.0" stroke="#7FA9D6" stroke-width="2" marker-start="url(#s7FA9D6-70)" marker-end="url(#e7FA9D6-70)"/>
+<rect x="86.0" y="468.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="224.0" y="495.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Physical layer</text>
+<text x="224.0" y="515.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">UARTTransport (pyserial)</text>
+<rect x="656.0" y="118.0" width="320.0" height="436.0" rx="16" fill="#1B3A5F" stroke="none" stroke-width="1.0"/>
+<text x="816.0" y="156.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" text-anchor="middle" fill="#FFFFFF" xml:space="preserve">Target</text>
+<text x="816.0" y="177.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#AFC6E0" xml:space="preserve">Cortex-M bootloader  ·  C firmware</text>
+<rect x="678.0" y="198.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="816.0" y="225.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Application layer</text>
+<text x="816.0" y="245.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">flash driver · region check · jump</text>
+<line x1="816.0" y1="265.0" x2="816.0" y2="283.0" stroke="#7FA9D6" stroke-width="2" marker-start="url(#s7FA9D6-70)" marker-end="url(#e7FA9D6-70)"/>
+<rect x="678.0" y="288.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="816.0" y="315.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Command layer</text>
+<text x="816.0" y="335.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">dispatcher  ·  one-entry reply cache</text>
+<line x1="816.0" y1="355.0" x2="816.0" y2="373.0" stroke="#7FA9D6" stroke-width="2" marker-start="url(#s7FA9D6-70)" marker-end="url(#e7FA9D6-70)"/>
+<rect x="678.0" y="378.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="816.0" y="405.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Frame layer</text>
+<text x="816.0" y="425.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">SLIP RX state machine  ·  CRC-16</text>
+<line x1="816.0" y1="445.0" x2="816.0" y2="463.0" stroke="#7FA9D6" stroke-width="2" marker-start="url(#s7FA9D6-70)" marker-end="url(#e7FA9D6-70)"/>
+<rect x="678.0" y="468.0" width="276.0" height="62.0" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1.0"/>
+<text x="816.0" y="495.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1B3A5F" xml:space="preserve">Physical layer</text>
+<text x="816.0" y="515.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">UART driver (RX interrupt or DMA)</text>
+<line x1="368.0" y1="229.0" x2="672.0" y2="229.0" stroke="#1E90D6" stroke-width="2.4" stroke-dasharray="9 6" marker-start="url(#s1E90D6-130)" marker-end="url(#e1E90D6-130)"/>
+<text x="520.0" y="218.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2D3D" xml:space="preserve">bootloader operations</text>
+<text x="520.0" y="252.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">connect · erase · write · verify · run</text>
+<line x1="368.0" y1="319.0" x2="672.0" y2="319.0" stroke="#1E90D6" stroke-width="2.4" stroke-dasharray="9 6" marker-start="url(#s1E90D6-130)" marker-end="url(#e1E90D6-130)"/>
+<text x="520.0" y="308.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2D3D" xml:space="preserve">request / response</text>
+<text x="520.0" y="342.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">SEQ · CMD · STATUS · payload</text>
+<line x1="368.0" y1="409.0" x2="672.0" y2="409.0" stroke="#1E90D6" stroke-width="2.4" stroke-dasharray="9 6" marker-start="url(#s1E90D6-130)" marker-end="url(#e1E90D6-130)"/>
+<text x="520.0" y="398.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2D3D" xml:space="preserve">frames sealed with CRC-16</text>
+<text x="520.0" y="432.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">SLIP:  C0 … escaped bytes … C0</text>
+<line x1="368.0" y1="499.0" x2="672.0" y2="499.0" stroke="#1E90D6" stroke-width="3" marker-start="url(#s1E90D6-130)" marker-end="url(#e1E90D6-130)"/>
+<text x="520.0" y="488.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1F2D3D" xml:space="preserve">UART byte stream</text>
+<text x="520.0" y="522.0" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12" text-anchor="middle" fill="#5B6B7C" xml:space="preserve">115200 8N1  ·  TX, RX, GND</text>
+<line x1="250.0" y1="590.0" x2="300.0" y2="590.0" stroke="#1E90D6" stroke-width="2.4" stroke-dasharray="9 6"/>
+<text x="310.0" y="594.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">logical link: peers exchange this through the layers below</text>
+<line x1="680.0" y1="590.0" x2="730.0" y2="590.0" stroke="#1E90D6" stroke-width="3"/>
+<text x="740.0" y="594.5" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="12.5" fill="#1F2D3D" xml:space="preserve">physical link: the real wire</text>
+</svg>

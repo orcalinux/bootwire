@@ -1,0 +1,13 @@
+# bootwire.yaml — settings for the bootwire tool. Command-line options override these.
+# Looked up in this order: --config, $BOOTWIRE_CONFIG, ./bootwire.yaml, ~/.bootwire.yaml
+
+general:
+  timeout: 0.5        # seconds to wait for a response
+  erase_timeout: 5.0  # seconds to wait for one ERASE response (one erase block)
+  max_retries: 3      # resends after the first attempt
+
+serial:
+  # Device name, a pyserial URL such as "socket://192.168.1.50:4001",
+  # or "sim" for the built-in simulated target. Leave empty to pick automatically.
+  port:
+  baudrate: 115200

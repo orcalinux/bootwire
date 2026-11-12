@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">BootWire application icon</title>
+  <rect width="64" height="64" rx="14" fill="#142C44"/>
+  <path transform="translate(8 6) scale(1.65)" d="M3 24V6H15C27 6 27 15 15 15H10M15 15C29 15 29 25 15 25H10" fill="none" stroke="#82B9F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

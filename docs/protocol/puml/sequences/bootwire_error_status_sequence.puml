@@ -1,0 +1,25 @@
+@startuml bootwire_error_status_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Error Status</b></color></size>\n<size:13><color:#5B6B7C>the target rejects the request; the host raises the error at once and does not retry</color></size>
+!include _participants.iuml
+
+autonumber "<b>00"
+APP -> HOST : send(WRITE, address 0x08000000 + data)
+note left of HOST
+  bootwire write checks the range on the host first.
+  A raw "bootwire send" or a buggy host can still
+  ask for it, so the target must check too.
+end note
+HOST -> TP : WRITE [SEQ=0x60, 0x08000000, …]
+activate TP
+TP -> TP : 0x08000000 < app_start\n→ BAD_PARAM
+note right of TP
+  Nothing is written: the bootloader
+  protects its own flash.
+end note
+TP --> HOST : [SEQ=0x60, 0x91, <color:#C0392B><b>BAD_PARAM</b></color>]
+deactivate TP
+HOST -> HOST : STATUS ≠ OK → stop at once\n(a resend would get the same answer)
+HOST --> APP : BootWireStatusError(WRITE, <color:#C0392B><b>BAD_PARAM</b></color>)
+APP -> APP : print the error, exit code 1
+@enduml

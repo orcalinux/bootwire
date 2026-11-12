@@ -1,0 +1,33 @@
+@startuml bootwire_new_session_sequence
+!include ../_style.iuml
+title <size:21><color:#1B3A5F><b>Why Every Session Starts With CONNECT</b></color></size>\n<size:13><color:#5B6B7C>without it, a new host process could receive the reply cached for the last session</color></size>
+
+box "Host (PC)" #F4F7FB
+  participant "<b>Host</b>\n<size:11><color:#C9D7E6>process A</color></size>" as A #1B3A5F
+  participant "<b>Host</b>\n<size:11><color:#C9D7E6>process B, started later</color></size>" as B #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target protocol</b>\n<size:11><color:#CBE6DF>reply cache</color></size>" as TP #146C5F
+end box
+
+autonumber "<b>00"
+== session 1 ==
+A -> TP : PING [SEQ=0x09, "old"]
+TP -> TP : execute, cache key = (0x09, PING)
+TP --> A : [SEQ=0x09, 0x81, <color:#1E8449><b>OK</b></color>, "old"]
+note over A : process A exits\n(the target keeps its cache)
+
+== session 2: the random first SEQ happens to be 0x09 ==
+alt without CONNECT (not allowed)
+  B -> TP : PING [SEQ=0x09, "new"]
+  TP -> TP : (0x09, PING) = cached key\n→ looks like a resend
+  TP --> B : [SEQ=0x09, 0x81, OK, "old"]  <color:#C0392B>stale answer</color>
+else BootWire rule: first command is CONNECT
+  B -> TP : CONNECT [SEQ=0x09, version 2]
+  TP -> TP : CONNECT always executes\ncache key = (0x09, CONNECT)
+  TP --> B : [SEQ=0x09, 0x80, <color:#1E8449><b>OK</b></color>, device info]
+  B -> TP : PING [SEQ=0x0A, "new"]
+  TP -> TP : not cached → execute
+  TP --> B : [SEQ=0x0A, 0x81, <color:#1E8449><b>OK</b></color>, "new"]
+end
+@enduml

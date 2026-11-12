@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="582px" preserveAspectRatio="none" style="width:861px;height:582px;" version="1.1" viewBox="0 0 861 582" width="861px" zoomAndPan="magnify"><rect id="bootwire-background" x="0" y="0" width="861" height="582" fill="#FFFFFF"/><defs/><g><rect fill="none" height="49.0967" rx="5" ry="5" style="stroke: none; stroke-width: 1.0;" width="476" x="188.75" y="12"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="21" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="267" x="293.25" y="36.6978">Fault: Response Damaged</text><text xml:space="preserve" fill="#5B6B7C" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="460" x="196.75" y="53.3418">the host ignores a reply with a bad CRC-16, resends, and gets the cached reply</text><rect fill="#F4F7FB" height="492.0298" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="282.5" x="4" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="65" x="112.75" y="85.2285">Host (PC)</text><rect fill="#EEF6F4" height="492.0298" rx="5" ry="5" style="stroke: #DFE6EE; stroke-width: 1.0;" width="366.5" x="484" y="72.0967"/><text xml:space="preserve" fill="#1B3A5F" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="204" x="565.25" y="85.2285">Target (Cortex-M bootloader)</text><rect fill="#DCEBFB" height="128.7949" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="559.5" y="194.6904"/><rect fill="#DCEBFB" height="70.8975" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="559.5" y="452.2803"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="63" x2="63" y1="134.793" y2="388.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="63" x2="63" y1="388.3828" y2="431.3315"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="63" x2="63" y1="431.3315" y2="570.1265"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="219.5" x2="219.5" y1="134.793" y2="388.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="219.5" x2="219.5" y1="388.3828" y2="431.3315"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="219.5" x2="219.5" y1="431.3315" y2="570.1265"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="564" x2="564" y1="134.793" y2="388.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="564" x2="564" y1="388.3828" y2="431.3315"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="564" x2="564" y1="431.3315" y2="570.1265"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="780.5" x2="780.5" y1="134.793" y2="388.3828"/><line style="stroke: #9DB3CC; stroke-width: 1.0; stroke-dasharray: 1.0,4.0;" x1="780.5" x2="780.5" y1="388.3828" y2="431.3315"/><line style="stroke: #9DB3CC; stroke-width: 1.0;" x1="780.5" x2="780.5" y1="431.3315" y2="570.1265"/><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="95" x="16" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="81" x="23" y="111.3892">bootwire CLI</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="75" x="26" y="124.4619">host application</text><rect fill="#1B3A5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="110" x="164.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="96" x="171.5" y="111.3892">BootWireClient</text><text xml:space="preserve" fill="#C9D7E6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="183" y="124.4619">command layer</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="137" x="496" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="97" x="516" y="111.3892">Target protocol</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="503" y="124.4619">frame check, reply cache</text><rect fill="#146C5F" height="41.5977" rx="5" ry="5" style="stroke: #1B3A5F; stroke-width: 1.5;" width="116" x="722.5" y="92.1953"/><text xml:space="preserve" fill="#FFFFFF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="729.5" y="111.3892">Bootloader core</text><text xml:space="preserve" fill="#CBE6DF" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="55" x="753" y="124.4619">flash driver</text><rect fill="#DCEBFB" height="128.7949" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="559.5" y="194.6904"/><rect fill="#DCEBFB" height="70.8975" style="stroke: #9DB3CC; stroke-width: 1.0;" width="10" x="559.5" y="452.2803"/><polygon fill="#3D5166" points="207.5,161.7417,217.5,165.7417,207.5,169.7417,211.5,165.7417" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="63.5" x2="213.5" y1="165.7417" y2="165.7417"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="70.5" y="160.9868">01</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="114" x="88.5" y="160.9868">verify_image(image)</text><polygon fill="#3D5166" points="547.5,190.6904,557.5,194.6904,547.5,198.6904,551.5,194.6904" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="219.5" x2="553.5" y1="194.6904" y2="194.6904"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="226.5" y="189.9355">02</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="273" x="244.5" y="189.9355">VERIFY [SEQ=0x52, address, length, CRC-32]</text><polygon fill="#3D5166" points="768.5,219.6392,778.5,223.6392,768.5,227.6392,772.5,223.6392" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="569.5" x2="774.5" y1="223.6392" y2="223.6392"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="576.5" y="218.8843">03</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="90" x="594.5" y="218.8843">CRC-32 of flash</text><polygon fill="#3D5166" points="580.5,248.5879,570.5,252.5879,580.5,256.5879,576.5,252.5879" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="574.5" x2="779.5" y1="252.5879" y2="252.5879"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="586.5" y="247.833">04</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="139" x="604.5" y="247.833">0x5DD6F17A (matches)</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="569.5" x2="611.5" y1="281.5366" y2="281.5366"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="611.5" x2="611.5" y1="281.5366" y2="294.5366"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="570.5" x2="611.5" y1="294.5366" y2="294.5366"/><polygon fill="#3D5166" points="580.5,290.5366,570.5,294.5366,580.5,298.5366,576.5,294.5366" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="576.5" y="276.7817">05</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="167" x="594.5" y="276.7817">cache key = (0x52, VERIFY)</text><polygon fill="#3D5166" points="230.5,319.4854,220.5,323.4854,230.5,327.4854,226.5,323.4854" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="224.5" x2="563.5" y1="323.4854" y2="323.4854"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="236.5" y="318.7305">06</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="170" x="254.5" y="318.7305">[SEQ=0x52, 0x92, OK, CRC]</text><text xml:space="preserve" fill="#C0392B" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="120" x="432.5" y="318.7305">damaged on the wire</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="219.5" x2="261.5" y1="367.3828" y2="367.3828"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="261.5" x2="261.5" y1="367.3828" y2="380.3828"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="220.5" x2="261.5" y1="380.3828" y2="380.3828"/><polygon fill="#3D5166" points="230.5,376.3828,220.5,380.3828,230.5,384.3828,226.5,380.3828" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="226.5" y="355.1536">07</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="162" x="244.5" y="347.6792">CRC-16 mismatch → ignore</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="174" x="244.5" y="362.6279">keep waiting until the deadline</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="84" x="380" y="414.5767">timeout (0.5 s)</text><polygon fill="#3D5166" points="547.5,448.2803,557.5,452.2803,547.5,456.2803,551.5,452.2803" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="219.5" x2="553.5" y1="452.2803" y2="452.2803"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="226.5" y="447.5254">08</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="144" x="244.5" y="447.5254">VERIFY [SEQ=0x52, …]</text><text xml:space="preserve" fill="#1E90D6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="57" x="396.5" y="447.5254">«resend»</text><line style="stroke: #3D5166; stroke-width: 1.3;" x1="569.5" x2="611.5" y1="481.229" y2="481.229"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="611.5" x2="611.5" y1="481.229" y2="494.229"/><line style="stroke: #3D5166; stroke-width: 1.3;" x1="570.5" x2="611.5" y1="494.229" y2="494.229"/><polygon fill="#3D5166" points="580.5,490.229,570.5,494.229,580.5,498.229,576.5,494.229" style="stroke: #3D5166; stroke-width: 1.0;"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="576.5" y="476.4741">09</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="174" x="594.5" y="476.4741">(0x52, VERIFY) = cached key</text><polygon fill="#3D5166" points="230.5,519.1777,220.5,523.1777,230.5,527.1777,226.5,523.1777" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="224.5" x2="563.5" y1="523.1777" y2="523.1777"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="236.5" y="518.4229">10</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="108" x="254.5" y="518.4229">[SEQ=0x52, 0x92,</text><text xml:space="preserve" fill="#1E8449" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="19" x="366.5" y="518.4229">OK</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="39" x="385.5" y="518.4229">, CRC]</text><text xml:space="preserve" fill="#1E90D6" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="85" x="432.5" y="518.4229">«from cache»</text><polygon fill="#3D5166" points="74.5,548.1265,64.5,552.1265,74.5,556.1265,70.5,552.1265" style="stroke: #3D5166; stroke-width: 1.0;"/><line style="stroke: #3D5166; stroke-width: 1.3; stroke-dasharray: 2.0,2.0;" x1="68.5" x2="218.5" y1="552.1265" y2="552.1265"/><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="14" x="80.5" y="547.3716">11</text><text xml:space="preserve" fill="#1F2D3D" font-family="Arial, Helvetica, 'Liberation Sans', Arimo, sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="77" x="98.5" y="547.3716">0x5DD6F17A</text><!--MD5=[0d47ff152dd30f8a363b6974b94a4944]
+@startuml bootwire_corrupted_response_sequence
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam defaultFontColor #1F2D3D
+skinparam roundCorner 10
+skinparam titleBorderThickness 0
+skinparam ArrowColor #3D5166
+skinparam ArrowFontColor #1F2D3D
+skinparam ArrowFontSize 13
+skinparam ArrowThickness 1.3
+
+skinparam sequence {
+  ParticipantBackgroundColor #1B3A5F
+  ParticipantBorderColor #1B3A5F
+  ParticipantFontColor #FFFFFF
+  ParticipantFontStyle plain
+  ParticipantFontSize 13
+  ParticipantPadding 8
+  LifeLineBorderColor #9DB3CC
+  LifeLineBackgroundColor #DCEBFB
+  BoxPadding 14
+  BoxBorderColor #DFE6EE
+  BoxFontColor #1B3A5F
+  BoxFontStyle bold
+  BoxFontSize 14
+  GroupBorderColor #9DB3CC
+  GroupBackgroundColor #E4ECF5
+  GroupHeaderFontColor #1B3A5F
+  GroupHeaderFontStyle bold
+  GroupFontColor #5B6B7C
+  DividerBackgroundColor #EEF3F9
+  DividerBorderColor #C9D4E0
+  DividerFontColor #1B3A5F
+  DividerFontStyle bold
+  ReferenceBackgroundColor #F4F7FB
+  ReferenceBorderColor #9DB3CC
+  ReferenceHeaderBackgroundColor #E4ECF5
+  ReferenceFontColor #5B6B7C
+  MessageAlign left
+}
+
+skinparam note {
+  BackgroundColor #FFF8E6
+  BorderColor #E8C66A
+  FontColor #1F2D3D
+  FontSize 12
+}
+
+skinparam activity {
+  BackgroundColor #F4F7FB
+  BorderColor #1B3A5F
+  FontColor #1F2D3D
+  FontSize 13
+  DiamondBackgroundColor #FFFFFF
+  DiamondBorderColor #1B3A5F
+  DiamondFontColor #1F2D3D
+  DiamondFontSize 12
+  StartColor #1B3A5F
+  EndColor #1B3A5F
+  BarColor #1B3A5F
+}
+
+hide footbox
+title <size:21><color:#1B3A5F><b>Fault: Response Damaged</b></color></size>\n<size:13><color:#5B6B7C>the host ignores a reply with a bad CRC-16, resends, and gets the cached reply</color></size>
+box "Host (PC)" #F4F7FB
+  participant "<b>bootwire CLI</b>\n<size:11><color:#C9D7E6>host application</color></size>" as APP #1B3A5F
+  participant "<b>BootWireClient</b>\n<size:11><color:#C9D7E6>command layer</color></size>" as HOST #1B3A5F
+end box
+box "Target (Cortex-M bootloader)" #EEF6F4
+  participant "<b>Target protocol</b>\n<size:11><color:#CBE6DF>frame check, reply cache</color></size>" as TP #146C5F
+  participant "<b>Bootloader core</b>\n<size:11><color:#CBE6DF>flash driver</color></size>" as BL #146C5F
+end box
+
+autonumber "<b>00"
+APP -> HOST : verify_image(image)
+HOST -> TP : VERIFY [SEQ=0x52, address, length, CRC-32]
+activate TP
+TP -> BL : CRC-32 of flash
+BL - -> TP : 0x5DD6F17A (matches)
+TP -> TP : cache key = (0x52, VERIFY)
+TP - -> HOST : [SEQ=0x52, 0x92, OK, CRC]  <color:#C0392B>damaged on the wire</color>
+deactivate TP
+HOST -> HOST : CRC-16 mismatch → ignore\nkeep waiting until the deadline
+... timeout (0.5 s) ...
+HOST -> TP : VERIFY [SEQ=0x52, …]  <color:#1E90D6><b>«resend»</b></color>
+activate TP
+TP -> TP : (0x52, VERIFY) = cached key
+TP - -> HOST : [SEQ=0x52, 0x92, <color:#1E8449><b>OK</b></color>, CRC]  <color:#1E90D6><b>«from cache»</b></color>
+deactivate TP
+HOST - -> APP : 0x5DD6F17A
+@enduml
+
+PlantUML version 1.2020.02(Sun Mar 01 05:22:07 EST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.17+10
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

@@ -1,0 +1,109 @@
+// Host software modules: desktop/src (bootwire_cli = command-line tool, bootwire = library)
+digraph bootwire_host_modules {
+  graph [fontname="Arial", bgcolor="#FFFFFF", pad="0.35", nodesep="0.35", ranksep="0.55",
+         labelloc="t", newrank=true, compound=true,
+         label=<<font point-size="22" color="#1B3A5F"><b>Host Software Modules</b></font><br/><font point-size="5"> </font><br/><font point-size="13" color="#5B6B7C">desktop/src  ·  an arrow means "uses"  ·  the CLI is a thin layer over the bootwire library</font><br/> >];
+  node  [shape=plain, fontname="Arial", fontsize="12", fontcolor="#1F2D3D"];
+  edge  [color="#7B8A99", penwidth="1.3", arrowsize="0.75", fontname="Arial", fontsize="11.5",
+         fontcolor="#5B6B7C"];
+
+  subgraph cluster_cli {
+    label=<<font point-size="15" color="#1B3A5F"><b>bootwire_cli</b></font><font point-size="12" color="#5B6B7C">  command-line tool</font>>;
+    labeljust="l"; style="rounded,filled"; fillcolor="#F4F7FB"; color="#C9D4E0"; penwidth="1.2"; margin="14";
+
+    main [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#1B3A5F" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#1B3A5F"><b>main.py</b></font><font color="#8A99A8">   Typer app</font></td></tr><hr/>
+      <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">info ping erase write<br/>verify run flash send</font><br/><font color="#5B6B7C">options -p -b -t -r -c -i<br/>settings from load_config()</font></td></tr></table>>];
+    interactive [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#1B3A5F" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#1B3A5F"><b>interactive.py</b></font></td></tr><hr/>
+      <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">run_menu()</font><br/><font color="#5B6B7C">bootwire -i</font></td></tr></table>>];
+    ops [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#1B3A5F" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#1B3A5F"><b>ops.py</b></font><font color="#8A99A8">   one function per action</font></td></tr><hr/>
+      <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">do_info() do_ping() do_erase()<br/>do_write() do_verify() do_run()<br/>do_flash() do_send()</font></td></tr></table>>];
+    session [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#1B3A5F" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#1B3A5F"><b>session.py</b></font></td></tr><hr/>
+      <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">Settings  choose_port()<br/>open_client()  progress_bar()</font><br/><font color="#5B6B7C">transport: UARTTransport,<br/>or LoopbackTransport for -p sim<br/>errors → exit codes 1 / 2</font></td></tr></table>>];
+  }
+
+  subgraph cluster_core {
+    label=<<font point-size="15" color="#2F6DB5"><b>bootwire</b></font><font point-size="12" color="#5B6B7C">  library: everything the protocol needs</font>>;
+    labeljust="l"; style="rounded,filled"; fillcolor="#F4F7FB"; color="#C9D4E0"; penwidth="1.2"; margin="14";
+
+    client [label=<<table border="1.6" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#2F6DB5" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#2F6DB5"><b>client.py</b></font><font color="#8A99A8">   command layer</font></td></tr><hr/>
+      <tr><td align="left" balign="left"><b>BootWireClient</b><br/><font face="DejaVu Sans Mono" point-size="11">transact() = send()<br/>connect() ping() erase()<br/>write() verify() run()<br/>erase_region() write_image()<br/>verify_image() flash()</font></td></tr><hr/>
+      <tr><td align="left" balign="left"><b>DeviceInfo</b><font color="#5B6B7C">  CONNECT response</font></td></tr></table>>];
+    config [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#2F6DB5" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#2F6DB5"><b>config.py</b></font></td></tr><hr/>
+      <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">load_config()</font><br/><font color="#5B6B7C">bootwire.yaml</font></td></tr></table>>];
+    errors [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#C0392B" bgcolor="#FFFFFF">
+      <tr><td align="left"><font point-size="14" color="#C0392B"><b>errors.py</b></font></td></tr><hr/>
+      <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">BootWireError<br/>BootWireTimeout<br/>BootWireStatusError</font></td></tr></table>>];
+
+    subgraph cluster_protocol {
+      label=<<font point-size="13" color="#6B4FBB"><b>protocol/</b></font><font point-size="11.5" color="#5B6B7C">  frame layer</font>>;
+      labeljust="l"; style="rounded,filled"; fillcolor="#FFFFFF"; color="#D9D0F2"; margin="10";
+      frame [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#6B4FBB" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#6B4FBB"><b>frame.py</b></font></td></tr><hr/>
+        <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">build_request()<br/>parse_response()<br/>build_response()<br/>parse_request()</font></td></tr></table>>];
+      slip [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#6B4FBB" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#6B4FBB"><b>slip.py</b></font></td></tr><hr/>
+        <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">encode() decode()<br/>SlipReader.feed()</font></td></tr></table>>];
+      crc [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#6B4FBB" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#6B4FBB"><b>crc.py</b></font></td></tr><hr/>
+        <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">crc16()</font><br/><font color="#5B6B7C">CCITT-FALSE</font></td></tr></table>>];
+      commands [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#6B4FBB" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#6B4FBB"><b>commands.py</b></font></td></tr><hr/>
+        <tr><td align="left" balign="left"><font face="DejaVu Sans Mono" point-size="11">CMD_* IDs<br/>Status</font></td></tr></table>>];
+    }
+
+    subgraph cluster_transport {
+      label=<<font point-size="13" color="#13806B"><b>transport/</b></font><font point-size="11.5" color="#5B6B7C">  physical layer</font>>;
+      labeljust="l"; style="rounded,filled"; fillcolor="#FFFFFF"; color="#BFE3D8"; margin="10";
+      uart [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#13806B" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#13806B"><b>uart.py</b></font></td></tr><hr/>
+        <tr><td align="left" balign="left"><b>UARTTransport</b><br/><font face="DejaVu Sans Mono" point-size="11">write() read()<br/>reset_input() close()</font></td></tr></table>>];
+    }
+
+    subgraph cluster_sim {
+      label=<<font point-size="13" color="#B26A00"><b>sim/</b></font><font point-size="11.5" color="#5B6B7C">  target without hardware</font>>;
+      labeljust="r"; style="rounded,filled"; fillcolor="#FFFFFF"; color="#F1D9A8"; margin="10";
+      loop [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#B26A00" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#B26A00"><b>LoopbackTransport</b></font></td></tr><hr/>
+        <tr><td align="left" balign="left">same methods as UARTTransport<br/><font color="#5B6B7C">drop_* / corrupt_* fault injection</font></td></tr></table>>];
+      target [label=<<table border="1.3" cellborder="0" cellspacing="0" cellpadding="5" style="rounded" color="#B26A00" bgcolor="#FFFFFF">
+        <tr><td align="left"><font point-size="13.5" color="#B26A00"><b>SimTarget</b></font><font color="#8A99A8">   target.py</font></td></tr><hr/>
+        <tr><td align="left" balign="left">reference model of the firmware:<br/>flash, reply cache, region checks<br/><font face="DejaVu Sans Mono" point-size="11">python -m bootwire.sim</font></td></tr></table>>];
+    }
+  }
+
+  subgraph cluster_gui {
+    label=<<font point-size="15" color="#1B3A5F"><b>bootwire_gui</b></font><font point-size="12" color="#5B6B7C">  optional desktop application</font>>;
+    style="rounded,filled"; fillcolor="#F4F7FB"; color="#C9D4E0"; margin="14";
+    qml [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="#1B3A5F" bgcolor="#FFFFFF"><tr><td><b>Qt Quick / QML</b><br/>firmware, devices, library<br/>diagnostics, inspector, history</td></tr></table>>];
+    gui_controller [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="#1B3A5F" bgcolor="#FFFFFF"><tr><td><b>controller.py</b><br/>GUI state, local settings<br/>queued requests and worker signals</td></tr></table>>];
+    gui_session [label=<<table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="#1B3A5F" bgcolor="#FFFFFF"><tr><td><b>session.py</b><br/>one worker owns device access<br/>images, validation, cancellation</td></tr></table>>];
+    qml -> gui_controller;
+    gui_controller -> gui_session;
+  }
+  gui_session -> client;
+
+  main -> interactive;
+  main -> ops;
+  interactive -> ops;
+  ops -> session;
+  session -> client [label=<  creates>];
+  client -> frame;
+  client -> slip;
+  client -> errors [style=dashed, label=<  raises>];
+  client -> uart [style=dashed, color="#13806B", label=<  transport>];
+  client -> loop [style=dashed, color="#B26A00", label=<  transport>];
+  frame -> crc;
+  frame -> commands;
+  loop -> target;
+  target -> frame [color="#B26A00"];
+  target -> slip [color="#B26A00"];
+
+  { rank=same; client; config; errors; }
+  { rank=same; frame; slip; uart; loop; }
+}
