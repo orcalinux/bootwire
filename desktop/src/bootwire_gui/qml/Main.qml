@@ -171,6 +171,10 @@ ApplicationWindow {
             MenuBar {
                 id: appMenuBar
                 objectName: "applicationMenuBar"
+                // The menus give way first, so the window controls always stay inside a
+                // narrow window whatever the platform font width.
+                Layout.fillWidth: true; Layout.minimumWidth: 0; Layout.maximumWidth: implicitWidth
+                clip: true
                 implicitHeight: 36
                 spacing: 2
                 padding: 2
@@ -235,7 +239,7 @@ ActionMenu {
             Item { Layout.fillWidth: true }
             BWText { text: s.busy ? "Operation in progress" : "Workspace ready"; color: Theme.muted; font.pixelSize: 11; visible: window.width >= 1150; Layout.rightMargin: 10 }
             ActionButton { objectName: "themeButton"; text: window.narrow ? "" : s.theme === "dark" ? "Light" : "Dark"; glyph: s.theme === "dark" ? "sun" : "moon"; quiet: true; tooltip: s.theme === "dark" ? "Use light appearance" : "Use dark appearance"; implicitWidth: window.narrow ? 34 : 86; implicitHeight: 32; onClicked: backend.setTheme(s.theme === "dark" ? "light" : "dark") }
-            ActionButton { objectName: "preferencesButton"; text: ""; glyph: "settings"; quiet: true; tooltip: "Preferences"; implicitWidth: 34; implicitHeight: 32; onClicked: page = 6 }
+            ActionButton { objectName: "preferencesButton"; visible: !window.narrow; text: ""; glyph: "settings"; quiet: true; tooltip: "Preferences"; implicitWidth: 34; implicitHeight: 32; onClicked: page = 6 }
             Rectangle { width: 1; height: 18; color: Theme.line; Layout.leftMargin: 8; Layout.rightMargin: 6 }
             WindowButton { objectName: "minimizeWindowButton"; symbol: "minimize"; onClicked: window.showMinimized() }
             WindowButton { objectName: "maximizeWindowButton"; symbol: window.visibility === Window.Maximized ? "restore" : "maximize"; onClicked: window.toggleMaximized() }
