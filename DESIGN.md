@@ -76,10 +76,10 @@ typography:
     fontFamily: "DejaVu Sans Mono"
     fontSize: "12px"
 rounded:
-  control: "9px"
-  navigation: "8px"
-  inset: "9px"
-  panel: "12px"
+  control: "10px"
+  navigation: "9px"
+  inset: "10px"
+  panel: "14px"
 spacing:
   step-4: "4px"
   step-6: "6px"
@@ -198,17 +198,17 @@ The main heading uses `headline`; panel headings generally use `section` (some u
 
 ## Layout
 
-Default window: 1380 × 900; minimum: 640 × 540. The left rail persists, the connection strip is 78px high, page content scrolls, and the outcome strip remains below it. Work area side margins are 30px. Common panel padding is 20–24px, with 18–22px between major regions and 8–14px within groups. These are observed values, not a mandatory uniform grid.
+Default window: 1380 × 900; minimum: 640 × 540. The left rail persists, the connection strip is 78px high, page content scrolls, and the outcome strip remains below it. Work area side margins are 30px. Theme.qml names three spacing roles: `gap` (10px) between sibling controls in a row, `pad` (24px) as the padding of every panel, and `section` (24px) between panels and other major groups. Rows that mix fields, checkboxes, and buttons use 12px. Every row of controls sets its spacing explicitly; the 5px Qt layout default is never relied on. Scrolling pages use PageScroll.qml, which places the scrollbar in the page's own right margin, outside every panel, so it never crosses a field, button or panel edge. Lists inside panels reserve a 16px gutter for theirs. SlimScrollBar hides itself when the content fits. Every workspace ends 20px (12px below 800px window height) above the status strip.
 
 A single 46px client title bar contains the app icon, BootWire title, File/Device/Tools/View/Help menus, theme/preferences actions, and minimize/maximize/close buttons. A styled Qt MenuBar supplies hover switching and arrow-key navigation. The empty title-bar area starts native system dragging, double-click toggles maximize/restore, and 5px edge/8px corner grips start native resizing. An 86px connection strip contains device state, editable port and baud selectors, refresh, and connect/disconnect. At window widths below 1150px, the rail changes from 214px to 184px, the port field narrows from 240px to 156px, and the inline Refresh button is hidden (Refresh remains in Device). Below 1200px the firmware evidence column prefers 230px instead of 290px; it remains alongside the firmware column above the narrow breakpoint. Below 1000px width, the rail becomes a 64px icon rail with hover labels and a shared horizontal centerline for the logo, glyphs, and selected backgrounds, connection status text moves out of the connection toolbar, work margins narrow to 16px, and firmware evidence stacks below the primary workflow. Title-bar branding and theme actions compact without removing the menus. The firmware main column has a 430px minimum, preferred 660px, and expands into available space. At the minimum window size, content scrolls vertically. Below 800px window height, rail buttons use 42px heights and the logo/footer spacing contracts to keep the footer visible. Below 1150px width, protocol and preview metadata use two deliberate lines within the rail. The confirmation dialog width is capped at 500px with 40px clearance on each side.
 
 ## Elevation & Depth
 
-Depth comes from tonal layering, one-pixel borders, inset areas, and spacing. Custom QML surfaces have no shadows or gradients. Application controls and menus share explicit theme-aware skins. The app draws its unified title bar; move/resize operations are delegated to the operating system. File pickers retain platform conventions.
+Depth comes from tonal layering, one-pixel borders, inset areas, and spacing. Custom QML surfaces have no shadows or gradients; the software renderer used for tests and captures does not support layer effects. Application controls and menus share explicit theme-aware skins. The app draws its unified title bar; move/resize operations are delegated to the operating system. File pickers retain platform conventions.
 
 ## Shapes
 
-Panels use the shared panel radius. Controls use the smaller control radius; navigation is slightly rounder, and firmware drop/status areas use the inset radius. Dividers are one logical pixel. Small circular status marks range from 6–8px. Focus increases custom control borders from one to two pixels without adding a shadow.
+Panels use the shared 14px panel radius (`Theme.radius`); controls use `Theme.controlRadius` (10px). Controls use the smaller control radius; navigation is slightly rounder, and firmware drop/status areas use the inset radius. Dividers are one logical pixel. Small circular status marks range from 6–8px. Focus increases custom control borders from one to two pixels without adding a shadow.
 
 ## Components
 
@@ -216,7 +216,7 @@ Panels use the shared panel radius. Controls use the smaller control radius; nav
 
 `ActionButton.qml` provides primary, secondary, and destructive-text variants. Height is 40px; implicit width is the greater of 82px and label width plus 30px; icon-bearing actions reserve extra room, and compact icon-only actions have a 38px minimum. Labels are centered, 13px DemiBold. Padding is 12px; layouts can expand the control.
 
-Primary fill stays accent blue on hover and press. Secondary and destructive buttons use surface at rest, accent-fill on hover, and line on press. Destructive changes text to error, not its fill. Keyboard focus uses a two-pixel accent border on secondary actions and contrasting white/deep-navy border on primary actions. Disabled opacity is 0.42. Icon-only glyphs are centered independently of button padding, including compact 34×32px toolbar actions. Keyboard shortcut help uses 76px key columns with a 24px gap to descriptions. Quiet actions have a transparent resting background; hovered actions use accent-fill. Consistent 120ms color transitions provide feedback.
+Primary fill lightens on hover and darkens on press. Every button scales to 0.975 while pressed, and secondary borders take the accent on hover. Secondary and destructive buttons use surface at rest, accent-fill on hover, and line on press. Destructive changes text to error, not its fill. Keyboard focus uses a two-pixel accent border on secondary actions and contrasting white/deep-navy border on primary actions. Disabled opacity is 0.42. Icon-only glyphs are centered independently of button padding, including compact 34×32px toolbar actions. Keyboard shortcut help uses 76px key columns with a 24px gap to descriptions. Quiet actions have a transparent resting background; hovered actions use accent-fill. Consistent 120ms color transitions provide feedback.
 
 ### Inputs / Fields
 
@@ -228,11 +228,11 @@ Primary fill stays accent blue on hover and press. Secondary and destructive but
 
 ### Navigation
 
-Seven persistent rail buttons are 46px high with 8px corners and 14px text. Selected items use the selected rail fill, white DemiBold labels, and a brighter dot; hover uses the rail hover fill. Focus adds a two-pixel rail-focus border. Navigation is keyboard focusable; Ctrl+1/2/3 select the first three workspaces.
+Seven persistent rail buttons are 46px high with 8px corners and 14px text. A single selected-fill surface (`navigationSelection`) sits behind the buttons and slides to the active workspace in 220ms; selected items use white DemiBold labels and a brighter glyph, and hover uses the rail hover fill. Focus adds a two-pixel rail-focus border. Navigation is keyboard focusable; Ctrl+1/2/3 select the first three workspaces.
 
 ### Operation evidence
 
-The Erase → Write → Verify strip uses success dots for completed stages, accent for the active stage, and line for pending stages. StageProgress.qml draws a 5px themed track and accent-filled progress. The persistent status strip sits directly above the developer panel and uses a compact rectangular surface, at least 38px height, severity-aware border and text, an activity dot, and a busy-only Stop operation button. ActivitySpinner.qml draws a themed arc with an 850ms rotation while an operation is running. Pending/completed stages come from actual operation callbacks.
+The Erase → Write → Verify strip is a connected stepper: 20px markers joined by 2px lines. Completed stages show a success fill with a check and a success connector, the active stage uses accent, and pending stages use a line-colored ring. StageProgress.qml draws a 6px themed track whose accent fill eases to each new value. Chip.qml is the shared status pill (tone as text on a tint of the same tone) used for the image type, activity count, inspector direction, and history result; the result text always accompanies the color. The persistent status strip sits directly above the developer panel and uses a compact rectangular surface, at least 38px height, severity-aware border and text, an activity dot, and a busy-only Stop operation button. ActivitySpinner.qml draws a themed arc with an 850ms rotation while an operation is running. Pending/completed stages come from actual operation callbacks.
 
 ### Dropdowns, numeric fields, and checkboxes
 
@@ -262,7 +262,7 @@ A 40px bottom tab strip opens Output, BootWire, or System terminal. Expanded hei
 
 ### Don't:
 - Don't substitute a web or mobile navigation pattern for the desktop rail.
-- Don't add shadows, gradients, or motion as if they were established tokens.
+- Don't add shadows or gradients. Motion is limited to the documented feedback transitions, the sliding rail selection, and the 160–200ms fade-and-rise when the workspace changes.
 - Don't communicate a failure or simulator state through color alone.
 - Don't replace the approved logo or palette while extending the control skins.
 

@@ -30,7 +30,7 @@ assert engine.rootObjects(), 'QML failed to load'
 window = engine.rootObjects()[0]
 
 def settle():
-    for _ in range(10):
+    for _ in range(24):
         app.processEvents()
         time.sleep(.015)
 

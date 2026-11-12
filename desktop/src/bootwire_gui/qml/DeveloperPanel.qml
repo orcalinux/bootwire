@@ -84,6 +84,7 @@ Rectangle {
                 TextArea { text: panel.cs.pending.details || ""; readOnly: true; selectByMouse: true; color: Theme.muted; font.family: Theme.mono; font.pixelSize: 11; wrapMode: TextEdit.Wrap; background: Rectangle { color: Theme.inset; radius: 7 } }
             }
             RowLayout {
+                spacing: Theme.gap
                 Item { Layout.fillWidth: true }
                 ActionButton { text: "Cancel"; onClicked: confirmation.reject() }
                 ActionButton { objectName: "confirmConsoleCommand"; text: "Execute command"; primary: true; onClicked: confirmation.accept() }
@@ -108,7 +109,7 @@ Rectangle {
         RowLayout {
             Layout.fillWidth: true; Layout.leftMargin: 18; Layout.rightMargin: 10
             Layout.preferredHeight: 40
-            spacing: 5
+            spacing: 8
             Repeater {
                 model: ["Output", "BootWire", "System terminal"]
                 delegate: ActionButton {
@@ -128,11 +129,12 @@ Rectangle {
         ColumnLayout {
             visible: panel.expanded && panel.tab !== 2
             Layout.fillWidth: true; Layout.fillHeight: true
-            Layout.leftMargin: 18; Layout.rightMargin: 18; Layout.bottomMargin: 10
-            spacing: 8
+            Layout.leftMargin: 18; Layout.rightMargin: 18; Layout.topMargin: 6; Layout.bottomMargin: 12
+            spacing: 10
             RowLayout {
                 visible: panel.tab === 0
                 Layout.fillWidth: true
+                spacing: Theme.gap
                 Field { id: outputSearch; placeholderText: "Filter output, protocol bytes, or errors"; Layout.fillWidth: true; implicitHeight: 32 }
                 CheckField { id: verbose; text: "Verbose"; checked: true }
                 ActionButton { text: "Export"; glyph: "export"; implicitHeight: 32; onClicked: exportDialog.open() }
@@ -141,6 +143,7 @@ Rectangle {
             RowLayout {
                 visible: panel.tab === 1
                 Layout.fillWidth: true
+                spacing: Theme.gap
                 BWText { text: "Shared device session · BootWire commands"; color: Theme.muted; font.pixelSize: 11; Layout.fillWidth: true }
                 ActionButton { text: "Help"; glyph: "help"; implicitHeight: 30; onClicked: panel.commandSubmitted("help") }
                 ActionButton { text: "Clear"; glyph: "trash"; implicitHeight: 30; onClicked: panel.service.clear("command") }
@@ -176,6 +179,7 @@ Rectangle {
             RowLayout {
                 visible: panel.tab === 1
                 Layout.fillWidth: true
+                spacing: Theme.gap
                 BWText { text: ">"; color: Theme.accent; font.family: Theme.mono }
                 Field {
                     id: commandInput; objectName: "bootwireCommandInput"
@@ -200,9 +204,10 @@ Rectangle {
         ColumnLayout {
             visible: panel.expanded && panel.tab === 2
             Layout.fillWidth: true; Layout.fillHeight: true
-            spacing: 6
+            spacing: 8
             RowLayout {
-                Layout.fillWidth: true; Layout.leftMargin: 18; Layout.rightMargin: 12
+                Layout.fillWidth: true; Layout.leftMargin: 18; Layout.rightMargin: 18; Layout.topMargin: 6
+                spacing: Theme.gap
                 SelectField { id: shellChoice; objectName: "terminalShellChoice"; model: panel.ts.shells; textRole: "label"; implicitHeight: 34; Layout.preferredWidth: 170; enabled: !panel.ts.running && !panel.ts.starting; Accessible.name: "Local shell" }
                 Field { id: workingDirectory; text: panel.ts.cwd; placeholderText: "Working directory"; implicitHeight: 34; Layout.fillWidth: true; enabled: !panel.ts.running && !panel.ts.starting }
                 ActionButton { objectName: "startSystemTerminal"; text: panel.ts.starting ? "Starting…" : "Start shell"; glyph: "play"; primary: true; implicitHeight: 34; enabled: !panel.ts.running && !panel.ts.starting && panel.ts.shells.length > 0; onClicked: { panel.terminal.start(panel.ts.shells[shellChoice.currentIndex].id, workingDirectory.text); terminalText.forceActiveFocus(Qt.MouseFocusReason) } }
@@ -225,6 +230,7 @@ Rectangle {
                     id: terminalScroll
                     anchors.fill: parent; anchors.margins: 10
                     clip: true
+                    rightPadding: 14
                     TextEdit {
                         id: terminalText; objectName: "systemTerminalInput"
                         text: panel.ts.html
@@ -256,7 +262,7 @@ Rectangle {
                         }
                         MouseArea { anchors.fill: parent; acceptedButtons: Qt.NoButton; cursorShape: Qt.IBeamCursor }
                     }
-                    ScrollBar.vertical: SlimScrollBar { }
+                    ScrollBar.vertical: SlimScrollBar { parent: terminalScroll; x: terminalScroll.width - width; y: 0; height: terminalScroll.height }
                 }
                 BWText { visible: !panel.ts.html; anchors.centerIn: parent; width: parent.width-40; horizontalAlignment: Text.AlignHCenter; text: "Start a shell above. Use the BootWire tab to work with the connected device; a standalone CLI opens its own connection."; color: "#A4B4C7"; font.pixelSize: 12 }
             }

@@ -35,6 +35,7 @@ ApplicationWindow {
     readonly property int traceCount: backend ? backend.traces.count : 0
     readonly property bool compact: height < 800
     readonly property bool narrow: width < 1000
+    readonly property int pageMargin: narrow ? 16 : 30
     readonly property var titles: ["Firmware workspace", "Devices & batches", "Firmware library", "Diagnostics & commands", "Protocol inspector", "Job history", "Preferences"]
     readonly property var subtitles: [
         "From binary to board. A clear path through every update.",
@@ -58,6 +59,12 @@ ApplicationWindow {
     Connections {
         target: backend ? backend.console : null
         function onConnectionOptionsChanged(options) { window.applyConnection(options) }
+    }
+    onPageChanged: pageEnter.restart()
+    ParallelAnimation {
+        id: pageEnter
+        NumberAnimation { target: pages; property: "opacity"; from: 0; to: 1; duration: 160; easing.type: Easing.OutCubic }
+        NumberAnimation { target: pageShift; property: "y"; from: 10; to: 0; duration: 200; easing.type: Easing.OutCubic }
     }
     Shortcut { sequence: "Ctrl+`"; onActivated: developerPanel.toggle() }
     Shortcut { sequence: "Ctrl+J"; onActivated: developerPanel.toggle() }
@@ -257,7 +264,20 @@ ActionMenu {
             Layout.fillHeight: true
             Layout.preferredWidth: window.narrow ? 64 : window.width < 1150 ? 184 : 214
             color: Theme.rail
+            Rectangle {
+                objectName: "navigationSelection"
+                readonly property Item target: navigationItems.count > 0 ? navigationItems.itemAt(window.page) : null
+                visible: target !== null
+                x: target ? railColumn.x + target.x : 0
+                y: target ? railColumn.y + target.y : 0
+                width: target ? target.width : 0
+                height: target ? target.height : 0
+                radius: 9
+                color: "#2B4967"
+                Behavior on y { NumberAnimation { duration: 220; easing.type: Easing.OutCubic } }
+            }
             ColumnLayout {
+                id: railColumn
                 anchors.fill: parent
                 anchors.margins: window.narrow ? 10 : 18
                 spacing: 8
@@ -275,6 +295,7 @@ ActionMenu {
                     Label { visible: !window.narrow; text: "BootWire"; color: "#FFFFFF"; font.pixelSize: 22; font.weight: Font.DemiBold }
                 }
                 Repeater {
+                    id: navigationItems
                     model: ["Firmware", "Devices", "Library", "Diagnostics", "Inspector", "History", "Preferences"]
                     delegate: Button {
                         required property int index
@@ -291,8 +312,9 @@ ActionMenu {
                         ToolTip.delay: 500
                         padding: window.narrow ? 12 : 6
                         background: Rectangle {
-                            radius: 8
-                            color: window.page === index ? "#2B4967" : parent.hovered ? "#203D59" : "transparent"
+                            radius: 9
+                            color: window.page !== index && parent.hovered ? "#203D59" : "transparent"
+                            Behavior on color { ColorAnimation { duration: 120 } }
                             border.width: parent.visualFocus ? 2 : 0
                             border.color: "#82B9F5"
                         }
@@ -365,7 +387,7 @@ ActionMenu {
                         objectName: "baudField"
                         glyph: "speed"
                         editable: true
-                        Layout.preferredWidth: window.narrow ? 120 : 140
+                        Layout.preferredWidth: 144
                         implicitHeight: 40
                         model: ["9600", "57600", "115200", "230400", "460800", "921600"]
                         currentIndex: Math.max(0, model.indexOf(String(s.preferences.baud)))
@@ -387,11 +409,12 @@ ActionMenu {
             }
             RowLayout {
                 Layout.fillWidth: true
-                Layout.leftMargin: window.narrow ? 16 : 30; Layout.rightMargin: window.narrow ? 16 : 30; Layout.topMargin: compact ? 14 : 26; Layout.bottomMargin: compact ? 12 : 22
+                Layout.leftMargin: window.narrow ? 16 : 30; Layout.rightMargin: window.narrow ? 16 : 30; Layout.topMargin: compact ? 16 : 28; Layout.bottomMargin: compact ? 14 : 24
+                spacing: 16
                 ColumnLayout {
-                    spacing: 7
+                    spacing: 6
                     Layout.fillWidth: true
-                    BWText { Layout.fillWidth: true; text: titles[page]; font.pixelSize: window.narrow ? 20 : compact ? 22 : 27; font.weight: Font.DemiBold }
+                    BWText { Layout.fillWidth: true; text: titles[page]; font.pixelSize: window.narrow ? 20 : compact ? 22 : 27; font.weight: Font.DemiBold; font.letterSpacing: -0.4 }
                     BWText { text: subtitles[page]; color: Theme.muted; font.pixelSize: 13; Layout.fillWidth: true; visible: !compact && !window.narrow }
                 }
                 Item { Layout.fillWidth: true }
@@ -400,36 +423,37 @@ ActionMenu {
             StackLayout {
                 id: pages
                 currentIndex: page
+                transform: Translate { id: pageShift }
                 Layout.fillWidth: true; Layout.fillHeight: true
-                Layout.leftMargin: window.narrow ? 16 : 30; Layout.rightMargin: window.narrow ? 16 : 30
+                Layout.leftMargin: window.pageMargin
+                Layout.bottomMargin: window.compact ? 12 : 20
 
                 // Firmware evidence stacks when the desktop tiles the window narrowly.
-                ScrollView {
-                    clip: true
-                    contentWidth: availableWidth
+                PageScroll {
+                    gutter: window.pageMargin
                     GridLayout {
                         objectName: "firmwareGrid"
                         columns: window.narrow ? 1 : 2
                         width: parent.width
-                        columnSpacing: 22; rowSpacing: 18
+                        columnSpacing: Theme.section; rowSpacing: Theme.section
                         ColumnLayout {
                             Layout.fillWidth: true; Layout.preferredWidth: 660; Layout.minimumWidth: window.narrow ? 0 : 430; Layout.alignment: Qt.AlignTop
-                            spacing: 18
+                            spacing: Theme.section
                             Panel {
                                 Layout.fillWidth: true
-                                implicitHeight: firmwareContents.implicitHeight + 44
+                                implicitHeight: firmwareContents.implicitHeight + 2 * Theme.pad
                                 ColumnLayout {
                                     id: firmwareContents
-                                    anchors.fill: parent; anchors.margins: 22
-                                    spacing: 14
+                                    anchors.fill: parent; anchors.margins: Theme.pad
+                                    spacing: 16
                                     RowLayout {
                                         BWText { text: "Firmware image"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                         Item { Layout.fillWidth: true }
-                                        BWText { text: "RAW BINARY"; color: Theme.muted; font.pixelSize: 10; font.weight: Font.DemiBold }
+                                        Chip { text: "RAW BINARY" }
                                     }
                                     Rectangle {
-                                        Layout.fillWidth: true; implicitHeight: hasImage ? 84 : 182
-                                        radius: 9
+                                        Layout.fillWidth: true; implicitHeight: hasImage ? 92 : 188
+                                        radius: Theme.controlRadius
                                         color: dropArea.containsDrag ? Theme.accentFill : Theme.inset
                                         border.color: dropArea.containsDrag ? Theme.accent : Theme.line
                                         DropArea {
@@ -445,6 +469,7 @@ ActionMenu {
                                             BWText { text: "Drop a .bin file here, or browse your computer."; color: Theme.muted; font.pixelSize: 13; Layout.fillWidth: true }
                                             Item { Layout.fillHeight: true }
                                             RowLayout {
+                                                spacing: Theme.gap
                                                 ActionButton { text: "Browse files"; enabled: !s.busy; onClicked: fileDialog.open() }
                                                 ActionButton { text: "Try a demo image"; enabled: !s.busy; onClicked: backend.perform("demo", {}) }
                                                 Item { Layout.fillWidth: true }
@@ -465,33 +490,40 @@ ActionMenu {
                                     }
                                     RowLayout {
                                         visible: hasImage
-                                        spacing: 22
+                                        spacing: 32
                                         ColumnLayout {
+                                            spacing: 4
                                             BWText { text: "FILE CRC-32"; font.pixelSize: 10; color: Theme.muted }
                                             BWText { text: s.image.crc32 || "—"; font.family: Theme.mono; font.pixelSize: 13 }
                                         }
                                         ColumnLayout {
+                                            spacing: 4
                                             BWText { text: "INITIAL STACK"; font.pixelSize: 10; color: Theme.muted }
                                             BWText { text: s.image.stackPointer || "—"; font.family: Theme.mono; font.pixelSize: 13 }
                                         }
                                         ColumnLayout {
+                                            spacing: 4
                                             BWText { text: "RESET VECTOR"; font.pixelSize: 10; color: Theme.muted }
                                             BWText { text: s.image.resetVector || "—"; font.family: Theme.mono; font.pixelSize: 13 }
                                         }
                                     }
                                     Rectangle { Layout.fillWidth: true; height: 1; color: Theme.line }
-                                    BWText { text: "Update options"; font.weight: Font.DemiBold }
+                                    BWText { text: "Update options"; font.weight: Font.DemiBold; Layout.topMargin: 4 }
                                     RowLayout {
+                                        spacing: 12
                                         BWText { text: "Load address"; color: Theme.muted; Layout.preferredWidth: 105 }
                                         Field { id: addressField; objectName: "addressField"; placeholderText: s.device.startLabel ? s.device.startLabel + " (device default)" : "Use device default"; Layout.fillWidth: true; enabled: !s.busy; font.family: Theme.mono; font.pixelSize: 12 }
                                     }
                                     CheckField { id: runAfter; text: "Start the application after verification"; checked: false; enabled: !s.busy }
                                     BWText { text: "Flash erases the blocks touched by this image, writes it, then verifies the padded image with CRC-32."; color: Theme.muted; font.pixelSize: 12; Layout.fillWidth: true }
                                     RowLayout {
+                                        Layout.topMargin: 4
+                                        spacing: Theme.gap
                                         ActionButton { objectName: "flashButton"; text: s.busy && s.stage !== "inspect" ? "Working…" : "Flash firmware"; primary: true; Layout.fillWidth: true; enabled: ready && hasImage; onClicked: confirmAction("flash", imageOptions(), "Flash this firmware?", "The application blocks touched by " + s.image.name + " will be erased and rewritten on " + s.device.port + ". Verification runs before the application can start.") }
                                         ActionButton { text: "Verify only"; enabled: ready && hasImage; onClicked: backend.perform("verify", imageOptions()) }
                                     }
                                     RowLayout {
+                                        spacing: Theme.gap
                                         ActionButton { text: "Write only"; enabled: ready && hasImage; onClicked: confirmAction("write", imageOptions(), "Write into erased flash?", "This writes the selected image and verifies it. The target region must already be erased.") }
                                         ActionButton { text: "Erase region"; destructive: true; enabled: ready; onClicked: confirmAction("erase", {address: addressField.text}, "Erase application flash?", "This erases from the selected load address to the end of the application region. The current application will be removed.") }
                                         ActionButton { text: "Run app"; enabled: ready; onClicked: backend.perform("run", {}) }
@@ -500,23 +532,37 @@ ActionMenu {
                             }
                             Panel {
                                 Layout.fillWidth: true
-                                implicitHeight: 108
+                                implicitHeight: stageContents.implicitHeight + 2 * Theme.pad
                                 ColumnLayout {
-                                    anchors.fill: parent; anchors.margins: 20; spacing: 12
+                                    id: stageContents
+                                    anchors.fill: parent; anchors.margins: Theme.pad; spacing: 16
                                     RowLayout {
+                                        Layout.fillWidth: true
+                                        spacing: 12
                                         Repeater {
                                             model: ["Erase", "Write", "Verify"]
                                             delegate: RowLayout {
                                                 required property int index
                                                 required property string modelData
-                                                Layout.fillWidth: true
-                                                Rectangle { width: 7; height: 7; radius: 4; color: s.completedStages.indexOf(modelData.toLowerCase()) >= 0 ? Theme.success : s.stage === modelData.toLowerCase() ? Theme.accent : Theme.line }
-                                                BWText { text: modelData; color: s.stage === modelData.toLowerCase() ? Theme.accent : Theme.muted; font.pixelSize: 12 }
+                                                readonly property bool done: s.completedStages.indexOf(modelData.toLowerCase()) >= 0
+                                                readonly property bool active: s.stage === modelData.toLowerCase()
+                                                Layout.fillWidth: index < 2
+                                                spacing: 10
+                                                Rectangle {
+                                                    Layout.preferredWidth: 20; Layout.preferredHeight: 20; radius: 10
+                                                    color: done ? Theme.success : active ? Theme.accent : "transparent"
+                                                    border.width: done || active ? 0 : 2
+                                                    border.color: Theme.line
+                                                    Behavior on color { ColorAnimation { duration: 160 } }
+                                                    Glyph { anchors.centerIn: parent; width: 12; height: 12; name: "check"; visible: done; ink: Theme.dark ? "#102337" : "#FFFFFF" }
+                                                }
+                                                BWText { text: modelData; color: active ? Theme.accent : done ? Theme.ink : Theme.muted; font.pixelSize: 12; font.weight: active || done ? Font.DemiBold : Font.Normal; wrapMode: Text.NoWrap }
+                                                Rectangle { visible: index < 2; Layout.fillWidth: true; Layout.minimumWidth: 12; height: 2; radius: 1; color: done ? Theme.success : Theme.line; Behavior on color { ColorAnimation { duration: 160 } } }
                                             }
                                         }
                                     }
-                                    StageProgress { Layout.fillWidth: true; value: s.progress; implicitHeight: 5 }
-                                    BWText { text: s.busy ? s.detail : "Target read-back on writes. CRC-32 verification on the image."; color: Theme.muted; font.pixelSize: 11; Layout.fillWidth: true }
+                                    StageProgress { Layout.fillWidth: true; value: s.progress }
+                                    BWText { text: s.busy ? s.detail : "Target read-back on writes. CRC-32 verification on the image."; color: Theme.muted; font.pixelSize: 12; Layout.fillWidth: true }
                                 }
                             }
                         }
@@ -526,14 +572,14 @@ ActionMenu {
                             Layout.maximumWidth: window.narrow ? 10000 : 290
                             Layout.minimumWidth: 230
                             Layout.alignment: Qt.AlignTop
-                            spacing: 18
+                            spacing: Theme.section
                             Panel {
-                                Layout.fillWidth: true; implicitHeight: targetContents.implicitHeight + 40
+                                Layout.fillWidth: true; implicitHeight: targetContents.implicitHeight + 2 * Theme.pad
                                 ColumnLayout {
                                     id: targetContents
-                                    anchors.fill: parent; anchors.margins: 20; spacing: 15
+                                    anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
                                     RowLayout {
-                                        BWText { text: "Target overview"; font.weight: Font.DemiBold; font.pixelSize: 16 }
+                                        BWText { text: "Target overview"; font.weight: Font.DemiBold; font.pixelSize: 17 }
                                         Item { Layout.fillWidth: true }
                                         Rectangle { width: 7; height: 7; radius: 4; color: s.connected ? Theme.success : Theme.muted }
                                     }
@@ -549,23 +595,24 @@ ActionMenu {
                                         delegate: RowLayout {
                                             required property var modelData
                                             Layout.fillWidth: true
-                                            BWText { text: modelData[0]; color: Theme.muted; font.pixelSize: 11; Layout.fillWidth: true }
-                                            BWText { text: modelData[1]; font.pixelSize: 11; font.family: Theme.mono }
+                                            spacing: 12
+                                            BWText { text: modelData[0]; color: Theme.muted; font.pixelSize: 12; Layout.fillWidth: true }
+                                            BWText { text: modelData[1]; font.pixelSize: 12; font.family: Theme.mono; wrapMode: Text.NoWrap }
                                         }
                                     }
-                                    Rectangle { Layout.fillWidth: true; height: 1; color: Theme.line }
-                                    ActionButton { text: "Test connection"; enabled: ready; Layout.fillWidth: true; onClicked: backend.perform("ping", {payload: "BootWire", count: 5}) }
+                                    Rectangle { Layout.fillWidth: true; Layout.topMargin: 4; height: 1; color: Theme.line }
+                                    ActionButton { text: "Test connection"; Layout.topMargin: 4; enabled: ready; Layout.fillWidth: true; onClicked: backend.perform("ping", {payload: "BootWire", count: 5}) }
                                 }
                             }
                             Panel {
-                                Layout.fillWidth: true; implicitHeight: 260
+                                Layout.fillWidth: true; implicitHeight: 300
                                 ColumnLayout {
-                                    anchors.fill: parent; anchors.margins: 18
-                                    spacing: 12
+                                    anchors.fill: parent; anchors.margins: Theme.pad
+                                    spacing: 14
                                     RowLayout {
-                                        BWText { text: "Session activity"; font.weight: Font.DemiBold }
+                                        BWText { text: "Session activity"; font.weight: Font.DemiBold; font.pixelSize: 17 }
                                         Item { Layout.fillWidth: true }
-                                        BWText { text: String(s.logs.length); color: Theme.muted; font.pixelSize: 11 }
+                                        Chip { text: String(s.logs.length) }
                                     }
                                     ListView {
                                         id: miniLog
@@ -574,7 +621,7 @@ ActionMenu {
                                         onCountChanged: positionViewAtEnd()
                                         delegate: ColumnLayout {
                                             required property var modelData
-                                            width: miniLog.width
+                                            width: miniLog.width - 16
                                             spacing: 4
                                             BWText { text: modelData.time; font.pixelSize: 10; color: Theme.muted; font.family: Theme.mono }
                                             BWText { text: modelData.message; color: levelColor(modelData.level); font.pixelSize: 11; Layout.fillWidth: true }
@@ -590,16 +637,18 @@ ActionMenu {
                 }
 
                 // Devices and batch operations.
-                ScrollView {
-                    clip: true; contentWidth: availableWidth
+                PageScroll {
+                    gutter: window.pageMargin
                     ColumnLayout {
-                        width: parent.width; spacing: 20
+                        width: parent.width; spacing: Theme.section
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: 146
+                            Layout.fillWidth: true; implicitHeight: profileSave.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                anchors.fill: parent; anchors.margins: 22; spacing: 14
-                                BWText { text: "Save the connection above as a device profile"; font.weight: Font.DemiBold; font.pixelSize: 16 }
+                                id: profileSave
+                                anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
+                                BWText { text: "Save the connection above as a device profile"; font.weight: Font.DemiBold; font.pixelSize: 17; Layout.fillWidth: true }
                                 RowLayout {
+                                    spacing: Theme.gap
                                     Field { id: profileName; placeholderText: "Profile name, e.g. Development board"; Layout.fillWidth: true }
                                     ActionButton { text: "Save profile"; primary: true; enabled: !s.busy; onClicked: backend.saveProfile(profileName.text, connectionOptions()) }
                                 }
@@ -607,6 +656,7 @@ ActionMenu {
                             }
                         }
                         RowLayout {
+                            spacing: 16
                             BWText { text: "Your devices"; font.weight: Font.DemiBold; font.pixelSize: 17 }
                             Item { Layout.fillWidth: true }
                             ActionButton { text: "Export profiles"; enabled: s.profiles.length > 0; onClicked: exportData("profiles") }
@@ -616,9 +666,9 @@ ActionMenu {
                             model: s.profiles
                             delegate: Panel {
                                 required property var modelData
-                                Layout.fillWidth: true; implicitHeight: 84
+                                Layout.fillWidth: true; implicitHeight: 88
                                 RowLayout {
-                                    anchors.fill: parent; anchors.margins: 16; spacing: 10
+                                    anchors.fill: parent; anchors.leftMargin: Theme.pad - 4; anchors.rightMargin: Theme.pad; spacing: 12
                                     CheckField {
                                         Accessible.name: "Select " + modelData.name + " for batch"
                                         enabled: !s.busy
@@ -636,13 +686,14 @@ ActionMenu {
                             }
                         }
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: batchBox.implicitHeight + 44
+                            Layout.fillWidth: true; implicitHeight: batchBox.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                id: batchBox; anchors.fill: parent; anchors.margins: 22; spacing: 14
+                                id: batchBox; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
                                 BWText { text: "Batch update"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                 BWText { text: "Each selected target connects, erases, writes, and verifies in sequence. A failed target is recorded and the batch continues. Stopping leaves the current image incomplete."; color: Theme.muted; font.pixelSize: 13; Layout.fillWidth: true }
                                 BWText { text: hasImage ? "Image: " + s.image.name + " · " + selectedProfiles.length + " profiles selected" : "Choose an image in Firmware before starting a batch."; Layout.fillWidth: true }
                                 ActionButton {
+                                    Layout.topMargin: 4
                                     text: "Flash selected devices"; primary: true; enabled: !s.busy && hasImage && selectedProfiles.length > 0
                                     onClicked: {
                                         let options = imageOptions(); options.profiles = s.profiles.filter(p => selectedProfiles.indexOf(p.name) >= 0)
@@ -659,21 +710,23 @@ ActionMenu {
                 }
 
                 // Local release library.
-                ScrollView {
-                    clip: true; contentWidth: availableWidth
+                PageScroll {
+                    gutter: window.pageMargin
                     ColumnLayout {
-                        width: parent.width; spacing: 20
+                        width: parent.width; spacing: Theme.section
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: libraryAdd.implicitHeight + 44
+                            Layout.fillWidth: true; implicitHeight: libraryAdd.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                id: libraryAdd; anchors.fill: parent; anchors.margins: 22; spacing: 14
+                                id: libraryAdd; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
                                 BWText { text: "Register a release"; font.weight: Font.DemiBold; font.pixelSize: 17 }
                                 BWText { text: hasImage ? "Selected: " + s.image.name : "Choose a raw binary to add to your local firmware catalog."; color: Theme.muted; Layout.fillWidth: true }
                                 RowLayout {
+                                    spacing: Theme.gap
                                     Field { id: versionField; placeholderText: "Version, e.g. 1.0.0"; Layout.preferredWidth: 180; enabled: !s.busy }
                                     Field { id: releaseNotes; placeholderText: "Release notes or build label"; Layout.fillWidth: true; enabled: !s.busy }
                                 }
                                 RowLayout {
+                                    spacing: Theme.gap
                                     ActionButton { text: "Choose image"; enabled: !s.busy; onClicked: fileDialog.open() }
                                     ActionButton { text: "Add release"; primary: true; enabled: !s.busy && hasImage; onClicked: backend.addRelease(versionField.text, releaseNotes.text) }
                                     Item { Layout.fillWidth: true }
@@ -689,10 +742,11 @@ ActionMenu {
                             delegate: Panel {
                                 required property var modelData
                                 visible: (modelData.name + " " + modelData.version + " " + modelData.notes).toLowerCase().indexOf(librarySearch.text.toLowerCase()) >= 0
-                                Layout.fillWidth: true; implicitHeight: releaseRow.implicitHeight + 40
+                                Layout.fillWidth: true; implicitHeight: releaseRow.implicitHeight + 2 * Theme.pad
                                 ColumnLayout {
-                                    id: releaseRow; anchors.fill: parent; anchors.margins: 20; spacing: 10
+                                    id: releaseRow; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 10
                                     RowLayout {
+                                        spacing: Theme.gap
                                         BWText { text: modelData.name + "  ·  " + modelData.version; font.weight: Font.DemiBold; font.pixelSize: 16; Layout.fillWidth: true; elide: Text.ElideMiddle; wrapMode: Text.NoWrap }
                                         ActionButton { text: "Use image"; primary: true; enabled: !s.busy; onClicked: { backend.loadRelease(modelData.path, modelData.sha256, modelData.simulatorOnly || false); page = 0 } }
                                         ActionButton { text: "Remove"; enabled: !s.busy; onClicked: backend.removeRelease(modelData.sha256) }
@@ -708,17 +762,18 @@ ActionMenu {
                 }
 
                 // Diagnostics and custom commands.
-                ScrollView {
-                    clip: true; contentWidth: availableWidth
+                PageScroll {
+                    gutter: window.pageMargin
                     ColumnLayout {
-                        width: parent.width; spacing: 20
+                        width: parent.width; spacing: Theme.section
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: pingContents.implicitHeight + 44
+                            Layout.fillWidth: true; implicitHeight: pingContents.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                id: pingContents; anchors.fill: parent; anchors.margins: 22; spacing: 14
+                                id: pingContents; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
                                 BWText { text: "Link test"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                 BWText { text: "Send a series of echo requests and measure round-trip time. Hex mode lets you exercise SLIP escape bytes C0 and DB."; color: Theme.muted; Layout.fillWidth: true; font.pixelSize: 13 }
                                 RowLayout {
+                                    spacing: 12
                                     Field { id: pingPayload; text: "C0 DB 11 22"; placeholderText: "Ping payload"; Layout.fillWidth: true }
                                     CheckField { id: pingHex; text: "Hex"; checked: true }
                                     NumberField { id: pingCount; from: 1; to: 100; value: 5; editable: true; Accessible.name: "Ping count" }
@@ -727,12 +782,13 @@ ActionMenu {
                             }
                         }
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: commandContents.implicitHeight + 44
+                            Layout.fillWidth: true; implicitHeight: commandContents.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                id: commandContents; anchors.fill: parent; anchors.margins: 22; spacing: 14
+                                id: commandContents; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
                                 BWText { text: "Custom command console"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                 BWText { text: "User commands occupy 0x40–0x7F. Their meaning and payload depend on your firmware. The standard simulator returns UNKNOWN_CMD for unregistered commands."; color: Theme.muted; Layout.fillWidth: true; font.pixelSize: 13 }
                                 RowLayout {
+                                    spacing: 12
                                     Field { id: commandId; text: "0x40"; placeholderText: "Command ID"; Layout.preferredWidth: 110; font.family: Theme.mono }
                                     Field { id: commandPayload; placeholderText: "Payload, e.g. 01 02"; Layout.fillWidth: true; font.family: Theme.mono }
                                     CheckField { id: commandHex; text: "Hex"; checked: true }
@@ -744,9 +800,9 @@ ActionMenu {
                             }
                         }
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: faults.implicitHeight + 44
+                            Layout.fillWidth: true; implicitHeight: faults.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                id: faults; anchors.fill: parent; anchors.margins: 22; spacing: 14
+                                id: faults; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 14
                                 BWText { text: "Recovery lab"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                 BWText { text: "Simulator only. Affect the next frame, then run a ping test and watch the retry in Inspector. Reset creates a fresh, erased virtual target."; color: Theme.muted; Layout.fillWidth: true; font.pixelSize: 13 }
                                 Flow {
@@ -766,34 +822,32 @@ ActionMenu {
                 ColumnLayout {
                     spacing: 14
                     RowLayout {
+                        Layout.rightMargin: window.pageMargin
+                        spacing: 12
                         Field { id: traceSearch; objectName: "traceSearch"; placeholderText: "Filter by command, status, direction, or payload bytes, e.g. WRITE or BAD_PARAM"; Layout.fillWidth: true }
                         CheckField { id: followTraces; objectName: "followTraces"; text: "Follow latest"; checked: true }
                         ActionButton { text: "Export capture"; enabled: traceCount > 0; onClicked: exportData("traces") }
                         ActionButton { text: "Clear"; enabled: traceCount > 0; onClicked: backend.clear("traces") }
                     }
-                    BWText { text: "Decoded frames, newest at the bottom · latest 500 kept · CRC-invalid frames marked BAD · WIRE shows the bytes after SLIP encoding"; color: Theme.muted; font.pixelSize: 12; Layout.fillWidth: true }
+                    BWText { text: "Decoded frames, newest at the bottom · latest 500 kept · CRC-invalid frames marked BAD · WIRE shows the bytes after SLIP encoding"; color: Theme.muted; font.pixelSize: 12; Layout.fillWidth: true; Layout.rightMargin: window.pageMargin }
                     Panel {
-                        Layout.fillWidth: true; Layout.fillHeight: true
+                        Layout.fillWidth: true; Layout.fillHeight: true; Layout.rightMargin: window.pageMargin
                         ListView {
                             id: traceList; objectName: "traceList"
-                            anchors.fill: parent; anchors.margins: 16; clip: true; spacing: 0
+                            anchors.fill: parent; anchors.leftMargin: Theme.pad; anchors.rightMargin: 8; anchors.topMargin: 8; anchors.bottomMargin: 8; clip: true; spacing: 0
                             model: backend ? backend.traces : null
                             onCountChanged: if (followTraces.checked) Qt.callLater(function() { traceList.positionViewAtEnd() })
                             delegate: ColumnLayout {
                                 required property var modelData
-                                width: traceList.width - 14
+                                width: traceList.width - 16
                                 property bool matches: (modelData.direction + " " + modelData.name + " " + modelData.command + " " + modelData.statusName + " seq " + modelData.seqLabel + " " + modelData.payload).toLowerCase().indexOf(traceSearch.text.toLowerCase()) >= 0
                                 readonly property color tone: modelData.direction === "TX" ? Theme.accent : modelData.direction === "BAD" || modelData.status > 0 ? Theme.error : Theme.success
                                 visible: matches; height: matches ? implicitHeight : 0
                                 spacing: 9
                                 RowLayout {
-                                    Layout.topMargin: 12; Layout.fillWidth: true; spacing: 14
+                                    Layout.topMargin: 14; Layout.fillWidth: true; spacing: 14
                                     BWText { text: modelData.time; font.family: Theme.mono; font.pixelSize: 11; color: Theme.muted; Layout.preferredWidth: 92 }
-                                    Rectangle {
-                                        Layout.preferredWidth: 38; Layout.preferredHeight: 20; radius: 5
-                                        color: "transparent"; border.color: tone
-                                        BWText { anchors.centerIn: parent; text: modelData.direction; color: tone; font.pixelSize: 10; font.weight: Font.DemiBold }
-                                    }
+                                    Chip { text: modelData.direction; tone: parent.parent.tone; Layout.preferredWidth: 40 }
                                     BWText { text: modelData.name; font.family: Theme.mono; font.pixelSize: 12; font.weight: Font.DemiBold; Layout.preferredWidth: 112; elide: Text.ElideRight; wrapMode: Text.NoWrap }
                                     BWText { text: "CMD " + modelData.command; font.family: Theme.mono; font.pixelSize: 11; color: Theme.muted; Layout.preferredWidth: 72 }
                                     BWText { text: "SEQ " + modelData.seqLabel; font.family: Theme.mono; font.pixelSize: 11; color: Theme.muted; Layout.preferredWidth: 72 }
@@ -808,7 +862,7 @@ ActionMenu {
                                 }
                                 BWText { text: modelData.payload || "(no payload)"; font.family: Theme.mono; font.pixelSize: 11; Layout.fillWidth: true; wrapMode: Text.WrapAnywhere }
                                 BWText { text: "WIRE  " + modelData.wire; color: Theme.muted; font.family: Theme.mono; font.pixelSize: 10; Layout.fillWidth: true; wrapMode: Text.WrapAnywhere }
-                                Rectangle { Layout.fillWidth: true; Layout.topMargin: 6; height: 1; color: Theme.line }
+                                Rectangle { Layout.fillWidth: true; Layout.topMargin: 8; height: 1; color: Theme.line }
                             }
                             ScrollBar.vertical: SlimScrollBar { }
                             ColumnLayout {
@@ -826,28 +880,31 @@ ActionMenu {
                 ColumnLayout {
                     spacing: 14
                     RowLayout {
+                        Layout.rightMargin: window.pageMargin
+                        spacing: Theme.gap
                         Field { id: historySearch; placeholderText: "Search jobs, images, or results"; Layout.fillWidth: true }
                         ActionButton { text: "Export history"; enabled: s.history.length > 0; onClicked: exportData("history") }
                         ActionButton { text: "Clear history"; enabled: s.history.length > 0; onClicked: backend.clear("history") }
                     }
                     BWText { text: "Last 100 jobs · saved on this computer"; color: Theme.muted; font.pixelSize: 12 }
                     Panel {
-                        Layout.fillWidth: true; Layout.fillHeight: true
+                        Layout.fillWidth: true; Layout.fillHeight: true; Layout.rightMargin: window.pageMargin
                         ListView {
                             id: historyList
-                            anchors.fill: parent; anchors.margins: 20; clip: true; spacing: 16
+                            anchors.fill: parent; anchors.leftMargin: Theme.pad; anchors.rightMargin: 8; anchors.topMargin: Theme.pad - 4; anchors.bottomMargin: 8; clip: true; spacing: 16
                             model: s.history
                             delegate: ColumnLayout {
                                 required property var modelData
-                                width: historyList.width
+                                width: historyList.width - 16
                                 property bool matches: JSON.stringify(modelData).toLowerCase().indexOf(historySearch.text.toLowerCase()) >= 0
                                 visible: matches; height: matches ? implicitHeight : 0
                                 spacing: 8
                                 RowLayout {
+                                    spacing: 16
                                     BWText { text: modelData.action.replace("_", " "); font.weight: Font.DemiBold; font.capitalization: Font.Capitalize; Layout.preferredWidth: 140 }
                                     BWText { text: modelData.time; color: Theme.muted; font.pixelSize: 12; Layout.fillWidth: true }
                                     BWText { text: modelData.duration; color: Theme.muted; font.pixelSize: 12; Layout.preferredWidth: 85 }
-                                    BWText { text: modelData.result; color: levelColor(modelData.result); font.pixelSize: 12 }
+                                    Chip { text: modelData.result; tone: levelColor(modelData.result) }
                                 }
                                 BWText { text: modelData.message; font.pixelSize: 12; Layout.fillWidth: true }
                                 BWText { text: modelData.target + " · " + modelData.image; color: Theme.muted; font.pixelSize: 11; Layout.fillWidth: true }
@@ -860,14 +917,14 @@ ActionMenu {
                 }
 
                 // Preferences.
-                ScrollView {
-                    clip: true; contentWidth: availableWidth
+                PageScroll {
+                    gutter: window.pageMargin
                     ColumnLayout {
-                        width: parent.width; spacing: 20
+                        width: parent.width; spacing: Theme.section
                         Panel {
-                            Layout.fillWidth: true; implicitHeight: preferencesContents.implicitHeight + 48
+                            Layout.fillWidth: true; implicitHeight: preferencesContents.implicitHeight + 2 * Theme.pad
                             ColumnLayout {
-                                id: preferencesContents; anchors.fill: parent; anchors.margins: 24; spacing: 18
+                                id: preferencesContents; anchors.fill: parent; anchors.margins: Theme.pad; spacing: 18
                                 BWText { text: "Connection defaults"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                 BWText { text: "Changes apply on the next connection. Save to reuse these values when BootWire opens."; color: Theme.muted; Layout.fillWidth: true }
                                 GridLayout {
@@ -883,6 +940,7 @@ ActionMenu {
                                 Rectangle { Layout.fillWidth: true; height: 1; color: Theme.line }
                                 BWText { text: "Appearance"; font.pixelSize: 17; font.weight: Font.DemiBold }
                                 RowLayout {
+                                    spacing: Theme.gap
                                     ActionButton { text: "Light workspace"; primary: s.theme === "light"; onClicked: backend.setTheme("light") }
                                     ActionButton { text: "Dark workspace"; primary: s.theme === "dark"; onClicked: backend.setTheme("dark") }
                                 }

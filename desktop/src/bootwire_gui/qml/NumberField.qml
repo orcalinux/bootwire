@@ -22,7 +22,7 @@ SpinBox {
         inputMethodHints: Qt.ImhDigitsOnly
         Accessible.name: control.Accessible.name
     }
-    background: Rectangle { radius: 9; color: Theme.surface; border.width: control.activeFocus ? 2 : 1; border.color: control.activeFocus ? Theme.accent : Theme.line }
+    background: Rectangle { radius: Theme.controlRadius; color: Theme.surface; border.width: control.activeFocus ? 2 : 1; border.color: control.activeFocus ? Theme.accent : Theme.line }
     up.indicator: Rectangle {
         x: control.width-width-4; y: 4; width: 30; height: control.height-8; radius: 6
         color: control.up.pressed ? Theme.line : control.up.hovered ? Theme.accentFill : Theme.inset

@@ -16,7 +16,7 @@ ComboBox {
         return textRole ? String(entry[textRole]) : String(entry)
     }
     background: Rectangle {
-        radius: 9
+        radius: Theme.controlRadius
         color: control.enabled ? (control.hovered ? Theme.inset : Theme.surface) : Theme.inset
         border.width: control.activeFocus || control.popup.visible ? 2 : 1
         border.color: control.activeFocus || control.popup.visible ? Theme.accent : Theme.line

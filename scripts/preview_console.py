@@ -29,7 +29,7 @@ def wait(predicate):
     assert predicate(), (c.state['detail'],c.console.terminal.state['message'])
 
 def settle():
-    for _ in range(15):app.processEvents();time.sleep(.01)
+    for _ in range(24):app.processEvents();time.sleep(.01)
 
 options={'port':'sim','baud':115200,'timeout':.1,'eraseTimeout':.1,'retries':2}
 c.console.submit('bootwire -p sim info',options)

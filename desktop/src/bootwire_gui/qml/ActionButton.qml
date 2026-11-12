@@ -48,11 +48,14 @@ Button {
             ink: control.foreground
         }
     }
+    scale: control.down ? 0.975 : 1
+    Behavior on scale { NumberAnimation { duration: 110; easing.type: Easing.OutCubic } }
     background: Rectangle {
-        radius: 9
-        color: control.primary ? Theme.accent : control.down ? Theme.line : control.hovered ? Theme.accentFill : control.quiet ? "transparent" : Theme.surface
+        radius: Theme.controlRadius
+        color: control.primary ? (control.down ? Qt.darker(Theme.accent, 1.12) : control.hovered ? Qt.lighter(Theme.accent, Theme.dark ? 1.08 : 1.18) : Theme.accent) : control.down ? Theme.line : control.hovered ? Theme.accentFill : control.quiet ? "transparent" : Theme.surface
         border.width: control.visualFocus ? 2 : control.primary || control.quiet ? 0 : 1
-        border.color: control.visualFocus ? (control.primary ? (Theme.dark ? "#102337" : "#FFFFFF") : Theme.accent) : Theme.line
+        border.color: control.visualFocus ? (control.primary ? (Theme.dark ? "#102337" : "#FFFFFF") : Theme.accent) : control.hovered && !control.quiet ? Theme.accent : Theme.line
+        Behavior on border.color { ColorAnimation { duration: 120 } }
         Behavior on color { ColorAnimation { duration: 120 } }
     }
 }

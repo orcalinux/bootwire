@@ -12,11 +12,13 @@ TextField {
     selectionColor: Theme.accent
     selectedTextColor: Theme.surface
     opacity: enabled ? 1 : 0.5
+    hoverEnabled: true
     Accessible.name: placeholderText
     background: Rectangle {
-        radius: 9
+        radius: Theme.controlRadius
         color: Theme.surface
         border.width: control.activeFocus ? 2 : 1
-        border.color: control.activeFocus ? Theme.accent : Theme.line
+        border.color: control.activeFocus ? Theme.accent : control.hovered ? Theme.muted : Theme.line
+        Behavior on border.color { ColorAnimation { duration: 120 } }
     }
 }

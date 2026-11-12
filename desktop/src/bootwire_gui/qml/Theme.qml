@@ -15,6 +15,12 @@ QtObject {
     readonly property color error: dark ? "#FFA3A3" : "#B02F3C"
     readonly property color rail: "#142C44"
     readonly property color railText: "#B9CADB"
-    readonly property int radius: 12
+    readonly property int radius: 14
+    readonly property int controlRadius: 10
+    // Spacing roles: gap separates sibling controls, pad is panel padding,
+    // section separates panels and other major groups.
+    readonly property int gap: 10
+    readonly property int pad: 24
+    readonly property int section: 24
     readonly property string mono: "DejaVu Sans Mono"
 }
