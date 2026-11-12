@@ -1,0 +1,44 @@
+.TH BOOTWIRE-GUI 1 "2026-11-12" "BootWire 0.2.0" "User Commands"
+.SH NAME
+bootwire\-gui \- desktop application for BootWire firmware updates
+.SH SYNOPSIS
+.B bootwire\-gui
+.SH DESCRIPTION
+.B bootwire\-gui
+opens the BootWire desktop application: firmware flashing, device profiles and
+sequential batch updates, a local firmware library, diagnostics and user
+commands, a frame inspector, job history, and a developer panel with verbose
+output, BootWire commands and a local shell.
+.PP
+It is built on the same library as
+.BR bootwire (1)
+and keeps one target connection at a time. Choose the port
+.B sim
+to explore without a board.
+.PP
+The application needs PySide6 (Qt 6) and its Qt Quick modules. When they are
+missing it prints a message and exits with status 2.
+.SH FILES
+Preferences, device profiles, firmware library references and job history are
+stored with Qt's settings mechanism under the organisation "BootWire" and the
+application "Desktop". On Linux this is
+.IR ~/.config/BootWire/Desktop.conf .
+.PP
+The settings file of
+.BR bootwire (1)
+supplies the initial connection defaults; saved preferences then take
+precedence.
+.SH EXIT STATUS
+.TP
+.B 0
+The window was closed normally.
+.TP
+.B 1
+The interface could not be loaded.
+.TP
+.B 2
+The desktop dependencies are not installed.
+.SH SEE ALSO
+.BR bootwire (1)
+.SH AUTHOR
+Mahmoud Abdelraouf.

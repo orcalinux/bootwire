@@ -1,0 +1,303 @@
+.TH BOOTWIRE 1 "2026-11-12" "BootWire 0.2.0" "User Commands"
+.SH NAME
+bootwire \- update Cortex-M firmware and send commands over the BootWire protocol
+.SH SYNOPSIS
+.B bootwire
+.RB [ \-p
+.IR PORT ]
+.RB [ \-b
+.IR BAUD ]
+.RB [ \-t
+.IR SECONDS ]
+.RB [ \-r
+.IR COUNT ]
+.RB [ \-c
+.IR FILE ]
+.I COMMAND
+.RI [ ARGS ...]
+.br
+.B bootwire
+.RI [ OPTIONS ]
+.B \-i
+.br
+.B bootwire \-\-help
+.SH DESCRIPTION
+.B bootwire
+is the host side of the BootWire protocol v0.2, a small stop-and-wait protocol
+for updating the firmware of a 32-bit ARM Cortex-M microcontroller over UART
+and for sending user-defined commands to its bootloader.
+.PP
+Every invocation opens the port, starts a session with CONNECT, runs one
+command and closes the port. The target reports its application region, erase
+block size, write alignment and largest payload in the CONNECT response, and
+.B bootwire
+uses those values; nothing about the flash layout is fixed on the host.
+.PP
+Each request is protected by a CRC-16 and sent in SLIP framing. When no valid
+response arrives in time the same request is sent again, up to the retry limit.
+An error status from the target is final and is not retried.
+.PP
+Global options must come
+.I before
+the command name.
+.SH OPTIONS
+.TP
+.BR \-p ", " \-\-port " \fIPORT\fR"
+Serial device (for example
+.IR /dev/ttyACM0 ),
+a pyserial URL (for example
+.IR socket://192.168.1.50:4001 ),
+or
+.B sim
+for the built-in simulated target. Without this option and without a
+configured port, the only serial port present is used; if there are several,
+.B bootwire
+asks which one to use.
+.TP
+.BR \-b ", " \-\-baud " \fIBAUD\fR"
+Baud rate. Default: 115200.
+.TP
+.BR \-t ", " \-\-timeout " \fISECONDS\fR"
+Time to wait for a response before resending. Default: 0.5.
+.TP
+.BR \-r ", " \-\-retries " \fICOUNT\fR"
+Number of resends after the first attempt. Default: 3.
+.TP
+.BR \-c ", " \-\-config " \fIFILE\fR"
+Read settings from
+.I FILE
+instead of searching the default locations (see
+.BR FILES ).
+.TP
+.BR \-i ", " \-\-interactive
+Choose the command from a menu instead of naming it on the command line.
+.TP
+.B \-\-install\-completion
+Install tab completion for the current shell.
+.TP
+.B \-\-show\-completion
+Print the completion script for the current shell.
+.TP
+.B \-\-help
+Show a summary of options and commands. Each command also accepts
+.BR \-\-help .
+.SH COMMANDS
+.TP
+.B info
+Connect and show what the target reports: protocol and bootloader versions,
+device ID, application region, erase block size, write alignment and largest
+payload.
+.TP
+.BR ping " [" \-d " \fIDATA\fR] [" \-\-hex "] [" \-n " \fICOUNT\fR]"
+Check the link. The target must echo the bytes it receives; the round-trip
+time is printed.
+.RS
+.TP
+.BR \-d ", " \-\-data " \fIDATA\fR"
+Bytes to echo, as text, or as hexadecimal with
+.BR \-\-hex .
+Default: the text "ping".
+.TP
+.B \-\-hex
+Read
+.I DATA
+as hexadecimal bytes, for example "C0 DB".
+.TP
+.BR \-n ", " \-\-count " \fICOUNT\fR"
+Number of pings. Default: 1.
+.RE
+.TP
+.BR erase " [" \-a " \fIADDRESS\fR] [" \-l " \fILENGTH\fR]"
+Erase flash. The range is rounded out to whole erase blocks.
+.RS
+.TP
+.BR \-a ", " \-\-address " \fIADDRESS\fR"
+Start address. Default: the start of the application region.
+.TP
+.BR \-l ", " \-\-length " \fILENGTH\fR"
+Number of bytes to erase. Default: to the end of the application region.
+.RE
+.TP
+.BR write " \fIFILE\fR [" \-a " \fIADDRESS\fR]"
+Write a raw binary image into flash that is already erased. The image is
+padded to the write alignment and sent in the largest chunks the target
+accepts. The target reads each chunk back after programming it.
+.RS
+.TP
+.BR \-a ", " \-\-address " \fIADDRESS\fR"
+Load address. Default: the start of the application region.
+.RE
+.TP
+.BR verify " \fIFILE\fR [" \-a " \fIADDRESS\fR]"
+Check that flash holds exactly this image by comparing the CRC-32 of the
+padded file with the CRC-32 the target computes over the same range.
+.RS
+.TP
+.BR \-a ", " \-\-address " \fIADDRESS\fR"
+Load address. Default: the start of the application region.
+.RE
+.TP
+.B run
+Leave the bootloader and start the application. The target checks the
+application's vector table first and refuses to jump to an invalid image.
+.TP
+.BR flash " \fIFILE\fR [" \-a " \fIADDRESS\fR] [" \-\-no\-run ]
+Complete update: erase the blocks the image touches, write it, verify it,
+then start the application.
+.RS
+.TP
+.BR \-a ", " \-\-address " \fIADDRESS\fR"
+Load address. Default: the start of the application region.
+.TP
+.B \-\-no\-run
+Stay in the bootloader after the image has been verified.
+.RE
+.TP
+.BR send " \fICMD\fR [" \-d " \fIDATA\fR] [" \-\-hex ]
+Send any command and print the status and payload of the response.
+.I CMD
+is a command ID from 0x00 to 0x7F; user commands occupy 0x40 to 0x7F.
+.RS
+.TP
+.BR \-d ", " \-\-data " \fIDATA\fR"
+Payload, as text, or as hexadecimal with
+.BR \-\-hex .
+Default: empty.
+.TP
+.B \-\-hex
+Read
+.I DATA
+as hexadecimal bytes.
+.RE
+.PP
+Addresses, lengths and command IDs accept decimal, or hexadecimal with a
+.B 0x
+prefix. Image files are raw binaries
+.RI ( .bin )
+linked for the load address.
+.SH EXIT STATUS
+.TP
+.B 0
+Success.
+.TP
+.B 1
+The target refused the command or did not answer.
+.TP
+.B 2
+Bad usage, or a file or port that could not be opened.
+.SH ENVIRONMENT
+.TP
+.B BOOTWIRE_CONFIG
+Path of a settings file. Used when
+.B \-\-config
+is not given.
+.SH FILES
+Settings are read from the first of these that exists; command-line options
+override them.
+.PP
+.RS
+.nf
+the file named by \fB\-\-config\fR
+the file named by \fBBOOTWIRE_CONFIG\fR
+\fI./bootwire.yaml\fR
+\fI~/.bootwire.yaml\fR
+.fi
+.RE
+.PP
+The file is YAML:
+.PP
+.RS
+.nf
+general:
+  timeout: 0.5        # seconds to wait for a response
+  erase_timeout: 5.0  # seconds to wait for one ERASE response
+  max_retries: 3      # resends after the first attempt
+serial:
+  port:               # empty = automatic; a device, a pyserial URL, or "sim"
+  baudrate: 115200
+.fi
+.RE
+.PP
+The ERASE timeout can only be set in this file.
+.SH EXAMPLES
+Show what a board reports:
+.PP
+.RS
+.nf
+bootwire \-p /dev/ttyACM0 info
+.fi
+.RE
+.PP
+Flash an image and start it:
+.PP
+.RS
+.nf
+bootwire \-p /dev/ttyACM0 flash build/app.bin
+.fi
+.RE
+.PP
+Flash at a higher baud rate with a longer timeout, and stay in the bootloader:
+.PP
+.RS
+.nf
+bootwire \-p /dev/ttyUSB0 \-b 921600 \-t 1.0 \-r 5 flash app.bin \-\-no\-run
+.fi
+.RE
+.PP
+Erase one 2 KiB block:
+.PP
+.RS
+.nf
+bootwire erase \-a 0x08008000 \-l 0x800
+.fi
+.RE
+.PP
+Test the link with bytes that need SLIP escaping:
+.PP
+.RS
+.nf
+bootwire ping \-n 10 \-d "C0 DB" \-\-hex
+.fi
+.RE
+.PP
+Send a user command with a three-byte payload:
+.PP
+.RS
+.nf
+bootwire send 0x40 \-d "01 02 03" \-\-hex
+.fi
+.RE
+.PP
+Work without hardware, against the built-in simulated target:
+.PP
+.RS
+.nf
+bootwire \-p sim flash app.bin
+.fi
+.RE
+.SH NOTES
+The simulated target selected by
+.B \-p sim
+lives only for one invocation, so each command starts from erased flash. To
+keep a simulated target between commands, run
+.B python3 \-m bootwire.sim
+and pass the pseudo-terminal it prints to
+.BR \-p .
+.PP
+.B run
+hands the UART to the application, so the session ends there. Put the board
+back into its bootloader before the next command.
+.PP
+The protocol has no authentication: anyone with access to the UART can flash
+any image.
+.SH SEE ALSO
+.BR bootwire\-gui (1)
+is the desktop application built on the same library.
+.PP
+The protocol specification and the library documentation are in the project
+repository, under
+.I docs/protocol/README.md
+and
+.IR README.md .
+.SH AUTHOR
+Mahmoud Abdelraouf.
