@@ -446,12 +446,15 @@ def test_terminal_panel_paste_and_enter_reach_real_shell(app,controller):
     terminal=controller.console.terminal
     terminal.start('',str(Path.cwd()))
     wait_for(app,lambda:terminal.state['running'])
+    # Type only after the shell has drawn its prompt: input sent while an
+    # interactive shell is still starting can be discarded.
+    wait_for(app,lambda:terminal.state['text'].strip()!='', timeout=15)
     text=window.findChild(QObject,'systemTerminalInput')
     text.forceActiveFocus(Qt.FocusReason.MouseFocusReason)
     app.clipboard().setText("printf '__GUI_TERMINAL_OK__\\n'")
     QTest.keyClick(window,Qt.Key.Key_V,Qt.KeyboardModifier.ControlModifier|Qt.KeyboardModifier.ShiftModifier)
     QTest.keyClick(window,Qt.Key.Key_Return)
-    wait_for(app,lambda:'__GUI_TERMINAL_OK__' in terminal.state['text'].splitlines())
+    wait_for(app,lambda:'__GUI_TERMINAL_OK__' in terminal.state['text'].splitlines(), timeout=15)
     assert not warnings,warnings
     terminal.stop()
     wait_for(app,lambda:not terminal.state['running'])

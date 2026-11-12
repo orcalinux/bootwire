@@ -59,6 +59,9 @@ def test_invalid_working_directory_reports_error(terminal):
 def test_real_shell_cwd_interactive_input_resize_and_interrupt(app,terminal,tmp_path):
     terminal.start('',str(tmp_path))
     wait(app,lambda:terminal.state['running'])
+    # Type only after the shell has drawn its prompt: input sent while an
+    # interactive shell is still starting can be discarded.
+    wait(app,lambda:terminal.state['text'].strip()!='',timeout=15)
     terminal.write("printf '__BOOTWIRE_PTY_OK__\\n'; pwd\r")
     wait(app,lambda:'__BOOTWIRE_PTY_OK__' in terminal.state['text'].splitlines() and str(tmp_path) in terminal.state['text'].splitlines())
     terminal.resize(90,12)
