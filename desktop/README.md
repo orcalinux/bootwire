@@ -94,7 +94,7 @@ client.flash(open("app.bin", "rb").read())
 client.close()
 ```
 
-See the [project README](../README.md#5-host-library) for every method and error type.
+See the [project README](../README.md#-host-library) for every method and error type.
 
 ## Layout
 
